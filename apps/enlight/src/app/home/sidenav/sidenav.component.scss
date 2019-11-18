@@ -1,0 +1,75 @@
+// :host {
+//   display: flex;
+//   height: 100%;
+//   width: 100%;
+//   flex-direction: column;
+// }
+
+// mat-toolbar {
+//   position: relative;
+//   z-index: 4;
+// }
+
+// .spacer {
+//   flex: 1 1 auto;
+// }
+
+// .sidebar-top {
+//   background-color: #1e2129;
+//   color: #fff;
+//   flex-shrink: 0;
+// }
+
+// .navbar-container {
+//   padding: 8px 0;
+//   flex-grow: 1;
+//   background-color: #2d323e;
+//   color: #919bae;
+// }
+
+// .group-title {
+//   position: relative;
+//   display: flex;
+//   align-items: center;
+//   height: 48px;
+//   padding-left: 24px;
+//   margin-top: 8px;
+//   font-size: 12px;
+//   text-transform: uppercase;
+//   white-space: nowrap;
+//   color: rgba(255, 255, 255, 0.5);
+// }
+
+// .nav-link {
+//   display: flex;
+//   align-items: center;
+//   padding: 12px 12px 12px 24px;
+//   border-left: 3px solid #2d323e;
+//   position: relative;
+//   overflow: hidden;
+//   font-weight: 200;
+//   font-size: 0.875rem;
+//   cursor: pointer;
+//   user-select: none;
+//   color: currentColor;
+
+//   &:hover {
+//     background-color: rgba(0, 0, 0, 0.04);
+//     border-left-color: #039be5;
+//   }
+
+//   &.active {
+//     color: #fff !important;
+//     border-left-color: #039be5;
+//   }
+
+//   .nav-link-icon {
+//     width: 16px;
+//     height: 16px;
+//     margin-right: 16px;
+//     min-width: 16px;
+//     min-height: 16px;
+//     line-height: 16px;
+//     font-size: 16px;
+//   }
+// }
