@@ -1,0 +1,42 @@
+.admin-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+nav {
+  display: block;
+  width: 260px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  outline: 0;
+  overflow-y: auto;
+}
+
+main {
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-flex: 1;
+  flex: 1 1 0%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  margin-left: 260px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.main-content {
+  flex: 1 1 0%;
+  min-height: 0;
+  position: relative;
+  display: block;
+  z-index: 1;
+}

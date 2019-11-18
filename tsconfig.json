@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@workspace/ui": ["libs/ui/src/index.ts"]
+      "@workspace/ui": ["libs/ui/src/index.ts"],
+      "@workspace/home": ["app/home/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
