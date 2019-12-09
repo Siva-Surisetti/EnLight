@@ -42,10 +42,19 @@ const getSelectedBooks = createSelector(
   }
 );
 
+const getCollectionBooks = createSelector(
+  getBooksState,
+  getLoaded,
+  (state: BooksState, isLoaded) => {
+    return isLoaded ? state.collectionItems : [];
+  }
+);
+
 export const booksQuery = {
   getLoaded,
   getError,
   getAllBooks,
   getSelectedBooks,
-  getCartBooks
+  getCartBooks,
+  getCollectionBooks
 };

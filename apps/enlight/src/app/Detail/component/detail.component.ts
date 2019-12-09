@@ -22,6 +22,7 @@ export class DetailComponent implements OnInit {
   }
 
   purchaseBook() {
+    this.booksFacade.dispatchBookIdToCartStore(this.selectedBook);
     this.router.navigate(['billing']);
   }
 }

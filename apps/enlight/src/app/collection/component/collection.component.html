@@ -1,7 +1,5 @@
-<div class="collection-wrapper">
-  <div class="search-wrapper">
-    <workspace-ui-search-bar
-      [placeholder]="'Search in Collection'"
-    ></workspace-ui-search-bar>
+<div *ngIf="collectionBooks">
+  <div *ngFor="let book of collectionBooks">
+    {{ book.volumeInfo.title }}
   </div>
 </div>

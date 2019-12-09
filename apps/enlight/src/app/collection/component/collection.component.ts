@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BooksFacade } from '../../+state/books.facade';
 
 @Component({
   selector: 'workspace-app-collection',
@@ -6,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./collection.component.scss']
 })
 export class CollectionComponent implements OnInit {
-  constructor() {}
+  collectionBooks: any;
+  constructor(private booksFacade: BooksFacade) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.booksFacade.collectionBooks$.subscribe(books => {
+      this.collectionBooks = books;
+    });
+  }
 }

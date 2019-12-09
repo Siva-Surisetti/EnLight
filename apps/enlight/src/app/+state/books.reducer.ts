@@ -15,6 +15,7 @@ export interface Entity {}
 export interface BooksState {
   list: Entity[];
   cartItems: Entity[];
+  collectionItems: Entity[];
   selectedId?: string | number;
   loaded: boolean;
   error?: any;
@@ -27,6 +28,7 @@ export interface BooksPartialState {
 export const initialState: BooksState = {
   list: [],
   cartItems: [],
+  collectionItems: [],
   loaded: false
 };
 
@@ -54,6 +56,13 @@ export function reducer(
       state = {
         ...state,
         cartItems: [...state.cartItems, action.payload]
+      };
+      break;
+    }
+    case BooksActionTypes.AddToCollection: {
+      state = {
+        ...state,
+        collectionItems: [...state.collectionItems, ...action.payload]
       };
       break;
     }
