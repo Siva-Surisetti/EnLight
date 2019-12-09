@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BooksFacade } from 'apps/enlight/src/app/+state/books.facade';
 
 @Component({
   selector: 'workspace-ui-side-nav',
@@ -27,7 +28,19 @@ export class SideNavComponent implements OnInit {
     }
   ];
 
-  constructor() {}
+  constructor(private booksFacade: BooksFacade) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.booksFacade.cartBooks$.subscribe(books => {
+      this.navigationList.forEach(list => {
+        if (list['desc'] === 'Cart') list['badgeValue'] = books.length;
+      });
+    });
+
+    this.booksFacade.collectionBooks$.subscribe(books => {
+      this.navigationList.forEach(list => {
+        if (list['desc'] === 'My Collection') list['badgeValue'] = books.length;
+      });
+    });
+  }
 }
