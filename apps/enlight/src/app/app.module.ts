@@ -31,9 +31,16 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BillingComponent } from './billing/billing.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PurchaseConfirmationComponent } from './purchase-confirmation/purchase-confirmation.component';
+import { MatDialogModule } from '@angular/material';
 
 @NgModule({
-  declarations: [AppComponent, DetailComponent, BillingComponent],
+  declarations: [
+    AppComponent,
+    DetailComponent,
+    BillingComponent,
+    PurchaseConfirmationComponent
+  ],
   imports: [
     HttpClientModule,
     BrowserModule,
@@ -53,6 +60,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatGridListModule,
     FlexLayoutModule,
     ReactiveFormsModule,
+    MatDialogModule,
     RouterModule.forRoot(
       [{ path: '', redirectTo: 'home', pathMatch: 'full' }],
       { initialNavigation: 'enabled' }
@@ -72,6 +80,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreRouterConnectingModule.forRoot()
   ],
+  entryComponents: [PurchaseConfirmationComponent],
   providers: [BooksFacade],
   bootstrap: [AppComponent]
 })

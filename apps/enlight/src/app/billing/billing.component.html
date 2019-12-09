@@ -4,7 +4,6 @@
     fxLayoutAlign="center center"
     fxLayoutGap="10px"
     [formGroup]="loginForm"
-    (ngSubmit)="onSubmit()"
   >
     <mat-form-field>
       <input
@@ -53,6 +52,7 @@
       mat-raised-button
       color="primary"
       [disabled]="loginForm.invalid"
+      (click)="openDialog()"
     >
       Submit
     </button>

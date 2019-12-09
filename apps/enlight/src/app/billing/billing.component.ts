@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { MatDialog } from '@angular/material';
+import { PurchaseConfirmationComponent } from '../purchase-confirmation/purchase-confirmation.component';
 @Component({
   selector: 'workspace-billing',
   templateUrl: './billing.component.html',
@@ -9,7 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class BillingComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor() {}
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -19,6 +20,17 @@ export class BillingComponent implements OnInit {
       name: new FormControl('', { validators: [Validators.required] }),
       phone: new FormControl('', { validators: [Validators.required] }),
       address: new FormControl('', { validators: [Validators.required] })
+    });
+  }
+
+  openDialog() {
+    this.dialog.open(PurchaseConfirmationComponent, {
+      data: {
+        message: 'Your purchase is successful',
+        buttonText: {
+          cancel: 'Done'
+        }
+      }
     });
   }
 }
