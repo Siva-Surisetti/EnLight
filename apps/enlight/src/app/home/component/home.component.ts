@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Output,
-  ChangeDetectorRef,
-  ComponentFactoryResolver
-} from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonService } from '@workspace/libs/services';
 import { HomeService } from '../service/home.service';
 import { BooksFacade } from '../../+state/books.facade';
@@ -20,10 +14,8 @@ export class HomeComponent implements OnInit {
   public searchInputData: any;
 
   constructor(
-    private homeService: HomeService,
     private commonService: CommonService,
     private booksFacade: BooksFacade,
-    private ref: ChangeDetectorRef,
     private router: Router
   ) {
     this.booksRecords$ = this.booksFacade.allBooks$;

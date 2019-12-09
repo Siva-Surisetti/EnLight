@@ -6,8 +6,6 @@ import { HomeComponent } from './component/home.component';
 import { UiModule } from '@workspace/libs/ui';
 import { ServicesModule } from '@workspace/libs/services';
 import { HomeService } from './service/home.service';
-import { HttpWrapperService } from '@workspace/libs/services';
-import { HttpClient, HttpHandler } from '@angular/common/http';
 
 @NgModule({
   declarations: [HomeComponent],

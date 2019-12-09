@@ -13,11 +13,11 @@ export const BOOKS_FEATURE_KEY = 'books';
 export interface Entity {}
 
 export interface BooksState {
-  list: Entity[]; // list of Books; analogous to a sql normalized table
+  list: Entity[];
   cartItems: Entity[];
-  selectedId?: string | number; // which Books record has been selected
-  loaded: boolean; // has the Books list been loaded
-  error?: any; // last none error (if any)
+  selectedId?: string | number;
+  loaded: boolean;
+  error?: any;
 }
 
 export interface BooksPartialState {
