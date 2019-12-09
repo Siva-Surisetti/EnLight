@@ -1,1 +1,58 @@
-<p>billing works!</p>
+<section>
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px"
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <mat-form-field>
+      <input
+        type="name"
+        matInput
+        placeholder="Your name"
+        formControlName="name"
+      />
+      <mat-hint>Please enter your name.</mat-hint>
+      <mat-error>Missing name.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        type="email"
+        matInput
+        placeholder="Your email"
+        formControlName="email"
+      />
+      <mat-hint>Please enter your email.</mat-hint>
+      <mat-error>Invalid or missing email.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        type="phone"
+        matInput
+        placeholder="Your phone number"
+        formControlName="phone"
+      />
+      <mat-hint>Please enter your phone number.</mat-hint>
+      <mat-error>Missing phone number.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        type="address"
+        matInput
+        placeholder="Your address"
+        formControlName="address"
+      />
+      <mat-hint>Please enter your address.</mat-hint>
+      <mat-error>Missing address.</mat-error>
+    </mat-form-field>
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="loginForm.invalid"
+    >
+      Submit
+    </button>
+  </form>
+</section>

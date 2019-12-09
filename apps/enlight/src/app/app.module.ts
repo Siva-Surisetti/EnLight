@@ -30,6 +30,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BillingComponent } from './billing/billing.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, DetailComponent, BillingComponent],
@@ -51,6 +52,7 @@ import { BillingComponent } from './billing/billing.component';
     MatButtonToggleModule,
     MatGridListModule,
     FlexLayoutModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       [{ path: '', redirectTo: 'home', pathMatch: 'full' }],
       { initialNavigation: 'enabled' }
