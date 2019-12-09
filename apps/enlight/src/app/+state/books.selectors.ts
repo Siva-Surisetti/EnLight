@@ -24,6 +24,15 @@ const getSelectedId = createSelector(
   getBooksState,
   (state: BooksState) => state.selectedId
 );
+
+const getCartBooks = createSelector(
+  getBooksState,
+  getLoaded,
+  (state: BooksState, isLoaded) => {
+    return isLoaded ? state.cartItems : [];
+  }
+);
+
 const getSelectedBooks = createSelector(
   getAllBooks,
   getSelectedId,
@@ -37,5 +46,6 @@ export const booksQuery = {
   getLoaded,
   getError,
   getAllBooks,
-  getSelectedBooks
+  getSelectedBooks,
+  getCartBooks
 };

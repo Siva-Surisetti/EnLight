@@ -18,9 +18,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { BooksFacade } from './+state/books.facade';
 import { BooksEffects } from './+state/books.effects';
 import * as fromBooksReducer from './+state/books.reducer';
+import { DetailComponent } from './Detail/component/detail.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, DetailComponent],
   imports: [
     HttpClientModule,
     BrowserModule,
@@ -29,6 +40,16 @@ import * as fromBooksReducer from './+state/books.reducer';
     HomeModule,
     CartModule,
     CollectionModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatButtonToggleModule,
+    MatGridListModule,
+    FlexLayoutModule,
     RouterModule.forRoot(
       [{ path: '', redirectTo: 'home', pathMatch: 'full' }],
       { initialNavigation: 'enabled' }

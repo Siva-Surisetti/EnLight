@@ -1,15 +1,14 @@
 <div class="home-wrapper">
   <div class="search-wrapper">
-    <ui-search-bar
-      [placeholder]="'Search in Library'"
-    ></ui-search-bar>
+    <ui-search-bar [placeholder]="'Search in Library'"></ui-search-bar>
   </div>
   <card-tile
-    *ngFor="let tilesData of (booksRecords$  | async)"
+    *ngFor="let tilesData of booksRecords$ | async"
     [bookTitle]="tilesData.volumeInfo.title"
     [bookSubTitle]="tilesData.volumeInfo.subtitle"
     [smallThumbnail]="tilesData.volumeInfo.imageLinks?.smallThumbnail"
     [bookDescription]="tilesData.volumeInfo.description"
+    (click)="OnBookSelect(tilesData.id)"
   >
   </card-tile>
 </div>
