@@ -29,9 +29,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { BillingComponent } from './billing/billing.component';
 
 @NgModule({
-  declarations: [AppComponent, DetailComponent],
+  declarations: [AppComponent, DetailComponent, BillingComponent],
   imports: [
     HttpClientModule,
     BrowserModule,

@@ -1,5 +1,6 @@
 import { BooksFacade } from '../../+state/books.facade';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'workspace-detail',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
   public selectedBook: any;
-  constructor(private booksFacade: BooksFacade) {
+  constructor(private booksFacade: BooksFacade, private router: Router) {
     this.booksFacade.selectedBooks$.subscribe(book => {
       this.selectedBook = book;
     });
@@ -18,5 +19,9 @@ export class DetailComponent implements OnInit {
 
   OnAddToCart() {
     this.booksFacade.dispatchBookIdToCartStore(this.selectedBook);
+  }
+
+  purchaseBook() {
+    this.router.navigate(['billing']);
   }
 }
