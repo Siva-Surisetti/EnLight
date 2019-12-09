@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'workspace-purchase-confirmation',
@@ -11,7 +12,8 @@ export class PurchaseConfirmationComponent implements OnInit {
   cancelButtonText = 'Cancel';
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: any,
-    private dialogRef: MatDialogRef<PurchaseConfirmationComponent>
+    private dialogRef: MatDialogRef<PurchaseConfirmationComponent>,
+    private router: Router
   ) {
     if (data) {
       this.message = data.message || this.message;
@@ -24,6 +26,7 @@ export class PurchaseConfirmationComponent implements OnInit {
 
   onConfirmClick(): void {
     this.dialogRef.close(true);
+    this.router.navigate(['home']);
   }
 
   ngOnInit() {}
