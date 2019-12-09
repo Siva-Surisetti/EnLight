@@ -1,5 +1,5 @@
 import { map } from 'rxjs/internal/operators/map';
-import { BooksFacade } from 'apps/enlight/src/app/+state/books.facade';
+import { BooksFacade } from '../../+state/books.facade';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

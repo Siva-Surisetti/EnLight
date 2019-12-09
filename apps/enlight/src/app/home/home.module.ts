@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './component/home.component';
-import { UiModule } from '../../../../../libs/ui/src/lib/ui.module';
-import { ServicesModule } from '../../../../../libs/services/src/lib/services.module';
+import { UiModule } from '@workspace/libs/ui';
+import { ServicesModule } from '@workspace/libs/services';
 import { HomeService } from './service/home.service';
-import { HttpWrapperService } from 'libs/services/src/lib/http/http-wrapper.service';
+import { HttpWrapperService } from '@workspace/libs/services';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 
 @NgModule({
@@ -15,4 +15,4 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
   providers: [HomeService],
   entryComponents: [HomeComponent]
 })
-export class HomeModule { }
+export class HomeModule {}

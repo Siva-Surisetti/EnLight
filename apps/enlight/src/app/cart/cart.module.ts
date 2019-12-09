@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UiModule } from '../../../../../libs/ui/src/lib/ui.module';
+import { UiModule } from '@workspace/libs/ui';
 
 import { CartRoutingModule } from './cart-routing.module';
 import { CartComponent } from './component/cart.component';

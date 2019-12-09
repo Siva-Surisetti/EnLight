@@ -1,8 +1,8 @@
-import { BooksFacade } from 'apps/enlight/src/app/+state/books.facade';
+import { BooksFacade } from '../../+state/books.facade';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-collection',
+  selector: 'workspace-app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })

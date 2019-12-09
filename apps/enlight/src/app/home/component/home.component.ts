@@ -5,13 +5,13 @@ import {
   ChangeDetectorRef,
   ComponentFactoryResolver
 } from '@angular/core';
-import { CommonService } from 'libs/services/src/lib/shared/common.service';
+import { CommonService } from '@workspace/libs/services';
 import { HomeService } from '../service/home.service';
 import { BooksFacade } from '../../+state/books.facade';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
+  selector: 'workspace-app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
