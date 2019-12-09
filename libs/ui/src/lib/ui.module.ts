@@ -18,6 +18,7 @@ import { StoreModule } from '@ngrx/store';
 import { NxModule } from '@nrwl/angular';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { MatBadgeModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { environment } from '../environments/environment';
     MatSidenavModule,
     MatListModule,
     MatButtonToggleModule,
+    MatBadgeModule,
     NxModule.forRoot(),
     StoreModule.forRoot(
       {},

@@ -10,17 +10,20 @@ export class SideNavComponent implements OnInit {
     {
       desc: 'Dashboard',
       path: '/home',
-      icon: 'dashboard'
+      icon: 'dashboard',
+      badgeValue: null
     },
     {
       desc: 'Cart',
       path: '/cart',
-      icon: 'shopping_cart'
+      icon: 'shopping_cart',
+      badgeValue: 2
     },
     {
       desc: 'My Collection',
       path: '/collection',
-      icon: 'library_books'
+      icon: 'library_books',
+      badgeValue: null
     }
   ];
 
