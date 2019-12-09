@@ -23,13 +23,26 @@ export class HttpWrapperService {
   private OBSERVE_TYPE: HttpObserveOptions = 'response';
   private RESPONSE_TYPE: HttpResponseOptions = 'json';
 
-  constructor(@Inject(HttpClient) private http, private loggerService: LoggerService) {}
+  constructor(
+    @Inject(HttpClient) private http,
+    private loggerService: LoggerService
+  ) {}
 
-  public get(url: string, headers?: Headers, query?: Query, body?: Body): Observable<any> {
+  public get(
+    url: string,
+    headers?: Headers,
+    query?: Query,
+    body?: Body
+  ): Observable<any> {
     return this.request('GET', url, headers, query, body);
   }
 
-  public post(url: string, headers?: Headers, query?: Query, body?: Body): Observable<any> {
+  public post(
+    url: string,
+    headers?: Headers,
+    query?: Query,
+    body?: Body
+  ): Observable<any> {
     return this.request('POST', url, headers, query, body);
   }
 
@@ -58,7 +71,7 @@ export class HttpWrapperService {
 
   private serialize(object: Object): HttpParams {
     let serializedObject: HttpParams = new HttpParams();
-    for (const key in object) {
+    for (const key of Object.keys(object)) {
       const value = object[key];
       serializedObject = serializedObject.append(key, value);
     }
@@ -78,7 +91,7 @@ export class HttpWrapperService {
       requestHeaders = headers;
     } else {
       let httpHeaders: HttpHeaders = new HttpHeaders();
-      for (const key in headers) {
+      for (const key of Object.keys(headers)) {
         httpHeaders = httpHeaders.append(key, headers[key]);
       }
       requestHeaders = httpHeaders;
