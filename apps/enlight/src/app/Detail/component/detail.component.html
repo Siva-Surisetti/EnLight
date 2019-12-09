@@ -17,7 +17,13 @@
           alt="Photo"
         />
         <mat-card-actions>
-          <button mat-button class="addtocard-btn book-btn">ADD TO CART</button>
+          <button
+            mat-button
+            class="addtocard-btn book-btn"
+            (click)="OnAddToCart()"
+          >
+            ADD TO CART
+          </button>
           <button mat-button class="buy-btn book-btn" (click)="purchaseBook()">
             BUY
           </button>

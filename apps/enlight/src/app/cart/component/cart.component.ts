@@ -7,11 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  public cartBooks$: any;
+  public cartBooks: any;
 
-  constructor(private booksFacade: BooksFacade) {
-    this.cartBooks$ = this.booksFacade.cartBooks$;
+  constructor(private booksFacade: BooksFacade) {}
+
+  ngOnInit() {
+    this.booksFacade.cartBooks$.subscribe(books => {
+      this.cartBooks = books;
+    });
   }
-
-  ngOnInit() {}
 }
