@@ -16,61 +16,73 @@
           class="detail-book-thumbnail"
           alt="Photo"
         />
-        <mat-card-actions>
-          <button
-            mat-button
-            class="addtocard-btn book-btn"
-            (click)="OnAddToCart()"
-          >
-            ADD TO CART
-          </button>
-          <button mat-button class="buy-btn book-btn" (click)="purchaseBook()">
-            BUY
-          </button>
+        <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                 alt="Photo of a Shiba Inu"> -->
+        <mat-card-actions class="book-action-btns">
+          <button mat-button class="addtocard-btn book-btn">ADD TO CART</button>
+          <button mat-button class="buy-btn book-btn">BUY</button>
         </mat-card-actions>
       </mat-card>
     </div>
   </div>
   <div class="book-info-hldr">
-    <div class="description-hldr">
-      <div class="description-title">
-        Author
+    <div class="book-info-inner-hldr">
+      <div class="description-header">
+        <div class="book-title">
+          {{ selectedBook.volumeInfo.title }}
+        </div>
+        <div class="book-subtitle">
+          {{ selectedBook.volumeInfo.subtitle }}
+        </div>
+        <div class="rating-div">
+          Rating :
+          <workspace-star-rating
+            [rating]="selectedBook.volumeInfo.averageRating"
+          ></workspace-star-rating>
+        </div>
       </div>
-      <div class="description-detail">
-        {{ selectedBook.volumeInfo.authors }}
+      <mat-divider class="horizontal-line"></mat-divider>
+      <div class="description-hldr">
+        <div class="description-title">
+          Author
+        </div>
+        <div class="description-detail">
+          {{ selectedBook.volumeInfo.authors }}
+        </div>
       </div>
-    </div>
-    <div class="description-hldr">
-      <div class="description-title">
-        Publisher
+      <div class="description-hldr">
+        <div class="description-title">
+          Publisher
+        </div>
+        <div class="description-detail">
+          {{ selectedBook.volumeInfo.publisher }}
+        </div>
       </div>
-      <div class="description-detail">
-        {{ selectedBook.volumeInfo.publisher }}
+      <div class="description-hldr">
+        <div class="description-title">
+          Page Count
+        </div>
+        <div class="description-detail">
+          {{ selectedBook.volumeInfo.pageCount }}
+        </div>
       </div>
-    </div>
-    <div class="description-hldr">
-      <div class="description-title">
-        Page Count
+      <div class="description-hldr">
+        <div class="description-title">
+          Language
+        </div>
+        <div class="description-detail">
+          {{ selectedBook.volumeInfo.language }}
+        </div>
       </div>
-      <div class="description-detail">
-        {{ selectedBook.volumeInfo.pageCount }}
-      </div>
-    </div>
-    <div class="description-hldr">
-      <div class="description-title">
-        Language
-      </div>
-      <div class="description-detail">
-        {{ selectedBook.volumeInfo.language }}
-      </div>
-    </div>
-    <div class="description-hldr">
-      <div class="description-title">
-        Description
-      </div>
-      <div class="description-detail">
-        {{ selectedBook.volumeInfo.description }}
+      <div class="description-hldr">
+        <div class="description-title">
+          Description
+        </div>
+        <div class="description-detail">
+          {{ selectedBook.volumeInfo.description }}
+        </div>
       </div>
     </div>
   </div>
 </div>
+-->

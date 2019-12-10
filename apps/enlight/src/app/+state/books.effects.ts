@@ -10,9 +10,9 @@ import {
   BooksActionTypes
 } from './books.actions';
 import { HttpHeaders } from '@angular/common/http';
-import { HOME_CONSTANTS } from '../utils/constants';
 import { map } from 'rxjs/internal/operators/map';
 import { HttpWrapperService } from '@workspace/libs/services';
+import { HOME_CONSTANTS } from '../constants/googleapi';
 
 @Injectable()
 export class BooksEffects {
