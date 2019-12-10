@@ -1,5 +1,5 @@
-import { BooksFacade } from '../../+state/books.facade';
 import { Component, OnInit } from '@angular/core';
+import { BooksFacade } from '../+state/books.facade';
 
 @Component({
   selector: 'workspace-app-cart',

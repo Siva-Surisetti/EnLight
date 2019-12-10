@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { UiModule } from '@workspace/libs/ui';
 import { ServicesModule } from '@workspace/libs/services';
 import { HomeModule } from './home/home.module';
-import { CartModule } from './cart/cart.module';
 import { CollectionModule } from './collection/collection.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -33,10 +32,12 @@ import { BillingComponent } from './billing/billing.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PurchaseConfirmationComponent } from './purchase-confirmation/purchase-confirmation.component';
 import { MatDialogModule } from '@angular/material';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CartComponent,
     DetailComponent,
     BillingComponent,
     PurchaseConfirmationComponent
@@ -47,7 +48,6 @@ import { MatDialogModule } from '@angular/material';
     ServicesModule,
     UiModule,
     HomeModule,
-    CartModule,
     CollectionModule,
     MatInputModule,
     MatButtonModule,
@@ -62,7 +62,13 @@ import { MatDialogModule } from '@angular/material';
     ReactiveFormsModule,
     MatDialogModule,
     RouterModule.forRoot(
-      [{ path: '', redirectTo: 'home', pathMatch: 'full' }],
+      [
+        {
+          path: 'cart',
+          component: CartComponent
+        },
+        { path: '', redirectTo: 'home', pathMatch: 'full' }
+      ],
       { initialNavigation: 'enabled' }
     ),
     BrowserAnimationsModule,
