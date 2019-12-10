@@ -39,7 +39,7 @@ export class SideNavComponent implements OnInit {
 
   ngOnInit() {
     this.sideNavService.sideNavToggleSubject.subscribe(() => {
-      this.sidenav.toggle();
+      this.sidenav.open();
     });
     this.booksFacade.cartBooks$.subscribe(books => {
       this.navigationList.forEach(list => {
