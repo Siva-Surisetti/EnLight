@@ -26,9 +26,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BillingComponent } from './components/billing/billing.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {
-  MatDialogModule,
   MatBadgeModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatSnackBarModule
 } from '@angular/material';
 import { CartComponent } from './components/cart/cart.component';
 import { CollectionComponent } from './components/collection/collection.component';
@@ -38,7 +38,6 @@ import { CommonModule } from '@angular/common';
 import { NxModule } from '@nrwl/angular';
 import { HomeComponent } from './components/home/home.component';
 import { CardTileComponent } from './components/card-tile/card-tile.component';
-import { PurchaseConfirmationComponent } from './components/purchase-confirmation/purchase-confirmation.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { RatingComponent } from './components/rating/rating.component';
 import { ReadmoreComponent } from './components/readmore/readmore.component';
@@ -54,7 +53,6 @@ import { ReadmoreComponent } from './components/readmore/readmore.component';
     CardTileComponent,
     SearchBarComponent,
     SideNavComponent,
-    PurchaseConfirmationComponent,
     RatingComponent,
     ReadmoreComponent
   ],
@@ -73,11 +71,11 @@ import { ReadmoreComponent } from './components/readmore/readmore.component';
     MatGridListModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    MatDialogModule,
     FormsModule,
     MatBadgeModule,
     CommonModule,
     MatExpansionModule,
+    MatSnackBarModule,
     NxModule.forRoot(),
     RouterModule.forRoot(
       [
@@ -120,7 +118,7 @@ import { ReadmoreComponent } from './components/readmore/readmore.component';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreRouterConnectingModule.forRoot()
   ],
-  entryComponents: [PurchaseConfirmationComponent],
+  entryComponents: [],
   providers: [BooksFacade],
   bootstrap: [AppComponent]
 })

@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material';
 import { BooksFacade } from '../../+state/books.facade';
-import { PurchaseConfirmationComponent } from '../purchase-confirmation/purchase-confirmation.component';
 import { RouteTrackerService } from '../../services/route-tracker.service';
+import {
+  MatSnackBar,
+  MatSnackBarConfig,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition
+} from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'workspace-billing',
@@ -15,11 +20,18 @@ export class BillingComponent implements OnInit {
   loginForm: FormGroup;
   selectedBook: any;
   previousUrl: string;
-
+  message = 'Your purchase is successful';
+  actionButtonLabel = 'Ok';
+  action = true;
+  setAutoHide = true;
+  autoHide = 2000;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
   constructor(
-    private dialog: MatDialog,
     private booksFacade: BooksFacade,
-    private routeService: RouteTrackerService
+    private routeService: RouteTrackerService,
+    private snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -43,20 +55,22 @@ export class BillingComponent implements OnInit {
   }
 
   openDialog() {
+    const config = new MatSnackBarConfig();
+    config.verticalPosition = this.verticalPosition;
+    config.horizontalPosition = this.horizontalPosition;
+    config.duration = this.setAutoHide ? this.autoHide : 0;
+    this.snackBar.open(
+      this.message,
+      this.action ? this.actionButtonLabel : undefined,
+      config
+    );
+
     if (this.previousUrl === '/detail') {
       this.booksFacade.dispatchBooksToCollection(this.selectedBook);
     } else {
       this.booksFacade.dispatchBooksToCollection(...this.cartBooks);
       this.booksFacade.clearShoppingCart();
     }
-
-    this.dialog.open(PurchaseConfirmationComponent, {
-      data: {
-        message: 'Your purchase is successful',
-        buttonText: {
-          cancel: 'Done'
-        }
-      }
-    });
+    this.router.navigate(['collection']);
   }
 }
