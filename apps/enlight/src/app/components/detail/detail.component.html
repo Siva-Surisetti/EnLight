@@ -19,8 +19,16 @@
         <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
                  alt="Photo of a Shiba Inu"> -->
         <mat-card-actions class="book-action-btns">
-          <button mat-button class="addtocard-btn book-btn">ADD TO CART</button>
-          <button mat-button class="buy-btn book-btn">BUY</button>
+          <button
+            mat-button
+            class="addtocard-btn book-btn"
+            (click)="OnAddToCart()"
+          >
+            ADD TO CART
+          </button>
+          <button mat-button class="buy-btn book-btn" (click)="purchaseBook()">
+            BUY
+          </button>
         </mat-card-actions>
       </mat-card>
     </div>

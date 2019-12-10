@@ -12,7 +12,6 @@ export class RatingComponent implements OnInit {
   finalStars: any = [];
 
   ngOnInit() {
-    console.log('rating', this.rating);
     this.rating = Number(this.rating);
     this.finalStars = [
       'star_border',
