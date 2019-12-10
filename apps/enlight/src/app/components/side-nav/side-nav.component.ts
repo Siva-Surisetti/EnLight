@@ -22,7 +22,7 @@ export class SideNavComponent implements OnInit {
       desc: 'Cart',
       path: '/cart',
       icon: 'shopping_cart',
-      badgeValue: 2
+      badgeValue: null
     },
     {
       desc: 'My Collection',
