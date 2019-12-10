@@ -21,9 +21,9 @@ export class RatingComponent implements OnInit {
       'star_border',
       'star_border'
     ];
-    if (isNaN(this.rating) == false) {
+    if (isNaN(this.rating) === false) {
       this.finalStars = [];
-      for (var i = 1; i <= 5; i++) {
+      for (let i = 1; i <= 5; i++) {
         if (i <= this.rating) {
           this.finalStars.push('star');
         } else if (i - this.rating < 1) {
