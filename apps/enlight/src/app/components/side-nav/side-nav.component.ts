@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { BooksFacade } from '../../+state/books.facade';
+import { MatSidenav } from '@angular/material';
+import { SidenavService } from '../../services/sidenav.service';
 
 @Component({
   selector: 'workspace-ui-side-nav',
@@ -7,6 +9,8 @@ import { BooksFacade } from '../../+state/books.facade';
   styleUrls: ['./side-nav.component.scss']
 })
 export class SideNavComponent implements OnInit {
+  @ViewChild('sideNav', { static: true }) public sidenav: MatSidenav;
+
   public navigationList: Array<object> = [
     {
       desc: 'Search',
@@ -28,14 +32,21 @@ export class SideNavComponent implements OnInit {
     }
   ];
 
-  constructor(private booksFacade: BooksFacade) {}
+  constructor(
+    private booksFacade: BooksFacade,
+    private sideNavService: SidenavService
+  ) {}
 
   ngOnInit() {
+    this.sideNavService.sideNavToggleSubject.subscribe(() => {
+      this.sidenav.toggle();
+    });
     this.booksFacade.cartBooks$.subscribe(books => {
       this.navigationList.forEach(list => {
         if (list['desc'] === 'Cart')
           list['badgeValue'] = books.length === 0 ? null : books.length;
       });
+      this.sideNavService.toggle();
     });
 
     this.booksFacade.collectionBooks$.subscribe(books => {
@@ -43,6 +54,7 @@ export class SideNavComponent implements OnInit {
         if (list['desc'] === 'My Collection')
           list['badgeValue'] = books.length === 0 ? null : books.length;
       });
+      this.sideNavService.toggle();
     });
   }
 }
