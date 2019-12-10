@@ -16,7 +16,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BooksFacade } from './+state/books.facade';
 import { BooksEffects } from './+state/books.effects';
 import * as fromBooksReducer from './+state/books.reducer';
-import { DetailComponent } from './Detail/component/detail.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatListModule } from '@angular/material/list';
@@ -33,6 +32,7 @@ import { PurchaseConfirmationComponent } from './purchase-confirmation/purchase-
 import { MatDialogModule } from '@angular/material';
 import { CartComponent } from './cart/cart.component';
 import { CollectionComponent } from './collection/collection.component';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [
