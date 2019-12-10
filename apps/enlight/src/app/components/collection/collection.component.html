@@ -1,20 +1,36 @@
-<div class="book-detail-hldr" *ngIf="collectionBooks.length">
-  <div class="card-hldr">
-    <div class="inner-card-hldr" *ngFor="let book of collectionBooks">
-      <mat-card class="book-info-card">
-        <mat-card-header>
-          <mat-card-title class="book-title">{{
-            book.volumeInfo.title
-          }}</mat-card-title>
-          <mat-card-subtitle>{{ book.volumeInfo.subtitle }}</mat-card-subtitle>
-        </mat-card-header>
-        <img
-          mat-card-image
-          src="{{ book.volumeInfo.imageLinks?.smallThumbnail }}"
-          class="detail-book-thumbnail"
-          alt="Photo"
-        />
-      </mat-card>
-    </div>
+<div *ngIf="collectionBooks && collectionBooks.length">
+  <div *ngFor="let book of collectionBooks">
+    <mat-card class="collectionCards">
+      <div class="header" *ngIf="book.volumeInfo">
+        <img src="{{ book.volumeInfo.imageLinks.smallThumbnail }}" />
+        <div class="header-details">
+          <mat-card-title>
+            {{ book.volumeInfo.title }}
+            <span class="published" *ngIf="book.volumeInfo.publishedDate"
+              >published on {{ book.volumeInfo.publishedDate }}</span
+            >
+          </mat-card-title>
+          <mat-card-subtitle
+            *ngIf="book.volumeInfo.authors && book.volumeInfo.authors.length"
+          >
+            By -
+            <span *ngFor="let author of book.volumeInfo.authors; let i = index">
+              {{ author }}
+              <span *ngIf="i < book.volumeInfo.authors.length - 2">,</span>
+              <span *ngIf="i === book.volumeInfo.authors.length - 2">&</span>
+            </span>
+          </mat-card-subtitle>
+        </div>
+      </div>
+      <mat-expansion-panel *ngIf="book.volumeInfo.description">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Description
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <p>{{ book.volumeInfo.description }}</p>
+      </mat-expansion-panel>
+    </mat-card>
   </div>
 </div>

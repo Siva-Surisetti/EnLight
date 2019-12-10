@@ -25,7 +25,11 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BillingComponent } from './components/billing/billing.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MatDialogModule, MatBadgeModule } from '@angular/material';
+import {
+  MatDialogModule,
+  MatBadgeModule,
+  MatExpansionModule
+} from '@angular/material';
 import { CartComponent } from './components/cart/cart.component';
 import { CollectionComponent } from './components/collection/collection.component';
 import { DetailComponent } from './components/detail/detail.component';
@@ -73,6 +77,7 @@ import { ReadmoreComponent } from './components/readmore/readmore.component';
     FormsModule,
     MatBadgeModule,
     CommonModule,
+    MatExpansionModule,
     NxModule.forRoot(),
     RouterModule.forRoot(
       [
