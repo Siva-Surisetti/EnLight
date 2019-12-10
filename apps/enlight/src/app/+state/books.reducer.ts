@@ -66,6 +66,13 @@ export function reducer(
       };
       break;
     }
+    case BooksActionTypes.ClearCart: {
+      state = {
+        ...state,
+        cartItems: []
+      };
+      break;
+    }
   }
   return state;
 }

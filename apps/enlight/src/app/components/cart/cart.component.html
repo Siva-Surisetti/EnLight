@@ -1,5 +1,27 @@
-<div *ngIf="cartBooks">
-  <div *ngFor="let book of cartBooks">
-    {{ book.volumeInfo.title }}
+<div class="book-detail-hldr">
+  <div class="card-hldr">
+    <div class="inner-card-hldr" *ngFor="let book of cartBooks">
+      <mat-card class="book-info-card">
+        <mat-card-header>
+          <mat-card-title class="book-title">{{
+            book.volumeInfo.title
+          }}</mat-card-title>
+          <mat-card-subtitle>{{ book.volumeInfo.subtitle }}</mat-card-subtitle>
+        </mat-card-header>
+        <img
+          mat-card-image
+          src="{{ book.volumeInfo.imageLinks?.smallThumbnail }}"
+          class="detail-book-thumbnail"
+          alt="Photo"
+        />
+      </mat-card>
+    </div>
+    <button
+      mat-button
+      class="addtocard-btn book-btn"
+      (click)="proceedToPurchase()"
+    >
+      Proceed to purchase
+    </button>
   </div>
 </div>

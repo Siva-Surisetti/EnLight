@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksFacade } from '../../+state/books.facade';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'workspace-app-cart',
@@ -9,11 +10,15 @@ import { BooksFacade } from '../../+state/books.facade';
 export class CartComponent implements OnInit {
   public cartBooks: any;
 
-  constructor(private booksFacade: BooksFacade) {}
+  constructor(private booksFacade: BooksFacade, private router: Router) {}
 
   ngOnInit() {
     this.booksFacade.cartBooks$.subscribe(books => {
       this.cartBooks = books;
     });
+  }
+
+  proceedToPurchase() {
+    this.router.navigate(['billing']);
   }
 }

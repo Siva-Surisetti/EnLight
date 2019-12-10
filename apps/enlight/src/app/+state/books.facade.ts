@@ -8,7 +8,8 @@ import {
   LoadBooks,
   BooksSelected,
   AddToCart,
-  AddToCollection
+  AddToCollection,
+  ClearCart
 } from './books.actions';
 
 @Injectable()
@@ -31,5 +32,8 @@ export class BooksFacade {
   }
   dispatchBooksToCollection(...books) {
     this.store.dispatch(new AddToCollection(books));
+  }
+  clearShoppingCart() {
+    this.store.dispatch(new ClearCart());
   }
 }

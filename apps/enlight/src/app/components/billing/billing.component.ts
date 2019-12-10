@@ -47,6 +47,7 @@ export class BillingComponent implements OnInit {
       this.booksFacade.dispatchBooksToCollection(this.selectedBook);
     } else {
       this.booksFacade.dispatchBooksToCollection(...this.cartBooks);
+      this.booksFacade.clearShoppingCart();
     }
 
     this.dialog.open(PurchaseConfirmationComponent, {

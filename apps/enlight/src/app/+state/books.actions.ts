@@ -7,7 +7,8 @@ export enum BooksActionTypes {
   BooksLoadError = '[Books] Books Load Error',
   BooksSelected = '[Books] Books Selected',
   AddToCart = '[Books] Add Books to Cart',
-  AddToCollection = '[Books] Add Books to Collection'
+  AddToCollection = '[Books] Add Books to Collection',
+  ClearCart = '[Books] Clear Cart'
 }
 
 export class LoadBooks implements Action {
@@ -40,13 +41,19 @@ export class AddToCollection implements Action {
   constructor(public payload: any) {}
 }
 
+export class ClearCart implements Action {
+  readonly type = BooksActionTypes.ClearCart;
+  constructor() {}
+}
+
 export type BooksAction =
   | LoadBooks
   | BooksLoaded
   | BooksLoadError
   | BooksSelected
   | AddToCart
-  | AddToCollection;
+  | AddToCollection
+  | ClearCart;
 
 export const fromBooksActions = {
   LoadBooks,
@@ -54,5 +61,6 @@ export const fromBooksActions = {
   BooksLoadError,
   BooksSelected,
   AddToCart,
-  AddToCollection
+  AddToCollection,
+  ClearCart
 };
