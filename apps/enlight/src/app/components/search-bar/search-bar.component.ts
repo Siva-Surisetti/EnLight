@@ -13,20 +13,11 @@ export class SearchBarComponent implements OnInit {
 
   public searchInput: string;
 
-  constructor(
-    private commonService: CommonService,
-    private booksFacade: BooksFacade
-  ) {}
+  constructor(private booksFacade: BooksFacade) {}
 
   ngOnInit() {}
 
-  public onKeyUp() {
-    // this.commonService.searchInput.next(this.searchInput);
-  }
   public onSearch() {
-    // this.commonService.searchInput.subscribe((searchKey) => {
     this.booksFacade.dispatchSearchKeyToStore(this.searchInput);
-    // });
-    // this.searchValue.emit(this.searchInput)
   }
 }
