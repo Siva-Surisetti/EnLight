@@ -19,11 +19,10 @@ export class DetailComponent implements OnInit {
 
   OnAddToCart() {
     this.booksFacade.dispatchBookIdToCartStore(this.selectedBook);
+    this.router.navigate(['home']);
   }
 
   purchaseBook() {
-    // this.booksFacade.dispatchBooksToCollection(this.selectedBook);
-    // this.booksFacade.dispatchBookIdToCartStore(this.selectedBook);
     this.router.navigate(['billing']);
   }
 }
