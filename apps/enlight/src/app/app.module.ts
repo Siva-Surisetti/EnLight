@@ -23,19 +23,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { BillingComponent } from './billing/billing.component';
+import { BillingComponent } from './components/billing/billing.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { PurchaseConfirmationComponent } from './purchase-confirmation/purchase-confirmation.component';
 import { MatDialogModule, MatBadgeModule } from '@angular/material';
-import { CartComponent } from './cart/cart.component';
-import { CollectionComponent } from './collection/collection.component';
-import { DetailComponent } from './detail/detail.component';
-import { HomeComponent } from './home/home.component';
-import { CardTileComponent } from './card-tile/card-tile.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
-import { SideNavComponent } from './side-nav/side-nav.component';
+import { CartComponent } from './components/cart/cart.component';
+import { CollectionComponent } from './components/collection/collection.component';
+import { DetailComponent } from './components/detail/detail.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { CommonModule } from '@angular/common';
 import { NxModule } from '@nrwl/angular';
+import { HomeComponent } from './components/home/home.component';
+import { CardTileComponent } from './components/card-tile/card-tile.component';
+import { PurchaseConfirmationComponent } from './components/purchase-confirmation/purchase-confirmation.component';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 @NgModule({
   declarations: [

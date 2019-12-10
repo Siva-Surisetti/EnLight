@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
+import { BooksFacade } from '../../+state/books.facade';
 import { PurchaseConfirmationComponent } from '../purchase-confirmation/purchase-confirmation.component';
-import { BooksFacade } from '../+state/books.facade';
 @Component({
   selector: 'workspace-billing',
   templateUrl: './billing.component.html',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BooksFacade } from '../+state/books.facade';
+import { BooksFacade } from '../../+state/books.facade';
 
 @Component({
   selector: 'workspace-detail',

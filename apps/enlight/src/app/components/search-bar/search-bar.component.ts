@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { BooksFacade } from '../+state/books.facade';
+import { BooksFacade } from '../../+state/books.facade';
 import { CommonService } from '@workspace/libs/services';
 
 @Component({

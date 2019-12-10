@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BooksFacade } from '../+state/books.facade';
+import { BooksFacade } from '../../+state/books.facade';
 
 @Component({
   selector: 'workspace-ui-side-nav',
