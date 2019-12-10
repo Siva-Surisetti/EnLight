@@ -9,9 +9,9 @@ import { BooksFacade } from '../../+state/books.facade';
 export class SideNavComponent implements OnInit {
   public navigationList: Array<object> = [
     {
-      desc: 'Dashboard',
+      desc: 'Search',
       path: '/home',
-      icon: 'dashboard',
+      icon: 'search',
       badgeValue: null
     },
     {
