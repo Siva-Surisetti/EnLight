@@ -26,13 +26,18 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BillingComponent } from './billing/billing.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PurchaseConfirmationComponent } from './purchase-confirmation/purchase-confirmation.component';
-import { MatDialogModule } from '@angular/material';
+import { MatDialogModule, MatBadgeModule } from '@angular/material';
 import { CartComponent } from './cart/cart.component';
 import { CollectionComponent } from './collection/collection.component';
 import { DetailComponent } from './detail/detail.component';
 import { HomeComponent } from './home/home.component';
+import { CardTileComponent } from './card-tile/card-tile.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
+import { CommonModule } from '@angular/common';
+import { NxModule } from '@nrwl/angular';
 
 @NgModule({
   declarations: [
@@ -42,13 +47,15 @@ import { HomeComponent } from './home/home.component';
     CollectionComponent,
     DetailComponent,
     BillingComponent,
+    CardTileComponent,
+    SearchBarComponent,
+    SideNavComponent,
     PurchaseConfirmationComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     ServicesModule,
-    UiModule,
     MatInputModule,
     MatButtonModule,
     MatIconModule,
@@ -61,6 +68,10 @@ import { HomeComponent } from './home/home.component';
     FlexLayoutModule,
     ReactiveFormsModule,
     MatDialogModule,
+    FormsModule,
+    MatBadgeModule,
+    CommonModule,
+    NxModule.forRoot(),
     RouterModule.forRoot(
       [
         {
