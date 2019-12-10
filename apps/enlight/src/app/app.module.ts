@@ -37,6 +37,7 @@ import { CardTileComponent } from './components/card-tile/card-tile.component';
 import { PurchaseConfirmationComponent } from './components/purchase-confirmation/purchase-confirmation.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { RatingComponent } from './components/rating/rating.component';
+import { ReadmoreComponent } from './components/readmore/readmore.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { RatingComponent } from './components/rating/rating.component';
     SearchBarComponent,
     SideNavComponent,
     PurchaseConfirmationComponent,
-    RatingComponent
+    RatingComponent,
+    ReadmoreComponent
   ],
   imports: [
     HttpClientModule,

@@ -86,9 +86,12 @@
         <div class="description-title">
           Description
         </div>
-        <div class="description-detail">
-          {{ selectedBook.volumeInfo.description }}
-        </div>
+        <workspace-readmore
+          class="description-detail"
+          [text]="selectedBook.volumeInfo.description"
+          [maxLength]="300"
+        >
+        </workspace-readmore>
       </div>
     </div>
   </div>
