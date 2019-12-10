@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
+import { RouteTrackerService } from './services/route-tracker.service';
 
 @Component({
   selector: 'workspace-root',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  constructor(private routerService: RouteTrackerService) {}
   title = 'EnLight YourSelf!';
 }
