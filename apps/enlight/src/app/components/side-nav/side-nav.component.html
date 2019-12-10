@@ -14,10 +14,15 @@
         [routerLink]="navItem.path"
         *ngFor="let navItem of navigationList"
       >
-        <mat-icon class="sidenav-icon">{{ navItem.icon }}</mat-icon>
-        <span [matBadge]="navItem.badgeValue" matBadgeOverlap="false">{{
-          navItem.desc
-        }}</span>
+        <mat-icon
+          class="sidenav-icon"
+          [matBadge]="navItem.badgeValue"
+          matBadgeOverlap="false"
+          matBadgePosition="before"
+          matBadgeColor="accent"
+          >{{ navItem.icon }}</mat-icon
+        >
+        {{ navItem.desc }}
       </a>
     </mat-nav-list>
   </mat-sidenav>
