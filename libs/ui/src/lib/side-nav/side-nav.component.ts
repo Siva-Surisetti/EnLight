@@ -33,13 +33,15 @@ export class SideNavComponent implements OnInit {
   ngOnInit() {
     this.booksFacade.cartBooks$.subscribe(books => {
       this.navigationList.forEach(list => {
-        if (list['desc'] === 'Cart') list['badgeValue'] = books.length;
+        if (list['desc'] === 'Cart')
+          list['badgeValue'] = books.length === 0 ? null : books.length;
       });
     });
 
     this.booksFacade.collectionBooks$.subscribe(books => {
       this.navigationList.forEach(list => {
-        if (list['desc'] === 'My Collection') list['badgeValue'] = books.length;
+        if (list['desc'] === 'My Collection')
+          list['badgeValue'] = books.length === 0 ? null : books.length;
       });
     });
   }
