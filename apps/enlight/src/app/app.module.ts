@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { UiModule } from '@workspace/libs/ui';
 import { ServicesModule } from '@workspace/libs/services';
 import { HomeModule } from './home/home.module';
-import { CollectionModule } from './collection/collection.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
@@ -33,11 +32,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PurchaseConfirmationComponent } from './purchase-confirmation/purchase-confirmation.component';
 import { MatDialogModule } from '@angular/material';
 import { CartComponent } from './cart/cart.component';
+import { CollectionComponent } from './collection/collection.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CartComponent,
+    CollectionComponent,
     DetailComponent,
     BillingComponent,
     PurchaseConfirmationComponent
@@ -48,7 +49,6 @@ import { CartComponent } from './cart/cart.component';
     ServicesModule,
     UiModule,
     HomeModule,
-    CollectionModule,
     MatInputModule,
     MatButtonModule,
     MatIconModule,
@@ -66,6 +66,10 @@ import { CartComponent } from './cart/cart.component';
         {
           path: 'cart',
           component: CartComponent
+        },
+        {
+          path: 'collection',
+          component: CollectionComponent
         },
         { path: '', redirectTo: 'home', pathMatch: 'full' }
       ],
