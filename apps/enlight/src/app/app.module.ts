@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 
 import { UiModule } from '@workspace/libs/ui';
 import { ServicesModule } from '@workspace/libs/services';
-import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
@@ -33,10 +32,12 @@ import { MatDialogModule } from '@angular/material';
 import { CartComponent } from './cart/cart.component';
 import { CollectionComponent } from './collection/collection.component';
 import { DetailComponent } from './detail/detail.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     CartComponent,
     CollectionComponent,
     DetailComponent,
@@ -48,7 +49,6 @@ import { DetailComponent } from './detail/detail.component';
     BrowserModule,
     ServicesModule,
     UiModule,
-    HomeModule,
     MatInputModule,
     MatButtonModule,
     MatIconModule,
@@ -64,8 +64,20 @@ import { DetailComponent } from './detail/detail.component';
     RouterModule.forRoot(
       [
         {
+          path: 'home',
+          component: HomeComponent
+        },
+        {
+          path: 'detail',
+          component: DetailComponent
+        },
+        {
           path: 'cart',
           component: CartComponent
+        },
+        {
+          path: 'billing',
+          component: BillingComponent
         },
         {
           path: 'collection',

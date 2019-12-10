@@ -1,8 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonService } from '@workspace/libs/services';
-import { HomeService } from '../service/home.service';
-import { BooksFacade } from '../../+state/books.facade';
 import { Router } from '@angular/router';
+import { BooksFacade } from '../+state/books.facade';
 
 @Component({
   selector: 'workspace-app-home',
