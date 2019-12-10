@@ -1,4 +1,4 @@
 <div [innerHTML]="currentText"></div>
-<a [class.hidden]="hideToggle" (click)="toggleView()" text="red"
+<a [hidden]="hideToggle" (click)="toggleView()" text="red"
   >Read {{ isCollapsed ? 'more' : 'less' }}</a
 >
