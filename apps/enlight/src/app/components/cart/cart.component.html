@@ -1,4 +1,4 @@
-<div class="book-detail-hldr">
+<div class="book-detail-hldr" *ngIf="cartBooks.length">
   <div class="card-hldr">
     <div class="inner-card-hldr" *ngFor="let book of cartBooks">
       <mat-card class="book-info-card">
