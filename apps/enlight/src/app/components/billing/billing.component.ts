@@ -73,7 +73,6 @@ export class BillingComponent implements OnInit {
       this.action ? this.actionButtonLabel : undefined,
       config
     );
-    debugger;
     this.billing.name = this.loginForm.value.name;
     this.billing.email = this.loginForm.value.email;
     this.billing.phone = this.loginForm.value.phone;
