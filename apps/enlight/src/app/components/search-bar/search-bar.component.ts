@@ -17,6 +17,6 @@ export class SearchBarComponent implements OnInit {
   ngOnInit() {}
 
   public onSearch() {
-    this.booksFacade.dispatchSearchKeyToStore(this.searchInput);
+    this.booksFacade.loadBooksToStore(this.searchInput);
   }
 }

@@ -9,7 +9,8 @@ import {
   BooksSelected,
   AddToCart,
   AddToCollection,
-  ClearCart
+  ClearCart,
+  AddSearchKey
 } from './books.actions';
 
 @Injectable()
@@ -21,7 +22,9 @@ export class BooksFacade {
   collectionBooks$ = this.store.pipe(select(booksQuery.getCollectionBooks));
 
   constructor(private store: Store<BooksPartialState>) {}
-  dispatchSearchKeyToStore(searchKey) {
+
+  loadBooksToStore(searchKey) {
+    this.dispatchSearchKeyToStore(searchKey);
     this.store.dispatch(new LoadBooks(searchKey));
   }
   dispatchSelectedIdToStore(selecedId) {
@@ -35,5 +38,8 @@ export class BooksFacade {
   }
   clearShoppingCart() {
     this.store.dispatch(new ClearCart());
+  }
+  dispatchSearchKeyToStore(searchKey) {
+    this.store.dispatch(new AddSearchKey(searchKey));
   }
 }

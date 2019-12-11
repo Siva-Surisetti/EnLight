@@ -20,6 +20,7 @@ export interface BooksState {
   loaded: boolean;
   error?: any;
   billingInfo?: any;
+  searchKey?: any;
 }
 
 export interface BooksPartialState {
@@ -30,7 +31,8 @@ export const initialState: BooksState = {
   list: [],
   cartItems: [],
   collectionItems: [],
-  loaded: false
+  loaded: false,
+  searchKey: null
 };
 
 export function reducer(
@@ -71,6 +73,13 @@ export function reducer(
       state = {
         ...state,
         cartItems: []
+      };
+      break;
+    }
+    case BooksActionTypes.AddSearchKey: {
+      state = {
+        ...state,
+        searchKey: action.payload
       };
       break;
     }
