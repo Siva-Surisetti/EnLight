@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterTestingModule } from '@angular/router/testing';
 import { RouteTrackerService } from './services/route-tracker.service';
 
 @Component({

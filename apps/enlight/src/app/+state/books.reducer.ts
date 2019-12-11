@@ -2,13 +2,6 @@ import { BooksAction, BooksActionTypes } from './books.actions';
 
 export const BOOKS_FEATURE_KEY = 'books';
 
-/**
- * Interface for the 'Books' data used in
- *  - BooksState, and the reducer function
- *
- *  Note: replace if already defined in another module
- */
-
 /* tslint:disable:no-empty-interface */
 export interface Entity {}
 

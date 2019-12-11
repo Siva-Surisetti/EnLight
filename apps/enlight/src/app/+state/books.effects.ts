@@ -34,7 +34,6 @@ export class BooksEffects {
       },
 
       onError: (action: LoadBooks, error) => {
-        console.error('Error', error);
         return new BooksLoadError(error);
       }
     })
