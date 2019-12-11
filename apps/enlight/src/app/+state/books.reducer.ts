@@ -19,6 +19,7 @@ export interface BooksState {
   selectedId?: string | number;
   loaded: boolean;
   error?: any;
+  billingInfo?: any;
 }
 
 export interface BooksPartialState {
@@ -70,6 +71,13 @@ export function reducer(
       state = {
         ...state,
         cartItems: []
+      };
+      break;
+    }
+    case BooksActionTypes.UpdateBillingInfo: {
+      state = {
+        ...state,
+        billingInfo: action.payload
       };
       break;
     }

@@ -10,6 +10,13 @@ import {
 } from '@angular/material';
 import { Router } from '@angular/router';
 
+interface BillingDetails {
+  name?: any;
+  email?: any;
+  phone?: any;
+  address?: any;
+}
+
 @Component({
   selector: 'workspace-billing',
   templateUrl: './billing.component.html',
@@ -27,6 +34,8 @@ export class BillingComponent implements OnInit {
   autoHide = 2000;
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
+  billing: BillingDetails = {};
+
   constructor(
     private booksFacade: BooksFacade,
     private routeService: RouteTrackerService,
@@ -64,6 +73,13 @@ export class BillingComponent implements OnInit {
       this.action ? this.actionButtonLabel : undefined,
       config
     );
+    debugger;
+    this.billing.name = this.loginForm.value.name;
+    this.billing.email = this.loginForm.value.email;
+    this.billing.phone = this.loginForm.value.phone;
+    this.billing.address = this.loginForm.value.address;
+
+    this.booksFacade.dispatchBillingDetails(this.billing);
 
     if (this.previousUrl === '/detail') {
       this.booksFacade.dispatchBooksToCollection(this.selectedBook);
