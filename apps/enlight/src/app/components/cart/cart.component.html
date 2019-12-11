@@ -1,4 +1,4 @@
-<div *ngIf="cartBooks && cartBooks.length">
+<!-- <div *ngIf="cartBooks && cartBooks.length">
   <div *ngFor="let book of cartBooks">
     <mat-card class="collectionCards">
       <div class="header" *ngIf="book.volumeInfo">
@@ -31,6 +31,35 @@
 
         <p>{{ book.volumeInfo.description }}</p>
       </mat-expansion-panel>
+    </mat-card>
+  </div> -->
+
+<div *ngIf="cartBooks && cartBooks.length">
+  <div *ngFor="let book of cartBooks">
+    <mat-card>
+      <mat-card-title-group>
+        <img
+          mat-card-sm-image
+          src="{{ book.volumeInfo.imageLinks.smallThumbnail }}"
+        />
+        <mat-card-title>{{
+          book.volumeInfo.title | ellipsis: 35
+        }}</mat-card-title>
+        <mat-card-subtitle *ngIf="book.volumeInfo.subtitle">{{
+          book.volumeInfo.subtitle | ellipsis: 40
+        }}</mat-card-subtitle>
+      </mat-card-title-group>
+      <mat-card-content>
+        <p *ngIf="book.volumeInfo.description">
+          {{ book.volumeInfo.description | ellipsis }}
+        </p>
+      </mat-card-content>
+      <mat-card-footer>
+        <h5>Written By:</h5>
+        <span>
+          {{ book.volumeInfo.authors | addCommas }}
+        </span>
+      </mat-card-footer>
     </mat-card>
   </div>
   <button

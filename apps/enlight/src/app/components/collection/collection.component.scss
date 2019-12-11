@@ -1,28 +1,46 @@
-.collectionCards {
-  background-color: #f6f6f6;
-  width: 95%;
-  margin: 10px 2.5% 0px;
-  clear: both;
-
-  div.header {
-    background-color: #ddd;
-    display: flex;
-
-    img {
-      flex: 1;
-      height: 100px;
-      width: 100px;
-    }
-
-    .header-details {
-      flex: 10;
-      margin-left: 10px;
-    }
-
-    mat-card-title span.published {
-      font-size: 10px;
-      font-style: italic;
-      font-weight: normal;
-    }
+mat-card {
+  width: 600px;
+  display: inline-block;
+  height: 200px;
+  margin: 15px;
+}
+@media only screen and (max-width: 768px) {
+  mat-card {
+    margin: 15px 0 !important;
   }
+}
+mat-card:hover {
+  box-shadow: 3px 3px 16px -2px rgba(0, 0, 0, 0.5);
+}
+mat-card-title {
+  margin-right: 10px;
+}
+mat-card-title-group {
+  margin: 0;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  width: 60px;
+  min-width: 60px;
+  margin-left: 5px;
+}
+mat-card-content {
+  margin-top: 15px;
+  margin: 15px 0 0;
+  height: 50px;
+}
+span {
+  display: inline-block;
+  font-size: 13px;
+}
+mat-card-footer {
+  margin: 0px;
+}
+
+h5 {
+  margin-bottom: 5px;
+  padding: 0px;
 }

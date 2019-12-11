@@ -1,4 +1,4 @@
-<div *ngIf="collectionBooks && collectionBooks.length">
+<!-- <div *ngIf="collectionBooks && collectionBooks.length">
   <div *ngFor="let book of collectionBooks">
     <mat-card class="collectionCards">
       <div class="header" *ngIf="book.bookInfo.volumeInfo">
@@ -52,5 +52,42 @@
         <p>{{ book.bookInfo.volumeInfo.description }}</p>
       </mat-expansion-panel>
     </mat-card>
+  </div>
+</div> -->
+
+<div *ngIf="collectionBooks && collectionBooks.length">
+  <div *ngFor="let book of collectionBooks">
+    <mat-card>
+      <mat-card-title-group>
+        <img
+          mat-card-sm-image
+          src="{{ book.bookInfo.volumeInfo.imageLinks.smallThumbnail }}"
+        />
+        <mat-card-title>{{
+          book.bookInfo.volumeInfo.title | ellipsis: 35
+        }}</mat-card-title>
+        <mat-card-subtitle *ngIf="book.bookInfo.volumeInfo.subtitle">{{
+          book.bookInfo.volumeInfo.subtitle | ellipsis: 40
+        }}</mat-card-subtitle>
+      </mat-card-title-group>
+      <mat-card-content>
+        <p *ngIf="book.bookInfo.volumeInfo.description">
+          {{ book.bookInfo.volumeInfo.description | ellipsis }}
+        </p>
+      </mat-card-content>
+      <mat-card-footer>
+        <h5>Written By:</h5>
+        <span>
+          {{ book.bookInfo.volumeInfo.authors | addCommas }}
+        </span>
+      </mat-card-footer>
+    </mat-card>
+    <span>
+      <h5>Billing details</h5>
+      {{ book.billingInfo.name }}<br />
+      {{ book.billingInfo.email }}<br />
+      {{ book.billingInfo.phone }}<br />
+      {{ book.billingInfo.address }}
+    </span>
   </div>
 </div>
