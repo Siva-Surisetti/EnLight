@@ -17,6 +17,11 @@ interface BillingDetails {
   address?: any;
 }
 
+interface CollectionItem {
+  bookInfo?: any;
+  billingInfo?: any;
+}
+
 @Component({
   selector: 'workspace-billing',
   templateUrl: './billing.component.html',
@@ -35,6 +40,7 @@ export class BillingComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   billing: BillingDetails = {};
+  collection: CollectionItem = {};
 
   constructor(
     private booksFacade: BooksFacade,
@@ -78,12 +84,17 @@ export class BillingComponent implements OnInit {
     this.billing.phone = this.loginForm.value.phone;
     this.billing.address = this.loginForm.value.address;
 
-    this.booksFacade.dispatchBillingDetails(this.billing);
-
     if (this.previousUrl === '/detail') {
-      this.booksFacade.dispatchBooksToCollection(this.selectedBook);
+      this.collection.bookInfo = this.selectedBook;
+      this.collection.billingInfo = this.billing;
+      this.booksFacade.dispatchBooksToCollection(this.collection);
     } else {
-      this.booksFacade.dispatchBooksToCollection(...this.cartBooks);
+      this.cartBooks.forEach(book => {
+        this.collection = {};
+        this.collection.bookInfo = book;
+        this.collection.billingInfo = this.billing;
+        this.booksFacade.dispatchBooksToCollection(this.collection);
+      });
       this.booksFacade.clearShoppingCart();
     }
     this.router.navigate(['collection']);

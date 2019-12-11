@@ -1,35 +1,55 @@
 <div *ngIf="collectionBooks && collectionBooks.length">
   <div *ngFor="let book of collectionBooks">
     <mat-card class="collectionCards">
-      <div class="header" *ngIf="book.volumeInfo">
-        <img src="{{ book.volumeInfo.imageLinks.smallThumbnail }}" />
+      <div class="header" *ngIf="book.bookInfo.volumeInfo">
+        <img src="{{ book.bookInfo.volumeInfo.imageLinks.smallThumbnail }}" />
         <div class="header-details">
           <mat-card-title>
-            {{ book.volumeInfo.title }}
-            <span class="published" *ngIf="book.volumeInfo.publishedDate"
-              >published on {{ book.volumeInfo.publishedDate }}</span
+            {{ book.bookInfo.volumeInfo.title }}
+            <span
+              class="published"
+              *ngIf="book.bookInfo.volumeInfo.publishedDate"
+              >published on {{ book.bookInfo.volumeInfo.publishedDate }}</span
             >
           </mat-card-title>
           <mat-card-subtitle
-            *ngIf="book.volumeInfo.authors && book.volumeInfo.authors.length"
+            *ngIf="
+              book.bookInfo.volumeInfo.authors &&
+              book.bookInfo.volumeInfo.authors.length
+            "
           >
             By -
-            <span *ngFor="let author of book.volumeInfo.authors; let i = index">
+            <span
+              *ngFor="
+                let author of book.bookInfo.volumeInfo.authors;
+                let i = index
+              "
+            >
               {{ author }}
-              <span *ngIf="i < book.volumeInfo.authors.length - 2">,</span>
-              <span *ngIf="i === book.volumeInfo.authors.length - 2">&</span>
+              <span *ngIf="i < book.bookInfo.volumeInfo.authors.length - 2"
+                >,</span
+              >
+              <span *ngIf="i === book.bookInfo.volumeInfo.authors.length - 2"
+                >&</span
+              >
             </span>
+          </mat-card-subtitle>
+          <mat-card-subtitle>
+            Billing Info: <br />
+            Name: {{ book.billingInfo.name }} Email:
+            {{ book.billingInfo.email }} Phone:
+            {{ book.billingInfo.phone }} Address: {{ book.billingInfo.address }}
           </mat-card-subtitle>
         </div>
       </div>
-      <mat-expansion-panel *ngIf="book.volumeInfo.description">
+      <mat-expansion-panel *ngIf="book.bookInfo.volumeInfo.description">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Description
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <p>{{ book.volumeInfo.description }}</p>
+        <p>{{ book.bookInfo.volumeInfo.description }}</p>
       </mat-expansion-panel>
     </mat-card>
   </div>

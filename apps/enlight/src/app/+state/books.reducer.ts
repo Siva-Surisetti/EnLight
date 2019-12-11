@@ -63,7 +63,7 @@ export function reducer(
     case BooksActionTypes.AddToCollection: {
       state = {
         ...state,
-        collectionItems: [...state.collectionItems, ...action.payload]
+        collectionItems: [...state.collectionItems, action.payload]
       };
       break;
     }

@@ -31,8 +31,8 @@ export class BooksFacade {
   dispatchBookIdToCartStore(bookId) {
     this.store.dispatch(new AddToCart(bookId));
   }
-  dispatchBooksToCollection(...books) {
-    this.store.dispatch(new AddToCollection(books));
+  dispatchBooksToCollection(collectionItem) {
+    this.store.dispatch(new AddToCollection(collectionItem));
   }
   dispatchBillingDetails(details) {
     this.store.dispatch(new UpdateBillingInfo(details));

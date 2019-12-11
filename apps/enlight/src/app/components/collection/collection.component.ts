@@ -11,8 +11,8 @@ export class CollectionComponent implements OnInit {
   constructor(private booksFacade: BooksFacade) {}
 
   ngOnInit() {
-    this.booksFacade.collectionBooks$.subscribe(books => {
-      this.collectionBooks = books;
+    this.booksFacade.collectionBooks$.subscribe(collectionItem => {
+      this.collectionBooks = collectionItem;
     });
   }
 }
