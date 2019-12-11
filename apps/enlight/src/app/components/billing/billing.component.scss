@@ -1,3 +1,48 @@
 mat-form-field {
-  width: 300px;
+  width: 100%;
+}
+
+.home-card {
+  border-radius: 4px;
+  width: 50%;
+  padding: 0;
+  margin: 5% auto 0;
+  background: #eee;
+  h3 {
+    text-align: center;
+  }
+  button {
+    float: right;
+  }
+  .mat-card-image {
+    margin: 0;
+    height: 100%;
+  }
+  form {
+    display: block !important;
+  }
+
+  .home-card-content {
+    display: flex;
+    justify-content: space-between;
+
+    & > * {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: auto;
+      max-width: 50%;
+
+      &:first-child {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+
+      &:last-child {
+        flex-direction: column;
+        align-items: start;
+        padding: 8px;
+      }
+    }
+  }
 }

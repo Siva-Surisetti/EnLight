@@ -1,19 +1,45 @@
-.inner-book-card {
-  width: 200px;
-    display: inline-block;
-    height: 200px;
+mat-card {
+  width: 600px;
+  display: inline-block;
+  height: 200px;
+  margin: 15px;
+}
+@media only screen and (max-width: 768px) {
+  mat-card {
+    margin: 15px 0 !important;
   }
- .book-thumbnail{
-  width: 232px;
-  height: 233px;
- }
- .outer-card{
-   box-shadow: 3px 4px 12px 0px #888888;
-   margin-right: 20px;
-   margin-bottom: 20px;
-   display: inline-block; 
- }
- .cards-enclosing-container{
-   
-   margin-left: 40px;
- }
+}
+mat-card:hover {
+  box-shadow: 3px 3px 16px -2px rgba(0, 0, 0, 0.5);
+}
+mat-card-title {
+  margin-right: 10px;
+}
+mat-card-title-group {
+  margin: 0;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  width: 60px;
+  min-width: 60px;
+  margin-left: 5px;
+}
+mat-card-content {
+  margin-top: 15px;
+  margin: 15px 0 0;
+}
+span {
+  display: inline-block;
+  font-size: 13px;
+}
+mat-card-footer {
+  margin: 15px 0 0;
+}
+
+h5 {
+  margin-bottom: 5px;
+  padding: 0px;
+}

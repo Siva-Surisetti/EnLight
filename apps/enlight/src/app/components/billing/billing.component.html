@@ -1,60 +1,70 @@
-<section>
-  <form
-    fxLayout="column"
-    fxLayoutAlign="center center"
-    fxLayoutGap="10px"
-    [formGroup]="loginForm"
-  >
-    <mat-form-field>
-      <input
-        type="name"
-        matInput
-        placeholder="Your name"
-        formControlName="name"
-      />
-      <mat-hint>Please enter your name.</mat-hint>
-      <mat-error>Missing name.</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <input
-        type="email"
-        matInput
-        placeholder="Your email"
-        formControlName="email"
-      />
-      <mat-hint>Please enter your email.</mat-hint>
-      <mat-error>Invalid or missing email.</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <input
-        type="phone"
-        matInput
-        placeholder="Your phone number"
-        formControlName="phone"
-      />
-      <mat-hint>Please enter your phone number.</mat-hint>
-      <mat-error>Missing phone number.</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <textarea
-        type="address"
-        matInput
-        placeholder="Your address"
-        formControlName="address"
-      >
-      </textarea>
+<mat-card class="home-card">
+  <mat-card-content class="home-card-content">
+    <img
+      mat-card-image
+      src="../../../assets/images/point-right.jpg"
+      alt="Photo of a Shiba Inu"
+    />
+    <div>
+      <section>
+        <form
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayoutGap="10px"
+          [formGroup]="loginForm"
+        >
+          <h3>Billing Info</h3>
+          <mat-form-field>
+            <input
+              type="name"
+              matInput
+              placeholder="Your name"
+              formControlName="name"
+            />
+            <mat-error>Missing name.</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              type="email"
+              matInput
+              placeholder="Your email"
+              formControlName="email"
+            />
+            <mat-error>Invalid or missing email.</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              type="phone"
+              matInput
+              placeholder="Your phone number"
+              formControlName="phone"
+            />
+            <mat-error>Missing phone number.</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <textarea
+              type="address"
+              matInput
+              placeholder="Your address"
+              formControlName="address"
+              rows="3"
+            >
+            </textarea>
 
-      <mat-hint>Please enter your address.</mat-hint>
-      <mat-error>Missing address.</mat-error>
-    </mat-form-field>
-    <button
-      type="submit"
-      mat-raised-button
-      color="primary"
-      [disabled]="loginForm.invalid"
-      (click)="openDialog()"
-    >
-      Submit
-    </button>
-  </form>
-</section>
+            <mat-hint>Please enter your correct address.</mat-hint>
+            <mat-error>Missing address.</mat-error>
+          </mat-form-field>
+          <button
+            type="submit"
+            mat-raised-button
+            color="primary"
+            [disabled]="loginForm.invalid"
+            (click)="openDialog()"
+          >
+            Submit
+          </button>
+        </form>
+      </section>
+    </div>
+  </mat-card-content>
+</mat-card>

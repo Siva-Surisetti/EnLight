@@ -10,6 +10,7 @@ export class CardTileComponent implements OnInit {
   @Input() bookSubTitle;
   @Input() smallThumbnail;
   @Input() bookDescription;
+  @Input() bookAuthors;
   constructor() {}
 
   ngOnInit() {}

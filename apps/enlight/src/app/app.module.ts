@@ -40,6 +40,8 @@ import { CardTileComponent } from './components/card-tile/card-tile.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { RatingComponent } from './components/rating/rating.component';
 import { ReadmoreComponent } from './components/readmore/readmore.component';
+import { EllipsisPipe } from './pipes/ellipsis.pipe';
+import { AddCommasPipe } from './pipes/add-commas.pipe';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { ReadmoreComponent } from './components/readmore/readmore.component';
     SearchBarComponent,
     SideNavComponent,
     RatingComponent,
-    ReadmoreComponent
+    ReadmoreComponent,
+    EllipsisPipe,
+    AddCommasPipe
   ],
   imports: [
     HttpClientModule,

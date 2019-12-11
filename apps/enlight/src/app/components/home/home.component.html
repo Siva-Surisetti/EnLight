@@ -10,6 +10,7 @@
     [bookSubTitle]="tilesData.volumeInfo.subtitle"
     [smallThumbnail]="tilesData.volumeInfo.imageLinks?.smallThumbnail"
     [bookDescription]="tilesData.volumeInfo.description"
+    [bookAuthors]="tilesData.volumeInfo.authors"
     (click)="OnBookSelect(tilesData.id)"
   >
   </workspace-card-tile>

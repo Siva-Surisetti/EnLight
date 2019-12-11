@@ -1,5 +1,43 @@
-<mat-card class="outer-card">
+<!-- <mat-card class="outer-card">
   <mat-card class="inner-book-card">
     <img mat-card-image [src]="smallThumbnail" class="book-thumbnail" />
   </mat-card>
 </mat-card>
+
+ -->
+
+<mat-card>
+  <mat-card-title-group>
+    <img mat-card-sm-image *ngIf="smallThumbnail" [src]="smallThumbnail" />
+    <mat-card-title>{{ bookTitle | ellipsis: 35 }}</mat-card-title>
+    <mat-card-subtitle *ngIf="bookSubTitle">{{
+      bookSubTitle | ellipsis: 40
+    }}</mat-card-subtitle>
+  </mat-card-title-group>
+  <mat-card-content>
+    <p *ngIf="bookDescription">{{ bookDescription | ellipsis }}</p>
+    <h5>Written By:</h5>
+    <span>
+      {{ bookAuthors | addCommas }}
+    </span>
+  </mat-card-content>
+  <mat-card-footer> </mat-card-footer>
+</mat-card>
+
+<!-- <a>
+  <mat-card>
+    <mat-card-title-group>
+      <img mat-card-sm-image *ngIf="smallThumbnail" [src]="smallThumbnail" />
+      <mat-card-title>{{ bookTitle | ellipsis: 35 }}</mat-card-title>
+      <mat-card-subtitle *ngIf="bookSubTitle">{{
+        bookSubTitle | ellipsis: 40
+      }}</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>
+      <p *ngIf="bookDescription">{{ bookDescription | ellipsis }}</p>
+    </mat-card-content>
+    <mat-card-footer>
+      <bc-book-authors [book]="book"></bc-book-authors> -->
+<!-- </mat-card-footer>
+  </mat-card>
+</a> -->
