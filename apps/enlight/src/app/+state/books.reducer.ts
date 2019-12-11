@@ -74,13 +74,6 @@ export function reducer(
       };
       break;
     }
-    case BooksActionTypes.UpdateBillingInfo: {
-      state = {
-        ...state,
-        billingInfo: action.payload
-      };
-      break;
-    }
   }
   return state;
 }
