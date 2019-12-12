@@ -1,4 +1,4 @@
-<div class="book-detail-hldr">
+<!-- <div class="book-detail-hldr">
   <div class="card-hldr">
     <div class="inner-card-hldr">
       <mat-card class="book-info-card">
@@ -16,8 +16,7 @@
           class="detail-book-thumbnail"
           alt="Photo"
         />
-        <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                 alt="Photo of a Shiba Inu"> -->
+
         <mat-card-actions class="book-action-btns">
           <button
             mat-button
@@ -95,4 +94,88 @@
       </div>
     </div>
   </div>
+</div> -->
+
+<div class="container" *ngIf="selectedBook">
+  <mat-card>
+    <mat-card-title-group>
+      <img
+        mat-card-sm-image
+        *ngIf="selectedBook.volumeInfo.imageLinks.smallThumbnail"
+        src="{{ selectedBook.volumeInfo.imageLinks.smallThumbnail }}"
+      />
+      <mat-card-title *ngIf="selectedBook.volumeInfo.title">{{
+        selectedBook.volumeInfo.title | ellipsis: 35
+      }}</mat-card-title>
+      <mat-card-subtitle *ngIf="selectedBook.volumeInfo.subtitle">{{
+        selectedBook.volumeInfo.subtitle | ellipsis: 40
+      }}</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>
+      <div class="description-hldr">
+        <div class="description-title">
+          Rating :
+          <workspace-star-rating
+            class="description-detail"
+            [rating]="selectedBook.volumeInfo.averageRating"
+          ></workspace-star-rating>
+        </div>
+      </div>
+      <div class="description-hldr">
+        <div class="description-title">
+          Publisher :
+        </div>
+        <div class="description-detail">
+          {{ selectedBook.volumeInfo.publisher }}
+        </div>
+      </div>
+      <div class="description-hldr">
+        <div class="description-title">
+          Page Count :
+        </div>
+        <div class="description-detail">
+          {{ selectedBook.volumeInfo.pageCount }}
+        </div>
+      </div>
+      <div class="description-hldr">
+        <div class="description-title">
+          Language :
+        </div>
+        <div class="description-detail">
+          {{ selectedBook.volumeInfo.language }}
+        </div>
+      </div>
+      <p *ngIf="selectedBook.volumeInfo.description">
+        {{ selectedBook.volumeInfo.description }}
+      </p>
+    </mat-card-content>
+
+    <mat-card-footer class="footer">
+      <h5>Written By:</h5>
+      <span *ngIf="selectedBook.volumeInfo.authors">
+        {{ selectedBook.volumeInfo.authors | addCommas }}
+      </span>
+      <div class="book-action-btns">
+        <button
+          mat-button
+          class="addtocard-btn book-btn"
+          (click)="OnAddToCart()"
+        >
+          ADD TO CART
+        </button>
+
+        <button mat-button class="buy-btn book-btn" (click)="purchaseBook()">
+          BUY
+        </button>
+      </div>
+    </mat-card-footer>
+  </mat-card>
+  <!-- <div>
+    <button mat-button class="addtocard-btn book-btn" (click)="OnAddToCart()">
+      ADD TO CART
+    </button>
+    <button mat-button class="buy-btn book-btn" (click)="purchaseBook()">
+      BUY
+    </button>
+  </div> -->
 </div>
