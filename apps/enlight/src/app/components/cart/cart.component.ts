@@ -21,4 +21,9 @@ export class CartComponent implements OnInit {
   proceedToPurchase() {
     this.router.navigate(['billing']);
   }
+
+  onBookSelect(bookId) {
+    this.booksFacade.dispatchSelectedIdToStore(bookId);
+    this.router.navigate(['detail']);
+  }
 }

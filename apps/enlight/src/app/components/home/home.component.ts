@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {}
 
-  OnBookSelect(bookId) {
+  onBookSelect(bookId) {
     this.booksFacade.dispatchSelectedIdToStore(bookId);
     this.router.navigate(['detail']);
   }

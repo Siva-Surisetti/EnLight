@@ -1,6 +1,6 @@
 <div *ngIf="cartBooks && cartBooks.length">
   <div *ngFor="let book of cartBooks">
-    <mat-card>
+    <mat-card (click)="onBookSelect(book.id)">
       <mat-card-title-group>
         <img
           mat-card-sm-image
