@@ -18,7 +18,6 @@ export class CollectionComponent implements OnInit {
   }
 
   onBookSelect(bookId) {
-    debugger;
     this.booksFacade.dispatchSelectedIdToStore(bookId);
     this.router.navigate(['detail']);
   }
