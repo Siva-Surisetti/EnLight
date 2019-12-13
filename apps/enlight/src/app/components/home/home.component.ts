@@ -21,4 +21,8 @@ export class HomeComponent implements OnInit {
     this.booksFacade.dispatchSelectedIdToStore(bookId);
     this.router.navigate(['detail']);
   }
+
+  onSearchInput(searchKey) {
+    this.booksFacade.loadBooksToStore(searchKey);
+  }
 }

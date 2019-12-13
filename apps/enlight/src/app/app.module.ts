@@ -32,14 +32,17 @@ import {
 import { CartComponent } from './components/cart/cart.component';
 import { CollectionComponent } from './components/collection/collection.component';
 import { DetailComponent } from './components/detail/detail.component';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { CommonModule } from '@angular/common';
 import { NxModule } from '@nrwl/angular';
 import { HomeComponent } from './components/home/home.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { EllipsisPipe } from './pipes/ellipsis.pipe';
 import { AddCommasPipe } from './pipes/add-commas.pipe';
-import { CardTileComponent, RatingComponent } from '@workspace/ui';
+import {
+  CardTileComponent,
+  RatingComponent,
+  SearchBarComponent
+} from '@workspace/ui';
 
 @NgModule({
   declarations: [

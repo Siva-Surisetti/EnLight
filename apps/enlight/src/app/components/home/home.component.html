@@ -1,6 +1,9 @@
 <div class="home-wrapper">
   <div class="search-wrapper">
-    <poc-ui-search-bar [placeholder]="'Search in Library'"></poc-ui-search-bar>
+    <poc-ui-search-bar
+      [placeholder]="'Search in Library'"
+      (searchValue)="onSearchInput($event)"
+    ></poc-ui-search-bar>
   </div>
   <poc-card-tile
     *ngFor="let tilesData of booksRecords$ | async"

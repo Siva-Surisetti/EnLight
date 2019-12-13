@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { BooksFacade } from '../../+state/books.facade';
 
 @Component({
   selector: 'poc-ui-search-bar',
@@ -12,7 +11,7 @@ export class SearchBarComponent implements OnInit {
 
   public searchInput: string;
 
-  constructor(private booksFacade: BooksFacade) {}
+  constructor() {}
 
   ngOnInit() {}
 
