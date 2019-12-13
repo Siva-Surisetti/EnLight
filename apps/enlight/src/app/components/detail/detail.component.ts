@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { BooksFacade } from '../../+state/books.facade';
 
 @Component({
-  selector: 'workspace-detail',
+  selector: 'poc-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })

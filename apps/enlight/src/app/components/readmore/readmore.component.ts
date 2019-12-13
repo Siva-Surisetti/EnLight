@@ -1,7 +1,7 @@
 import { Component, OnChanges, Input } from '@angular/core';
 
 @Component({
-  selector: 'workspace-readmore',
+  selector: 'poc-readmore',
   templateUrl: './readmore.component.html',
   styleUrls: ['./readmore.component.scss']
 })

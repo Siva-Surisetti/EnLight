@@ -4,7 +4,7 @@ import { MatSidenav } from '@angular/material';
 import { SidenavService } from '../../services/sidenav.service';
 
 @Component({
-  selector: 'workspace-ui-side-nav',
+  selector: 'poc-ui-side-nav',
   templateUrl: './side-nav.component.html',
   styleUrls: ['./side-nav.component.scss']
 })

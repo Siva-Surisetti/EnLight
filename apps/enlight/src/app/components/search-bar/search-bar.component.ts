@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { BooksFacade } from '../../+state/books.facade';
 
 @Component({
-  selector: 'workspace-ui-search-bar',
+  selector: 'poc-ui-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss']
 })

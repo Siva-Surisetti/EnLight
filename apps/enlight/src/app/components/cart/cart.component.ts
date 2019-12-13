@@ -3,7 +3,7 @@ import { BooksFacade } from '../../+state/books.facade';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'workspace-app-cart',
+  selector: 'poc-app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })

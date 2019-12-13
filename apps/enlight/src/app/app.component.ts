@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouteTrackerService } from './services/route-tracker.service';
 
 @Component({
-  selector: 'workspace-root',
+  selector: 'poc-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

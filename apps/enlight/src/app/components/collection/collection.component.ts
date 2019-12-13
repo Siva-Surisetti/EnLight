@@ -3,7 +3,7 @@ import { BooksFacade } from '../../+state/books.facade';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'workspace-app-collection',
+  selector: 'poc-app-collection',
   templateUrl: './collection.component.html',
   styleUrls: ['./collection.component.scss']
 })

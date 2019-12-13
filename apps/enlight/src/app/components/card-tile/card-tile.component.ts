@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'workspace-card-tile',
+  selector: 'poc-card-tile',
   templateUrl: './card-tile.component.html',
   styleUrls: ['./card-tile.component.scss']
 })

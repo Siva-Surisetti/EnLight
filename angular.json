@@ -10,7 +10,7 @@
       },
       "root": "apps/enlight",
       "sourceRoot": "apps/enlight/src",
-      "prefix": "workspace",
+      "prefix": "apps",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -131,7 +131,7 @@
       "projectType": "library",
       "root": "libs/services",
       "sourceRoot": "libs/services/src",
-      "prefix": "workspace",
+      "prefix": "libs",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",

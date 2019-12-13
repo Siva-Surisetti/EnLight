@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'workspace-star-rating',
+  selector: 'poc-star-rating',
   templateUrl: './rating.component.html',
   styleUrls: ['./rating.component.scss']
 })

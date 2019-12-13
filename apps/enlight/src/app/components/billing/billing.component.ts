@@ -23,7 +23,7 @@ interface CollectionItem {
 }
 
 @Component({
-  selector: 'workspace-billing',
+  selector: 'poc-billing',
   templateUrl: './billing.component.html',
   styleUrls: ['./billing.component.scss']
 })
