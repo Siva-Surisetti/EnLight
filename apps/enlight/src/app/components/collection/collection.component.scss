@@ -1,7 +1,10 @@
+:host {
+  display: flex;
+  justify-content: center;
+}
 mat-card {
-  width: 600px;
+  width: 900px;
   display: inline-block;
-  height: 200px;
   margin: 15px;
 }
 @media only screen and (max-width: 768px) {
@@ -43,4 +46,25 @@ mat-card-footer {
 h5 {
   margin-bottom: 5px;
   padding: 0px;
+}
+.book-btn {
+  // border-color: #e20069;
+  // background-color: #f3c1d8;
+  color: black;
+  padding: 3px;
+}
+.addtocard-btn {
+  // margin: 20px;
+}
+
+.book-action-btns {
+  width: 95%;
+}
+
+.description-hldr {
+  display: flex;
+}
+
+.description-detail {
+  flex: 4;
 }

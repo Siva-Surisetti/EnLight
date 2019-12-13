@@ -23,14 +23,27 @@
         <span>
           {{ book.bookInfo.volumeInfo.authors | addCommas }}
         </span>
+        <div class="book-action-btns book-btn">
+          <h5>Billing Address</h5>
+          <div>
+            <span style="font-weight: bold">Name:</span>&nbsp;
+            <span>{{ book.billingInfo.name }}</span>
+          </div>
+          <div>
+            <span style="font-weight: bold">Email:</span>&nbsp;
+            <span>{{ book.billingInfo.email }}</span>
+          </div>
+          <div>
+            <span style="font-weight: bold">Phone:</span>&nbsp;<span>{{
+              book.billingInfo.phone
+            }}</span>
+          </div>
+          <div>
+            <span style="font-weight: bold">Address:</span>&nbsp;
+            <span>{{ book.billingInfo.address }}</span>
+          </div>
+        </div>
       </mat-card-footer>
     </mat-card>
-    <span>
-      <h5>Billing details</h5>
-      {{ book.billingInfo.name }}<br />
-      {{ book.billingInfo.email }}<br />
-      {{ book.billingInfo.phone }}<br />
-      {{ book.billingInfo.address }}
-    </span>
   </div>
 </div>

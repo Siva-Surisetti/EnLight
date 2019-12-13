@@ -1,5 +1,9 @@
+:host {
+  display: flex;
+  justify-content: center;
+}
 mat-card {
-  width: 600px;
+  width: 900px;
   display: inline-block;
   height: 200px;
   margin: 15px;
