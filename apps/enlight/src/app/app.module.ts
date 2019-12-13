@@ -39,7 +39,6 @@ import { HomeComponent } from './components/home/home.component';
 import { CardTileComponent } from './components/card-tile/card-tile.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { RatingComponent } from './components/rating/rating.component';
-import { ReadmoreComponent } from './components/readmore/readmore.component';
 import { EllipsisPipe } from './pipes/ellipsis.pipe';
 import { AddCommasPipe } from './pipes/add-commas.pipe';
 
@@ -55,7 +54,6 @@ import { AddCommasPipe } from './pipes/add-commas.pipe';
     SearchBarComponent,
     SideNavComponent,
     RatingComponent,
-    ReadmoreComponent,
     EllipsisPipe,
     AddCommasPipe
   ],
