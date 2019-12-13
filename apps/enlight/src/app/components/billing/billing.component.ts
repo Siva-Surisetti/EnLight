@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BooksFacade } from '../../+state/books.facade';
-import { RouteTrackerService } from '../../services/route-tracker.service';
 import {
   MatSnackBar,
   MatSnackBarConfig,
@@ -9,6 +8,7 @@ import {
   MatSnackBarVerticalPosition
 } from '@angular/material';
 import { Router } from '@angular/router';
+import { RouteTrackerService } from '@workspace/libs/services';
 
 interface BillingDetails {
   name?: any;

@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class SidenavService {
+export class SidenavToggleService {
   public sideNavToggleSubject: BehaviorSubject<any> = new BehaviorSubject(null);
 
   constructor() {}

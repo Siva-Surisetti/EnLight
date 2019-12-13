@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouteTrackerService } from './services/route-tracker.service';
+import { RouteTrackerService } from '@workspace/libs/services';
 
 @Component({
   selector: 'poc-root',

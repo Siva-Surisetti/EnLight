@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { BooksFacade } from '../../+state/books.facade';
 import { MatSidenav } from '@angular/material';
-import { SidenavService } from '../../services/sidenav.service';
+import { SidenavToggleService } from '@workspace/libs/services';
 
 @Component({
   selector: 'poc-ui-side-nav',
@@ -34,11 +34,11 @@ export class SideNavComponent implements OnInit {
 
   constructor(
     private booksFacade: BooksFacade,
-    private sideNavService: SidenavService
+    private sideNavToggleService: SidenavToggleService
   ) {}
 
   ngOnInit() {
-    this.sideNavService.sideNavToggleSubject.subscribe(() => {
+    this.sideNavToggleService.sideNavToggleSubject.subscribe(() => {
       this.sidenav.open();
     });
     this.booksFacade.cartBooks$.subscribe(books => {
@@ -46,7 +46,7 @@ export class SideNavComponent implements OnInit {
         if (list['desc'] === 'Cart')
           list['badgeValue'] = books.length === 0 ? null : books.length;
       });
-      this.sideNavService.toggle();
+      this.sideNavToggleService.toggle();
     });
 
     this.booksFacade.collectionBooks$.subscribe(books => {
@@ -54,7 +54,7 @@ export class SideNavComponent implements OnInit {
         if (list['desc'] === 'My Collection')
           list['badgeValue'] = books.length === 0 ? null : books.length;
       });
-      this.sideNavService.toggle();
+      this.sideNavToggleService.toggle();
     });
   }
 }
