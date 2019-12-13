@@ -36,11 +36,10 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { CommonModule } from '@angular/common';
 import { NxModule } from '@nrwl/angular';
 import { HomeComponent } from './components/home/home.component';
-import { CardTileComponent } from './components/card-tile/card-tile.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
-import { RatingComponent } from './components/rating/rating.component';
 import { EllipsisPipe } from './pipes/ellipsis.pipe';
 import { AddCommasPipe } from './pipes/add-commas.pipe';
+import { CardTileComponent, RatingComponent } from '@workspace/ui';
 
 @NgModule({
   declarations: [
