@@ -69,34 +69,63 @@ export class BillingComponent implements OnInit {
     this.previousUrl = this.routeService.getPreviousUrl();
   }
 
-  openDialog() {
-    const config = new MatSnackBarConfig();
-    config.verticalPosition = this.verticalPosition;
-    config.horizontalPosition = this.horizontalPosition;
-    config.duration = this.setAutoHide ? this.autoHide : 0;
+  onSubmit() {
+    this.displaySnackBar();
+    this.prepareBillingAddressObject();
+
+    this.addBooksToCart();
+    this.router.navigate(['collection']);
+  }
+
+  private addBooksToCart() {
+    if (this.previousUrl === '/detail') {
+      this.addSelectedBookToMyCollection();
+    } else {
+      this.addCartBooksToMyCollection();
+      this.booksFacade.clearShoppingCart();
+    }
+  }
+
+  private addCartBooksToMyCollection() {
+    this.cartBooks.forEach(book => {
+      this.collection = {};
+      this.collection.bookInfo = book;
+      this.collection.billingInfo = this.billing;
+      this.booksFacade.dispatchBooksToCollection(this.collection);
+    });
+  }
+
+  private addSelectedBookToMyCollection() {
+    this.collection.bookInfo = this.selectedBook;
+    this.collection.billingInfo = this.billing;
+    this.booksFacade.dispatchBooksToCollection(this.collection);
+  }
+
+  private prepareBillingAddressObject() {
+    this.billing.name = this.loginForm.value.name;
+    this.billing.email = this.loginForm.value.email;
+    this.billing.phone = this.loginForm.value.phone;
+    this.billing.address = this.loginForm.value.address;
+  }
+
+  private displaySnackBar() {
+    const config = this.prepareConfigObjectForSnackBar();
+    this.openSnackBar(config);
+  }
+
+  private openSnackBar(config: MatSnackBarConfig<any>) {
     this.snackBar.open(
       this.message,
       this.action ? this.actionButtonLabel : undefined,
       config
     );
-    this.billing.name = this.loginForm.value.name;
-    this.billing.email = this.loginForm.value.email;
-    this.billing.phone = this.loginForm.value.phone;
-    this.billing.address = this.loginForm.value.address;
+  }
 
-    if (this.previousUrl === '/detail') {
-      this.collection.bookInfo = this.selectedBook;
-      this.collection.billingInfo = this.billing;
-      this.booksFacade.dispatchBooksToCollection(this.collection);
-    } else {
-      this.cartBooks.forEach(book => {
-        this.collection = {};
-        this.collection.bookInfo = book;
-        this.collection.billingInfo = this.billing;
-        this.booksFacade.dispatchBooksToCollection(this.collection);
-      });
-      this.booksFacade.clearShoppingCart();
-    }
-    this.router.navigate(['collection']);
+  private prepareConfigObjectForSnackBar() {
+    const config = new MatSnackBarConfig();
+    config.verticalPosition = this.verticalPosition;
+    config.horizontalPosition = this.horizontalPosition;
+    config.duration = this.setAutoHide ? this.autoHide : 0;
+    return config;
   }
 }
