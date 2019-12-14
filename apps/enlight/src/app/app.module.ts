@@ -102,7 +102,8 @@ import {
           path: 'collection',
           component: CollectionComponent
         },
-        { path: '', redirectTo: 'home', pathMatch: 'full' }
+        { path: '', redirectTo: 'home', pathMatch: 'full' },
+        { path: '**', redirectTo: 'home', pathMatch: 'full' }
       ],
       { initialNavigation: 'enabled' }
     ),
