@@ -30,7 +30,7 @@ export class BooksFacade {
   dispatchSelectedIdToStore(selecedId) {
     this.store.dispatch(new BookSelected(selecedId));
   }
-  dispatchBookIdToCartStore(bookId) {
+  dispatchBooksToCartStore(bookId) {
     this.store.dispatch(new AddToCart(bookId));
   }
   dispatchBooksToCollection(collectionItem) {

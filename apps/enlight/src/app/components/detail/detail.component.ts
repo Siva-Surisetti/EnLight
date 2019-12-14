@@ -18,7 +18,7 @@ export class DetailComponent implements OnInit {
   ngOnInit() {}
 
   OnAddToCart() {
-    this.booksFacade.dispatchBookIdToCartStore(this.selectedBook);
+    this.booksFacade.dispatchBooksToCartStore(this.selectedBook);
     this.router.navigate(['home']);
   }
 
