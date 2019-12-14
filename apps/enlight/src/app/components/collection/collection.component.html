@@ -1,46 +1,46 @@
-<div *ngIf="collectionBooks && collectionBooks.length">
-  <div *ngFor="let book of collectionBooks">
-    <mat-card (click)="onBookSelect(book.bookInfo.id)">
+<div *ngIf="collectionItems && collectionItems.length">
+  <div *ngFor="let item of collectionItems">
+    <mat-card (click)="onBookSelect(item.bookInfo.id)">
       <mat-card-title-group>
         <img
           mat-card-sm-image
-          src="{{ book.bookInfo.volumeInfo.imageLinks.smallThumbnail }}"
+          src="{{ item.bookInfo.volumeInfo.imageLinks.smallThumbnail }}"
         />
         <mat-card-title>{{
-          book.bookInfo.volumeInfo.title | ellipsis: 35
+          item.bookInfo.volumeInfo.title | ellipsis: 35
         }}</mat-card-title>
-        <mat-card-subtitle *ngIf="book.bookInfo.volumeInfo.subtitle">{{
-          book.bookInfo.volumeInfo.subtitle | ellipsis: 40
+        <mat-card-subtitle *ngIf="item.bookInfo.volumeInfo.subtitle">{{
+          item.bookInfo.volumeInfo.subtitle | ellipsis: 40
         }}</mat-card-subtitle>
       </mat-card-title-group>
       <mat-card-content>
-        <p *ngIf="book.bookInfo.volumeInfo.description">
-          {{ book.bookInfo.volumeInfo.description | ellipsis }}
+        <p *ngIf="item.bookInfo.volumeInfo.description">
+          {{ item.bookInfo.volumeInfo.description | ellipsis }}
         </p>
       </mat-card-content>
       <mat-card-footer>
         <h5>Written By:</h5>
         <span>
-          {{ book.bookInfo.volumeInfo.authors | addCommas }}
+          {{ item.bookInfo.volumeInfo.authors | addCommas }}
         </span>
         <div class="book-action-btns book-btn">
           <h5>Billing Address</h5>
           <div>
             <span style="font-weight: bold">Name:</span>&nbsp;
-            <span>{{ book.billingInfo.name }}</span>
+            <span>{{ item.billingInfo.name }}</span>
           </div>
           <div>
             <span style="font-weight: bold">Email:</span>&nbsp;
-            <span>{{ book.billingInfo.email }}</span>
+            <span>{{ item.billingInfo.email }}</span>
           </div>
           <div>
             <span style="font-weight: bold">Phone:</span>&nbsp;<span>{{
-              book.billingInfo.phone
+              item.billingInfo.phone
             }}</span>
           </div>
           <div>
             <span style="font-weight: bold">Address:</span>&nbsp;
-            <span>{{ book.billingInfo.address }}</span>
+            <span>{{ item.billingInfo.address }}</span>
           </div>
         </div>
       </mat-card-footer>

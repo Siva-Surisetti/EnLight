@@ -8,12 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./collection.component.scss']
 })
 export class CollectionComponent implements OnInit {
-  collectionBooks: any;
+  collectionItems: any;
   constructor(private booksFacade: BooksFacade, private router: Router) {}
 
   ngOnInit() {
     this.booksFacade.collectionBooks$.subscribe(collectionItem => {
-      this.collectionBooks = collectionItem;
+      this.collectionItems = collectionItem;
     });
   }
 

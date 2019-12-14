@@ -50,6 +50,29 @@ export class BillingComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.addFormFieldValidations();
+    this.subscribeToCartBooks();
+    this.subscribeToSelectedBook();
+    this.getPreviousURL();
+  }
+
+  private getPreviousURL() {
+    this.previousUrl = this.routeService.getPreviousUrl();
+  }
+
+  private subscribeToSelectedBook() {
+    this.booksFacade.selectedBook$.subscribe(book => {
+      this.selectedBook = book;
+    });
+  }
+
+  private subscribeToCartBooks() {
+    this.booksFacade.cartBooks$.subscribe(books => {
+      this.cartBooks = books;
+    });
+  }
+
+  private addFormFieldValidations() {
     this.loginForm = new FormGroup({
       email: new FormControl('', {
         validators: [Validators.required, Validators.email]
@@ -58,15 +81,6 @@ export class BillingComponent implements OnInit {
       phone: new FormControl('', { validators: [Validators.required] }),
       address: new FormControl('', { validators: [Validators.required] })
     });
-
-    this.booksFacade.cartBooks$.subscribe(books => {
-      this.cartBooks = books;
-    });
-
-    this.booksFacade.selectedBook$.subscribe(book => {
-      this.selectedBook = book;
-    });
-    this.previousUrl = this.routeService.getPreviousUrl();
   }
 
   onSubmit() {
