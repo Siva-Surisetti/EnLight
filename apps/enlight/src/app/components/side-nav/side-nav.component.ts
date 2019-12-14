@@ -38,9 +38,22 @@ export class SideNavComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.sideNavToggleService.sideNavToggleSubject.subscribe(() => {
-      this.sidenav.open();
+    this.openSideNavWhenBooksAddedToCartOrCollection();
+    this.showBadgeWhenBooksAddedToCart();
+    this.showBadgeWhenBooksAddedToCollection();
+  }
+
+  private showBadgeWhenBooksAddedToCollection() {
+    this.booksFacade.collectionBooks$.subscribe(books => {
+      this.navigationList.forEach(list => {
+        if (list['desc'] === 'My Collection')
+          list['badgeValue'] = books.length === 0 ? null : books.length;
+      });
+      this.sideNavToggleService.toggle();
     });
+  }
+
+  private showBadgeWhenBooksAddedToCart() {
     this.booksFacade.cartBooks$.subscribe(books => {
       this.navigationList.forEach(list => {
         if (list['desc'] === 'Cart')
@@ -48,13 +61,11 @@ export class SideNavComponent implements OnInit {
       });
       this.sideNavToggleService.toggle();
     });
+  }
 
-    this.booksFacade.collectionBooks$.subscribe(books => {
-      this.navigationList.forEach(list => {
-        if (list['desc'] === 'My Collection')
-          list['badgeValue'] = books.length === 0 ? null : books.length;
-      });
-      this.sideNavToggleService.toggle();
+  private openSideNavWhenBooksAddedToCartOrCollection() {
+    this.sideNavToggleService.sideNavToggleSubject.subscribe(() => {
+      this.sidenav.open();
     });
   }
 }
