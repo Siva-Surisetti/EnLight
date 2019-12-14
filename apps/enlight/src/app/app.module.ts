@@ -43,6 +43,7 @@ import {
   RatingComponent,
   SearchBarComponent
 } from '@workspace/ui';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import {
     AddCommasPipe
   ],
   imports: [
+    AppRoutingModule,
     HttpClientModule,
     BrowserModule,
     ServicesModule,
@@ -80,33 +82,6 @@ import {
     MatExpansionModule,
     MatSnackBarModule,
     NxModule.forRoot(),
-    RouterModule.forRoot(
-      [
-        {
-          path: 'home',
-          component: HomeComponent
-        },
-        {
-          path: 'detail',
-          component: DetailComponent
-        },
-        {
-          path: 'cart',
-          component: CartComponent
-        },
-        {
-          path: 'billing',
-          component: BillingComponent
-        },
-        {
-          path: 'collection',
-          component: CollectionComponent
-        },
-        { path: '', redirectTo: 'home', pathMatch: 'full' },
-        { path: '**', redirectTo: 'home', pathMatch: 'full' }
-      ],
-      { initialNavigation: 'enabled' }
-    ),
     BrowserAnimationsModule,
     StoreModule.forRoot(
       { books: fromBooksReducer.reducer },
