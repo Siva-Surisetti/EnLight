@@ -8,6 +8,8 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",
     "affected:apps": "nx affected:apps",
@@ -46,6 +48,7 @@
     "@ngrx/store": "8.3.0",
     "@nrwl/angular": "^8.9.0",
     "core-js": "^2.5.4",
+    "jest-html-reporter": "^2.8.0",
     "rxjs": "~6.4.0",
     "zone.js": "^0.9.1"
   },
