@@ -17,7 +17,7 @@ import {
 export class BooksFacade {
   loaded$ = this.store.pipe(select(booksQuery.getLoaded));
   allBooks$ = this.store.pipe(select(booksQuery.getAllBooks));
-  selectedBooks$ = this.store.pipe(select(booksQuery.getSelectedBooks));
+  selectedBook$ = this.store.pipe(select(booksQuery.getSelectedBooks));
   cartBooks$ = this.store.pipe(select(booksQuery.getCartBooks));
   collectionBooks$ = this.store.pipe(select(booksQuery.getCollectionBooks));
 

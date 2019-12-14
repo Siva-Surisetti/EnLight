@@ -63,7 +63,7 @@ export class BillingComponent implements OnInit {
       this.cartBooks = books;
     });
 
-    this.booksFacade.selectedBooks$.subscribe(book => {
+    this.booksFacade.selectedBook$.subscribe(book => {
       this.selectedBook = book;
     });
     this.previousUrl = this.routeService.getPreviousUrl();

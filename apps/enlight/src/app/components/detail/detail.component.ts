@@ -10,7 +10,7 @@ import { BooksFacade } from '../../+state/books.facade';
 export class DetailComponent implements OnInit {
   public selectedBook: any;
   constructor(private booksFacade: BooksFacade, private router: Router) {
-    this.booksFacade.selectedBooks$.subscribe(book => {
+    this.booksFacade.selectedBook$.subscribe(book => {
       this.selectedBook = book;
     });
   }
