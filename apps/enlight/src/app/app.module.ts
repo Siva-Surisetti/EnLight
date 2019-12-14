@@ -35,14 +35,13 @@ import { CommonModule } from '@angular/common';
 import { NxModule } from '@nrwl/angular';
 import { HomeComponent } from './components/home/home.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
-import { EllipsisPipe } from './pipes/ellipsis.pipe';
-import { AddCommasPipe } from './pipes/add-commas.pipe';
 import {
   CardTileComponent,
   RatingComponent,
   SearchBarComponent
 } from '@workspace/ui';
 import { AppRoutingModule } from './app-routing.module';
+import { AddCommasPipe, EllipsisPipe } from '@workspace/pipes';
 
 @NgModule({
   declarations: [

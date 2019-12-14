@@ -18,7 +18,8 @@
     "paths": {
       "@workspace/enlight/home": ["app/home/index.ts"],
       "@workspace/libs/services": ["libs/services/src/index.ts"],
-      "@workspace/ui": ["libs/ui/src/index.ts"]
+      "@workspace/ui": ["libs/ui/src/index.ts"],
+      "@workspace/pipes": ["libs/pipes/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
