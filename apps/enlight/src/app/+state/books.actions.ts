@@ -5,7 +5,7 @@ export enum BooksActionTypes {
   LoadBooks = '[Books] Load Books',
   BooksLoaded = '[Books] Books Loaded',
   BooksLoadError = '[Books] Books Load Error',
-  BooksSelected = '[Books] Books Selected',
+  BookSelected = '[Books] Book Selected',
   AddToCart = '[Books] Add Books to Cart',
   AddToCollection = '[Books] Add Books to Collection',
   ClearCart = '[Books] Clear Cart',
@@ -27,8 +27,8 @@ export class BooksLoaded implements Action {
   constructor(public payload: Entity[]) {}
 }
 
-export class BooksSelected implements Action {
-  readonly type = BooksActionTypes.BooksSelected;
+export class BookSelected implements Action {
+  readonly type = BooksActionTypes.BookSelected;
   constructor(public payload: string) {}
 }
 
@@ -56,7 +56,7 @@ export type BooksAction =
   | LoadBooks
   | BooksLoaded
   | BooksLoadError
-  | BooksSelected
+  | BookSelected
   | AddToCart
   | AddToCollection
   | ClearCart
@@ -66,7 +66,7 @@ export const fromBooksActions = {
   LoadBooks,
   BooksLoaded,
   BooksLoadError,
-  BooksSelected,
+  BookSelected,
   AddToCart,
   AddToCollection,
   ClearCart,

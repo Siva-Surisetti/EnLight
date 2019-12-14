@@ -41,7 +41,7 @@ export function reducer(
       };
       break;
     }
-    case BooksActionTypes.BooksSelected: {
+    case BooksActionTypes.BookSelected: {
       state = {
         ...state,
         selectedId: action.payload

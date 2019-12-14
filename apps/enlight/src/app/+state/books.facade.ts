@@ -6,7 +6,7 @@ import { BooksPartialState } from './books.reducer';
 import { booksQuery } from './books.selectors';
 import {
   LoadBooks,
-  BooksSelected,
+  BookSelected,
   AddToCart,
   AddToCollection,
   ClearCart,
@@ -28,7 +28,7 @@ export class BooksFacade {
     this.store.dispatch(new LoadBooks(searchKey));
   }
   dispatchSelectedIdToStore(selecedId) {
-    this.store.dispatch(new BooksSelected(selecedId));
+    this.store.dispatch(new BookSelected(selecedId));
   }
   dispatchBookIdToCartStore(bookId) {
     this.store.dispatch(new AddToCart(bookId));
