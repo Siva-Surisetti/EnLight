@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { BooksFacade } from '../../+state/books.facade';
 import { MatSidenav } from '@angular/material';
 import { SidenavToggleService } from '@workspace/libs/services';
+import { BOOKS_CONSTANTS } from '../../constants/books_constants';
 
 @Component({
   selector: 'poc-ui-side-nav',
@@ -13,21 +14,21 @@ export class SideNavComponent implements OnInit {
 
   public navigationList: Array<object> = [
     {
-      desc: 'Search',
-      path: '/home',
-      icon: 'search',
+      desc: BOOKS_CONSTANTS.SIDENAV_OPTION_SEARCH,
+      path: '/' + BOOKS_CONSTANTS.HOME,
+      icon: BOOKS_CONSTANTS.SIDENAV_ICON_SEARCH,
       badgeValue: null
     },
     {
-      desc: 'Cart',
-      path: '/cart',
-      icon: 'shopping_cart',
+      desc: BOOKS_CONSTANTS.SIDENAV_OPTION_CART,
+      path: '/' + BOOKS_CONSTANTS.CART,
+      icon: BOOKS_CONSTANTS.SIDENAV_ICON_CART,
       badgeValue: null
     },
     {
-      desc: 'My Collection',
-      path: '/collection',
-      icon: 'library_books',
+      desc: BOOKS_CONSTANTS.SIDENAV_OPTION_COLLECTION,
+      path: '/' + BOOKS_CONSTANTS.COLLECTION,
+      icon: BOOKS_CONSTANTS.SIDENAV_ICON_COLLECTION,
       badgeValue: null
     }
   ];
@@ -46,7 +47,7 @@ export class SideNavComponent implements OnInit {
   private showBadgeWhenBooksAddedToCollection() {
     this.booksFacade.collectionBooks$.subscribe(books => {
       this.navigationList.forEach(list => {
-        if (list['desc'] === 'My Collection')
+        if (list['desc'] === BOOKS_CONSTANTS.SIDENAV_OPTION_COLLECTION)
           list['badgeValue'] = books.length === 0 ? null : books.length;
       });
       this.sideNavToggleService.toggle();
@@ -56,7 +57,7 @@ export class SideNavComponent implements OnInit {
   private showBadgeWhenBooksAddedToCart() {
     this.booksFacade.cartBooks$.subscribe(books => {
       this.navigationList.forEach(list => {
-        if (list['desc'] === 'Cart')
+        if (list['desc'] === BOOKS_CONSTANTS.SIDENAV_OPTION_CART)
           list['badgeValue'] = books.length === 0 ? null : books.length;
       });
       this.sideNavToggleService.toggle();

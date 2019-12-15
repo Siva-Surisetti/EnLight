@@ -12,7 +12,7 @@ import {
 import { HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/internal/operators/map';
 import { HttpWrapperService } from '@workspace/libs/services';
-import { HOME_CONSTANTS } from '../constants/googleapi';
+import { BOOKS_CONSTANTS } from '../constants/books_constants';
 
 @Injectable()
 export class BooksEffects {
@@ -21,7 +21,7 @@ export class BooksEffects {
   loadBooks$ = createEffect(() =>
     this.dataPersistence.fetch(BooksActionTypes.LoadBooks, {
       run: (action: LoadBooks, state: BooksPartialState) => {
-        let URL = HOME_CONSTANTS.URL;
+        let URL = BOOKS_CONSTANTS.URL;
         URL = URL + action.payload;
         return this.httpWrapperService
           .get(URL, this.defaultHeaders, {}, {})

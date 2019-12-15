@@ -9,6 +9,7 @@ import {
 } from '@angular/material';
 import { Router } from '@angular/router';
 import { RouteTrackerService } from '@workspace/libs/services';
+import { BOOKS_CONSTANTS } from '../../constants/books_constants';
 
 interface BillingDetails {
   name?: any;
@@ -32,13 +33,13 @@ export class BillingComponent implements OnInit {
   loginForm: FormGroup;
   selectedBook: any;
   previousUrl: string;
-  message = 'Your purchase is successful';
-  actionButtonLabel = 'Ok';
+  message = BOOKS_CONSTANTS.PURCHASE_SUCCESSFUL;
+  actionButtonLabel = BOOKS_CONSTANTS.OK;
   action = true;
   setAutoHide = true;
   autoHide = 2000;
-  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-  verticalPosition: MatSnackBarVerticalPosition = 'top';
+  horizontalPosition: MatSnackBarHorizontalPosition = BOOKS_CONSTANTS.CENTER;
+  verticalPosition: MatSnackBarVerticalPosition = BOOKS_CONSTANTS.TOP;
   billing: BillingDetails = {};
   collection: CollectionItem = {};
 
@@ -88,11 +89,11 @@ export class BillingComponent implements OnInit {
     this.prepareBillingAddressObject();
 
     this.addBooksToCart();
-    this.router.navigate(['collection']);
+    this.router.navigate([BOOKS_CONSTANTS.COLLECTION]);
   }
 
   private addBooksToCart() {
-    if (this.previousUrl === '/detail') {
+    if (this.previousUrl === '/' + BOOKS_CONSTANTS.DETAIL) {
       this.addSelectedBookToMyCollection();
     } else {
       this.addCartBooksToMyCollection();

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksFacade } from '../../+state/books.facade';
 import { Router } from '@angular/router';
+import { BOOKS_CONSTANTS } from '../../constants/books_constants';
 
 @Component({
   selector: 'poc-app-cart',
@@ -19,11 +20,11 @@ export class CartComponent implements OnInit {
   }
 
   proceedToPurchase() {
-    this.router.navigate(['billing']);
+    this.router.navigate([BOOKS_CONSTANTS.BILLING]);
   }
 
   onBookSelect(bookId) {
     this.booksFacade.dispatchSelectedIdToStore(bookId);
-    this.router.navigate(['detail']);
+    this.router.navigate([BOOKS_CONSTANTS.DETAIL]);
   }
 }

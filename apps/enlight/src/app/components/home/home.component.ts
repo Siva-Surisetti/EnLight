@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BooksFacade } from '../../+state/books.facade';
+import { BOOKS_CONSTANTS } from '../../constants/books_constants';
 
 @Component({
   selector: 'poc-app-home',
@@ -19,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   onBookSelect(bookId) {
     this.booksFacade.dispatchSelectedIdToStore(bookId);
-    this.router.navigate(['detail']);
+    this.router.navigate([BOOKS_CONSTANTS.DETAIL]);
   }
 
   onSearchInput(searchKey) {
