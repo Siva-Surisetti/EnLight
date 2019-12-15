@@ -18,7 +18,9 @@ declare type Headers = HttpHeaders | { [header: string]: string | string[] };
 declare type Query = Object | string;
 declare type Body = Object | string;
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class HttpWrapperService {
   private OBSERVE_TYPE: HttpObserveOptions = 'response';
   private RESPONSE_TYPE: HttpResponseOptions = 'json';

@@ -11,6 +11,8 @@ import { hot } from '@nrwl/angular/testing';
 
 import { BooksEffects } from './books.effects';
 import { LoadBooks, BooksLoaded } from './books.actions';
+import { HttpWrapperService, LoggerService } from '@workspace/libs/services';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('BooksEffects', () => {
   let actions: Observable<any>;
@@ -21,11 +23,14 @@ describe('BooksEffects', () => {
       imports: [
         NxModule.forRoot(),
         StoreModule.forRoot({}),
-        EffectsModule.forRoot([])
+        EffectsModule.forRoot([]),
+        HttpClientModule
       ],
       providers: [
         BooksEffects,
         DataPersistence,
+        HttpWrapperService,
+        LoggerService,
         provideMockActions(() => actions)
       ]
     });
@@ -35,7 +40,7 @@ describe('BooksEffects', () => {
 
   describe('loadBooks$', () => {
     it('should work', () => {
-      actions = hot('-a-|', { a: new LoadBooks() });
+      actions = hot('-a-|', { a: new LoadBooks('test') });
       expect(effects.loadBooks$).toBeObservable(
         hot('-a-|', { a: new BooksLoaded([]) })
       );

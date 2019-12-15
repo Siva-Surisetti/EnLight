@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { SearchBarComponent } from './search-bar.component';
+import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
 
 describe('SearchBarComponent', () => {
   let component: SearchBarComponent;
@@ -8,9 +10,10 @@ describe('SearchBarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchBarComponent ]
-    })
-    .compileComponents();
+      schemas: [NO_ERRORS_SCHEMA],
+      imports: [FormsModule],
+      declarations: [SearchBarComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
