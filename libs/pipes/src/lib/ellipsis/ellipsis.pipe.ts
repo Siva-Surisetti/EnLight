@@ -5,12 +5,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class EllipsisPipe implements PipeTransform {
   transform(str: string, strLength: number = 250) {
-    const withoutHtml = str.replace(/(<([^>]+)>)/gi, '');
+    let withoutHtml = '';
+    if (str) {
+      withoutHtml = str.replace(/(<([^>]+)>)/gi, '');
 
-    if (str.length >= strLength) {
-      return `${withoutHtml.slice(0, strLength)}...`;
+      if (str.length >= strLength) {
+        return `${withoutHtml.slice(0, strLength)}...`;
+      }
     }
-
     return withoutHtml;
   }
 }
