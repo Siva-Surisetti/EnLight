@@ -88,11 +88,11 @@ export class BillingComponent implements OnInit {
     this.displaySnackBar();
     this.prepareBillingAddressObject();
 
-    this.addBooksToCart();
+    this.addBooksToCollection();
     this.router.navigate([BOOKS_CONSTANTS.COLLECTION]);
   }
 
-  private addBooksToCart() {
+  private addBooksToCollection() {
     if (this.previousUrl === '/' + BOOKS_CONSTANTS.DETAIL) {
       this.addSelectedBookToMyCollection();
     } else {
