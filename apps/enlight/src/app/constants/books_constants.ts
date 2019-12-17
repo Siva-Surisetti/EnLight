@@ -1,4 +1,4 @@
-export const BOOKS_CONSTANTS: any = {
+export const BOOKS_CONSTANTS = {
   URL: 'https://www.googleapis.com/books/v1/volumes?q=',
   DETAIL: 'detail',
   COLLECTION: 'collection',

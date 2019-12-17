@@ -38,8 +38,8 @@ export class BillingComponent implements OnInit {
   action = true;
   setAutoHide = true;
   autoHide = 2000;
-  horizontalPosition: MatSnackBarHorizontalPosition = BOOKS_CONSTANTS.CENTER;
-  verticalPosition: MatSnackBarVerticalPosition = BOOKS_CONSTANTS.TOP;
+  horizontalPosition = BOOKS_CONSTANTS.CENTER;
+  verticalPosition = BOOKS_CONSTANTS.TOP;
   billing: BillingDetails = {};
   collection: CollectionItem = {};
 
@@ -136,10 +136,14 @@ export class BillingComponent implements OnInit {
     );
   }
 
-  private prepareConfigObjectForSnackBar() {
+  public prepareConfigObjectForSnackBar() {
     const config = new MatSnackBarConfig();
-    config.verticalPosition = this.verticalPosition;
-    config.horizontalPosition = this.horizontalPosition;
+    config.verticalPosition = <MatSnackBarVerticalPosition>(
+      this.verticalPosition
+    );
+    config.horizontalPosition = <MatSnackBarHorizontalPosition>(
+      this.horizontalPosition
+    );
     config.duration = this.setAutoHide ? this.autoHide : 0;
     return config;
   }
