@@ -12,11 +12,11 @@ export class HomeComponent implements OnInit {
   public booksRecords$: any;
   public searchInputData: any;
 
-  constructor(private booksFacade: BooksFacade, private router: Router) {
+  constructor(private booksFacade: BooksFacade, private router: Router) {}
+
+  ngOnInit() {
     this.booksRecords$ = this.booksFacade.allBooks$;
   }
-
-  ngOnInit() {}
 
   onBookSelect(bookId) {
     this.booksFacade.dispatchSelectedIdToStore(bookId);
