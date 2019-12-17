@@ -59,7 +59,7 @@ describe('CartComponent', () => {
       id = '1';
     });
 
-    it('should navigate to billing page', () => {
+    it('should navigate to detail page', () => {
       component.onBookSelect(id);
       expect(routerNavigationSpy).toHaveBeenCalledWith(['detail']);
     });
