@@ -90,7 +90,7 @@ export class BillingComponent implements OnInit {
     this.router.navigate([BOOKS_CONSTANTS.COLLECTION]);
   }
 
-  private addBooksToCollection() {
+  public addBooksToCollection() {
     if (this.previousUrl === '/' + BOOKS_CONSTANTS.DETAIL) {
       this.addSelectedBookToMyCollection();
     } else {
@@ -99,7 +99,7 @@ export class BillingComponent implements OnInit {
     }
   }
 
-  private addCartBooksToMyCollection() {
+  public addCartBooksToMyCollection() {
     this.cartBooks.forEach(book => {
       this.collection = {};
       this.collection.bookInfo = book;
@@ -108,7 +108,7 @@ export class BillingComponent implements OnInit {
     });
   }
 
-  private addSelectedBookToMyCollection() {
+  public addSelectedBookToMyCollection() {
     this.collection.bookInfo = this.selectedBook;
     this.collection.billingInfo = this.billing;
     this.booksFacade.dispatchBooksToCollection(this.collection);

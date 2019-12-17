@@ -5,15 +5,12 @@ import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
 import { BooksFacade } from '../../+state/books.facade';
 import { StoreModule } from '@ngrx/store';
 import { RouterTestingModule } from '@angular/router/testing';
-import {
-  MatSnackBarModule,
-  MatSnackBar,
-  MatSnackBarConfig
-} from '@angular/material';
+import { MatSnackBarModule, MatSnackBar } from '@angular/material';
 import { RouteTrackerService } from '@workspace/libs/services';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { BOOKS_CONSTANTS } from '../../constants/books_constants';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('BillingComponent', () => {
   let component: BillingComponent;
@@ -29,7 +26,8 @@ describe('BillingComponent', () => {
       imports: [
         StoreModule.forRoot({}),
         RouterTestingModule.withRoutes([]),
-        MatSnackBarModule
+        MatSnackBarModule,
+        BrowserAnimationsModule
       ],
       declarations: [BillingComponent],
       providers: [
@@ -77,13 +75,14 @@ describe('BillingComponent', () => {
   });
 
   describe('onSubmit', () => {
+    let routerNavigationSpy;
     beforeEach(() => {
       spyOn<any>(component, 'prepareBillingAddressObject');
       spyOn<any>(component, 'addBooksToCollection');
-      spyOn<any>(router, 'navigate');
+      routerNavigationSpy = spyOn<any>(router, 'navigate');
     });
 
-    it("should open snackbar when page is submitted with title 'Your purchase is successful'", () => {
+    it("should open snackbar with title 'Your purchase is successful'", () => {
       const snackbarOpenspy = spyOn(snackBar, 'open');
       component.onSubmit();
       expect(snackbarOpenspy).toHaveBeenCalledWith(
@@ -93,7 +92,7 @@ describe('BillingComponent', () => {
       );
     });
 
-    it("should open snackbar when page is submitted with action 'Ok'", () => {
+    it("should open snackbar with action 'Ok'", () => {
       const snackbarOpenspy = spyOn(snackBar, 'open');
 
       component.onSubmit();
@@ -102,6 +101,11 @@ describe('BillingComponent', () => {
         'Ok',
         expect.anything()
       );
+    });
+
+    it('should navigate to collections page', () => {
+      component.onSubmit();
+      expect(routerNavigationSpy).toHaveBeenCalledWith(['collection']);
     });
   });
 
@@ -141,51 +145,56 @@ describe('BillingComponent', () => {
   });
 
   describe('addBooksToCollection', () => {
-    it('should add selected book collection when previousUrl is details', () => {
+    it('should call addSelectedBookToMyCollection when previousUrl is details', () => {
       const addSelectedBookToMyCollectionspy = spyOn<any>(
         component,
         'addSelectedBookToMyCollection'
       );
       component.previousUrl = '/' + BOOKS_CONSTANTS.DETAIL;
-      component['addBooksToCollection']();
+      component.addBooksToCollection();
       expect(addSelectedBookToMyCollectionspy).toHaveBeenCalled();
     });
 
-    it('should add cart books to collection when previousUrl is not details', () => {
+    it('should call addCartBooksToMyCollection when previousUrl is not details', () => {
       const addCartBooksToMyCollectionspy = spyOn<any>(
         component,
         'addCartBooksToMyCollection'
       );
       component.previousUrl = '/' + BOOKS_CONSTANTS.COLLECTION;
-      component['addBooksToCollection']();
+      component.addBooksToCollection();
       expect(addCartBooksToMyCollectionspy).toHaveBeenCalled();
     });
   });
 
+  describe('addSelectedBookToMyCollection', () => {
+    it('should dispatch selected book to ngrx store', () => {
+      const dispatchBooksToCollectionSpy = spyOn<any>(
+        booksFacade,
+        'dispatchBooksToCollection'
+      );
+      const sampleBook = { bookId: 1 };
+      component.selectedBook = sampleBook;
+      component.addSelectedBookToMyCollection();
+      expect(dispatchBooksToCollectionSpy).toHaveBeenCalledWith({
+        billingInfo: {},
+        bookInfo: sampleBook
+      });
+    });
+  });
+
   describe('addCartBooksToMyCollection', () => {
-    it('for sample cartbooks array', () => {
+    it('should dispatch cart books to ngrx store', () => {
+      const dispatchBooksToCollectionSpy = spyOn<any>(
+        booksFacade,
+        'dispatchBooksToCollection'
+      );
       const sampleBook = { bookId: 1 };
       component.cartBooks = [sampleBook];
-      component['addCartBooksToMyCollection']();
-      expect(component.collection.bookInfo).toEqual(sampleBook);
-    });
-  });
-
-  describe('addSelectedBookToMyCollection', () => {
-    it('when previousUrl is details', () => {
-      const sampleBook = { bookId: 1 };
-      component.selectedBook = sampleBook;
-      component['addSelectedBookToMyCollection']();
-      expect(component.collection.bookInfo).toEqual(sampleBook);
-    });
-  });
-
-  describe('addSelectedBookToMyCollection', () => {
-    it('for sample selected book', () => {
-      const sampleBook = { bookId: 1 };
-      component.selectedBook = sampleBook;
-      component['addSelectedBookToMyCollection']();
-      expect(component.collection.bookInfo).toEqual(sampleBook);
+      component.addCartBooksToMyCollection();
+      expect(dispatchBooksToCollectionSpy).toHaveBeenCalledWith({
+        billingInfo: {},
+        bookInfo: sampleBook
+      });
     });
   });
 });
