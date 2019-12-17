@@ -7,17 +7,25 @@ import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
 import { BooksFacade } from '../../+state/books.facade';
 import { StoreModule } from '@ngrx/store';
 import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
+import { Router } from '@angular/router';
 
 describe('CartComponent', () => {
   let component: CartComponent;
   let fixture: ComponentFixture<CartComponent>;
+  let router: Router;
+  let booksFacade: BooksFacade;
 
+  const fakeBooksFacade = {
+    cartBooks$: of({}),
+    dispatchSelectedIdToStore: function(arg) {}
+  };
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
-      imports: [StoreModule.forRoot({}), RouterTestingModule],
+      imports: [StoreModule.forRoot({}), RouterTestingModule.withRoutes([])],
       declarations: [CartComponent, MatCardTitle, EllipsisPipe, AddCommasPipe],
-      providers: [BooksFacade]
+      providers: [{ provide: BooksFacade, useValue: fakeBooksFacade }]
     }).compileComponents();
   }));
 
@@ -25,9 +33,40 @@ describe('CartComponent', () => {
     fixture = TestBed.createComponent(CartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    booksFacade = TestBed.get(BooksFacade);
+    router = TestBed.get(Router);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component.cartBooks).toEqual({});
+  });
+
+  describe('proceedToPurchase', () => {
+    it('should navigate to billing page', () => {
+      const routerNavigationSpy = spyOn<any>(router, 'navigate');
+      component.proceedToPurchase();
+      expect(routerNavigationSpy).toHaveBeenCalledWith(['billing']);
+    });
+  });
+
+  describe('onBookSelect', () => {
+    let routerNavigationSpy;
+    let booksFacadeSpy;
+    let id;
+    beforeEach(() => {
+      routerNavigationSpy = spyOn<any>(router, 'navigate');
+      booksFacadeSpy = spyOn<any>(booksFacade, 'dispatchSelectedIdToStore');
+      id = '1';
+    });
+
+    it('should navigate to billing page', () => {
+      component.onBookSelect(id);
+      expect(routerNavigationSpy).toHaveBeenCalledWith(['detail']);
+    });
+
+    it('should dispatch selected id to store', () => {
+      component.onBookSelect(id);
+      expect(booksFacadeSpy).toHaveBeenCalledWith(id);
+    });
   });
 });
