@@ -35,8 +35,6 @@ export class BillingComponent implements OnInit {
   previousUrl: string;
   message = BOOKS_CONSTANTS.PURCHASE_SUCCESSFUL;
   actionButtonLabel = BOOKS_CONSTANTS.OK;
-  action = true;
-  setAutoHide = true;
   autoHide = 2000;
   horizontalPosition = BOOKS_CONSTANTS.CENTER;
   verticalPosition = BOOKS_CONSTANTS.TOP;
@@ -116,7 +114,7 @@ export class BillingComponent implements OnInit {
     this.booksFacade.dispatchBooksToCollection(this.collection);
   }
 
-  private prepareBillingAddressObject() {
+  public prepareBillingAddressObject() {
     this.billing.name = this.loginForm.value.name;
     this.billing.email = this.loginForm.value.email;
     this.billing.phone = this.loginForm.value.phone;
@@ -129,11 +127,7 @@ export class BillingComponent implements OnInit {
   }
 
   private openSnackBar(config: MatSnackBarConfig<any>) {
-    this.snackBar.open(
-      this.message,
-      this.action ? this.actionButtonLabel : undefined,
-      config
-    );
+    this.snackBar.open(this.message, this.actionButtonLabel, config);
   }
 
   public prepareConfigObjectForSnackBar() {
@@ -144,7 +138,7 @@ export class BillingComponent implements OnInit {
     config.horizontalPosition = <MatSnackBarHorizontalPosition>(
       this.horizontalPosition
     );
-    config.duration = this.setAutoHide ? this.autoHide : 0;
+    config.duration = this.autoHide;
     return config;
   }
 }

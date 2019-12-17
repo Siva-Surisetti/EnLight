@@ -5,7 +5,11 @@ import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
 import { BooksFacade } from '../../+state/books.facade';
 import { StoreModule } from '@ngrx/store';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MatSnackBarModule, MatSnackBar } from '@angular/material';
+import {
+  MatSnackBarModule,
+  MatSnackBar,
+  MatSnackBarConfig
+} from '@angular/material';
 import { RouteTrackerService } from '@workspace/libs/services';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
@@ -71,35 +75,72 @@ describe('BillingComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  describe('onSubmit funnctionality', () => {
-    it('should open snackbar when page is submitted', () => {
-      const snackbarOpenspy = spyOn(snackBar, 'open');
+
+  describe('onSubmit', () => {
+    beforeEach(() => {
       spyOn<any>(component, 'prepareBillingAddressObject');
       spyOn<any>(component, 'addBooksToCollection');
       spyOn<any>(router, 'navigate');
-      component.onSubmit();
-      expect(snackbarOpenspy).toHaveBeenCalled();
     });
-    it('snackbar should be opened with no action', () => {
+
+    it("should open snackbar when page is submitted with title 'Your purchase is successful'", () => {
       const snackbarOpenspy = spyOn(snackBar, 'open');
-      component.action = undefined;
-      spyOn<any>(component, 'prepareBillingAddressObject');
-      spyOn<any>(component, 'addBooksToCollection');
-      spyOn<any>(router, 'navigate');
       component.onSubmit();
-      expect(snackbarOpenspy).toHaveBeenCalled();
+      expect(snackbarOpenspy).toHaveBeenCalledWith(
+        'Your purchase is successful',
+        expect.anything(),
+        expect.anything()
+      );
     });
-    it('snackbar should be opened with autohide false', () => {
+
+    it("should open snackbar when page is submitted with action 'Ok'", () => {
       const snackbarOpenspy = spyOn(snackBar, 'open');
-      component.setAutoHide = false;
-      spyOn<any>(component, 'prepareBillingAddressObject');
-      spyOn<any>(component, 'addBooksToCollection');
-      spyOn<any>(router, 'navigate');
+
       component.onSubmit();
-      expect(snackbarOpenspy).toHaveBeenCalled();
+      expect(snackbarOpenspy).toHaveBeenCalledWith(
+        expect.anything(),
+        'Ok',
+        expect.anything()
+      );
     });
   });
-  describe('addBooksToCollection funnctionality', () => {
+
+  describe('prepareConfigObjectForSnackBar', () => {
+    it("should display snackbar at verticalPosition 'top'", () => {
+      const config = component.prepareConfigObjectForSnackBar();
+      expect(config.verticalPosition).toEqual('top');
+    });
+
+    it("should display snackbar at horizontalPosition 'center'", () => {
+      const config = component.prepareConfigObjectForSnackBar();
+      expect(config.horizontalPosition).toEqual('center');
+    });
+
+    it('should display snackbar for a duration of 2 seconds', () => {
+      const config = component.prepareConfigObjectForSnackBar();
+      expect(config.duration).toEqual(2000);
+    });
+  });
+
+  describe('prepareBillingAddressObject', () => {
+    it('should prepare billing address based on form field inputs', () => {
+      component.loginForm.value.name = 'TestName';
+      component.loginForm.value.email = 'TestEmail';
+      component.loginForm.value.phone = '12345';
+      component.loginForm.value.address = 'TestAddress';
+
+      component.prepareBillingAddressObject();
+      console.log('billing', component.billing.name);
+      expect(component.billing).toEqual({
+        name: 'TestName',
+        email: 'TestEmail',
+        phone: '12345',
+        address: 'TestAddress'
+      });
+    });
+  });
+
+  describe('addBooksToCollection', () => {
     it('should add selected book collection when previousUrl is details', () => {
       const addSelectedBookToMyCollectionspy = spyOn<any>(
         component,
@@ -109,6 +150,7 @@ describe('BillingComponent', () => {
       component['addBooksToCollection']();
       expect(addSelectedBookToMyCollectionspy).toHaveBeenCalled();
     });
+
     it('should add cart books to collection when previousUrl is not details', () => {
       const addCartBooksToMyCollectionspy = spyOn<any>(
         component,
@@ -120,7 +162,7 @@ describe('BillingComponent', () => {
     });
   });
 
-  describe('addCartBooksToMyCollection funnctionality', () => {
+  describe('addCartBooksToMyCollection', () => {
     it('for sample cartbooks array', () => {
       const sampleBook = { bookId: 1 };
       component.cartBooks = [sampleBook];
@@ -128,7 +170,8 @@ describe('BillingComponent', () => {
       expect(component.collection.bookInfo).toEqual(sampleBook);
     });
   });
-  describe('addSelectedBookToMyCollection funnctionality', () => {
+
+  describe('addSelectedBookToMyCollection', () => {
     it('when previousUrl is details', () => {
       const sampleBook = { bookId: 1 };
       component.selectedBook = sampleBook;
@@ -136,20 +179,13 @@ describe('BillingComponent', () => {
       expect(component.collection.bookInfo).toEqual(sampleBook);
     });
   });
-  describe('addSelectedBookToMyCollection funnctionality', () => {
+
+  describe('addSelectedBookToMyCollection', () => {
     it('for sample selected book', () => {
       const sampleBook = { bookId: 1 };
       component.selectedBook = sampleBook;
       component['addSelectedBookToMyCollection']();
       expect(component.collection.bookInfo).toEqual(sampleBook);
-    });
-  });
-  describe('prepareBillingAddressObject funnctionality', () => {
-    it('for sample name', () => {
-      const sampleName = 'TmobileCustomer';
-      component.loginForm.value.name = sampleName;
-      component['prepareBillingAddressObject']();
-      expect(component.billing.name).toEqual(sampleName);
     });
   });
 });
