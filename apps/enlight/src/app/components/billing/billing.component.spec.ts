@@ -134,7 +134,6 @@ describe('BillingComponent', () => {
       component.loginForm.value.address = 'TestAddress';
 
       component.prepareBillingAddressObject();
-      console.log('billing', component.billing.name);
       expect(component.billing).toEqual({
         name: 'TestName',
         email: 'TestEmail',
