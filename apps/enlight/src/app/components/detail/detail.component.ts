@@ -10,15 +10,15 @@ import { BOOKS_CONSTANTS } from '../../constants/books_constants';
 })
 export class DetailComponent implements OnInit {
   public selectedBook: any;
-  constructor(private booksFacade: BooksFacade, private router: Router) {
+  constructor(private booksFacade: BooksFacade, private router: Router) {}
+
+  ngOnInit() {
     this.booksFacade.selectedBook$.subscribe(book => {
       this.selectedBook = book;
     });
   }
 
-  ngOnInit() {}
-
-  OnAddToCart() {
+  addToCart() {
     this.booksFacade.dispatchBooksToCartStore(this.selectedBook);
     this.router.navigate([BOOKS_CONSTANTS.HOME]);
   }

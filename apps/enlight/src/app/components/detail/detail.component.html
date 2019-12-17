@@ -58,11 +58,7 @@
         {{ selectedBook.volumeInfo.authors | addCommas }}
       </span>
       <div class="book-action-btns">
-        <button
-          mat-button
-          class="addtocard-btn book-btn"
-          (click)="OnAddToCart()"
-        >
+        <button mat-button class="addtocard-btn book-btn" (click)="addToCart()">
           ADD TO CART
         </button>
 

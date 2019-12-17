@@ -4,7 +4,7 @@ import { CollectionComponent } from './collection.component';
 import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
 import { EllipsisPipe, AddCommasPipe } from '@workspace/pipes';
 import { BooksFacade } from '../../+state/books.facade';
-import { Store, StoreModule } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
