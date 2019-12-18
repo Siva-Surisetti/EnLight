@@ -6,7 +6,7 @@ import { filter, pairwise } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class RouteTrackerService {
-  private previousUrl: string = undefined;
+  public previousUrl: string = undefined;
 
   constructor(private router: Router) {
     router.events
