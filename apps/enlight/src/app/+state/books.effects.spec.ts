@@ -1,6 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -10,7 +10,7 @@ import { NxModule, DataPersistence } from '@nrwl/angular';
 import { hot } from '@nrwl/angular/testing';
 
 import { BooksEffects } from './books.effects';
-import { LoadBooks, BooksLoaded } from './books.actions';
+import { LoadBooks, BooksLoaded, BooksLoadError } from './books.actions';
 import { HttpWrapperService, LoggerService } from '@workspace/libs/services';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -48,6 +48,14 @@ describe('BooksEffects', () => {
       actions = hot('-a-|', { a: new LoadBooks('test') });
       expect(effects.loadBooks$).toBeObservable(
         hot('-a-|', { a: new BooksLoaded([]) })
+      );
+    });
+
+    it('should call BooksLoadError when error is thrown from observable', () => {
+      spyOn(httpWrapperService, 'get').and.returnValue(throwError([]));
+      actions = hot('-a-|', { a: new LoadBooks('test') });
+      expect(effects.loadBooks$).toBeObservable(
+        hot('-a-|', { a: new BooksLoadError([]) })
       );
     });
   });
