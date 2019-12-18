@@ -8,4 +8,11 @@ describe('LoggerService', () => {
     const service: LoggerService = TestBed.get(LoggerService);
     expect(service).toBeTruthy();
   });
+  it('should log message to console', () => {
+    const service: LoggerService = TestBed.get(LoggerService);
+
+    const consoleSpy = spyOn(console, 'log');
+    service.logError('test');
+    expect(consoleSpy).toHaveBeenCalledWith('test');
+  });
 });

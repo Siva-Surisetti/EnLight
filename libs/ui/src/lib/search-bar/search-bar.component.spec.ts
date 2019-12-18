@@ -25,4 +25,10 @@ describe('SearchBarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should emit value on search', () => {
+    const emitSpy = spyOn(component.searchValue, 'emit');
+    component.searchInput = 'test';
+    component.onSearch();
+    expect(emitSpy).toHaveBeenCalledWith('test');
+  });
 });
