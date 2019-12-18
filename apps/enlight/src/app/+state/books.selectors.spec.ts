@@ -36,7 +36,7 @@ describe('Books Selectors', () => {
     });
 
     it('getSelectedBooks() should return the selected Entity', () => {
-      const result = booksQuery.getSelectedBooks(storeState);
+      const result = booksQuery.getSelectedBook(storeState);
       const selId = getBooksId(result);
 
       expect(selId).toBe('PRODUCT-BBB');

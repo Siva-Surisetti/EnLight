@@ -33,7 +33,7 @@ const getCartBooks = createSelector(
   }
 );
 
-const getSelectedBooks = createSelector(
+const getSelectedBook = createSelector(
   getAllBooks,
   getSelectedId,
   (books, id) => {
@@ -54,7 +54,8 @@ export const booksQuery = {
   getLoaded,
   getError,
   getAllBooks,
-  getSelectedBooks,
+  getSelectedBook,
   getCartBooks,
-  getCollectionBooks
+  getCollectionBooks,
+  getSelectedId
 };

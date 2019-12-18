@@ -17,9 +17,10 @@ import {
 export class BooksFacade {
   loaded$ = this.store.pipe(select(booksQuery.getLoaded));
   allBooks$ = this.store.pipe(select(booksQuery.getAllBooks));
-  selectedBook$ = this.store.pipe(select(booksQuery.getSelectedBooks));
+  selectedBook$ = this.store.pipe(select(booksQuery.getSelectedBook));
   cartBooks$ = this.store.pipe(select(booksQuery.getCartBooks));
   collectionBooks$ = this.store.pipe(select(booksQuery.getCollectionBooks));
+  selectedBookId$ = this.store.pipe(select(booksQuery.getSelectedId));
 
   constructor(private store: Store<BooksPartialState>) {}
 
@@ -30,8 +31,8 @@ export class BooksFacade {
   dispatchSelectedIdToStore(selecedId) {
     this.store.dispatch(new BookSelected(selecedId));
   }
-  dispatchBooksToCartStore(bookId) {
-    this.store.dispatch(new AddToCart(bookId));
+  dispatchBooksToCartStore(book) {
+    this.store.dispatch(new AddToCart(book));
   }
   dispatchBooksToCollection(collectionItem) {
     this.store.dispatch(new AddToCollection(collectionItem));

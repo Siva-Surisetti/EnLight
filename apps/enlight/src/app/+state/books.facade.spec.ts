@@ -66,7 +66,7 @@ describe('BooksFacade', () => {
     /**
      * The initially generated facade::loadAll() returns empty array
      */
-    it('loadAll() should return empty list with loaded == true', async done => {
+    it('loadBooksToStore() should return empty list with loaded == true', async done => {
       try {
         let list = await readFirst(facade.allBooks$);
         let isLoaded = await readFirst(facade.loaded$);
@@ -77,7 +77,7 @@ describe('BooksFacade', () => {
         spyOn(httpWrapperService, 'get').and.returnValue(
           of({ body: { items: [] } })
         );
-        facade.loadBooksToStore('angular');
+        facade.loadBooksToStore('test');
 
         list = await readFirst(facade.allBooks$);
         isLoaded = await readFirst(facade.loaded$);
@@ -111,6 +111,94 @@ describe('BooksFacade', () => {
         expect(list.length).toBe(2);
         expect(isLoaded).toBe(true);
 
+        done();
+      } catch (err) {
+        done.fail(err);
+      }
+    });
+
+    it('dispatchSelectedIdToStore() should dispatch id to store', async done => {
+      try {
+        facade.dispatchSelectedIdToStore('123');
+        const id = await readFirst(facade.selectedBookId$);
+        expect(id).toBe('123');
+        done();
+      } catch (err) {
+        done.fail(err);
+      }
+    });
+
+    it('dispatchBooksToCartStore() should dispatch all cart books to store', async done => {
+      try {
+        store.dispatch(
+          new BooksLoaded([createBooks('AAA'), createBooks('BBB')])
+        );
+        facade.dispatchBooksToCartStore(createBooks('AAA'));
+        const cartBooks = await readFirst(facade.cartBooks$);
+        expect(cartBooks).toMatchObject([createBooks('AAA')]);
+        done();
+      } catch (err) {
+        done.fail(err);
+      }
+    });
+
+    it('dispatchBooksToCollection() should dispatch all collection books to store', async done => {
+      try {
+        store.dispatch(
+          new BooksLoaded([createBooks('AAA'), createBooks('BBB')])
+        );
+        facade.dispatchBooksToCollection(createBooks('AAA'));
+        const collectionBooks = await readFirst(facade.collectionBooks$);
+        expect(collectionBooks).toMatchObject([createBooks('AAA')]);
+        done();
+      } catch (err) {
+        done.fail(err);
+      }
+    });
+
+    it('clearCart() should clear all cart elements', async done => {
+      try {
+        store.dispatch(
+          new BooksLoaded([createBooks('AAA'), createBooks('BBB')])
+        );
+        facade.dispatchBooksToCartStore(createBooks('AAA'));
+        const cartBooksBeforeClearing = await readFirst(facade.cartBooks$);
+        expect(cartBooksBeforeClearing).toMatchObject([createBooks('AAA')]);
+        facade.clearShoppingCart();
+        const cartBooksAfterClearing = await readFirst(facade.cartBooks$);
+        expect(cartBooksAfterClearing).toMatchObject([]);
+        done();
+      } catch (err) {
+        done.fail(err);
+      }
+    });
+
+    it('cartBooks$ should return empty if books are not loaded to store', async done => {
+      try {
+        facade.dispatchBooksToCartStore(createBooks('AAA'));
+        const cartBooks = await readFirst(facade.cartBooks$);
+        expect(cartBooks).toMatchObject([]);
+        done();
+      } catch (err) {
+        done.fail(err);
+      }
+    });
+
+    it('collectionBooks$ should return empty if books are not loaded to store', async done => {
+      try {
+        facade.dispatchBooksToCollection(createBooks('AAA'));
+        const collectionBooks = await readFirst(facade.collectionBooks$);
+        expect(collectionBooks).toMatchObject([]);
+        done();
+      } catch (err) {
+        done.fail(err);
+      }
+    });
+
+    it('getSelectedBook() should return undefined if no book selected is saved to store', async done => {
+      try {
+        const book = await readFirst(facade.selectedBook$);
+        expect(book).toBe(undefined);
         done();
       } catch (err) {
         done.fail(err);
