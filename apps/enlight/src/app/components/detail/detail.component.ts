@@ -34,7 +34,7 @@ export class DetailComponent implements OnInit {
     this.checkIfBookExistsInCollection();
   }
 
-  private checkIfBookExistsInCollection() {
+  public checkIfBookExistsInCollection() {
     if (this.selectedBook && this.collectionBooks) {
       this.collectionBooks.forEach(item => {
         if (item.bookInfo.id === this.selectedBook.id) {
@@ -44,7 +44,7 @@ export class DetailComponent implements OnInit {
     }
   }
 
-  private checkIfBookExistsInCart() {
+  public checkIfBookExistsInCart() {
     if (this.selectedBook && this.cartBooks) {
       this.cartBooks.forEach(book => {
         if (book.id === this.selectedBook.id) {

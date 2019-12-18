@@ -17,6 +17,8 @@ describe('DetailComponent', () => {
 
   const fakeBooksFacade = {
     selectedBook$: of(null),
+    cartBooks$: of({}, {}),
+    collectionBooks$: of({}, {}),
     dispatchBooksToCartStore: function(arg) {}
   };
 
@@ -73,6 +75,33 @@ describe('DetailComponent', () => {
     it('should navigate to billing page', () => {
       component.purchaseBook();
       expect(routerNavigationSpy).toHaveBeenCalledWith(['billing']);
+    });
+  });
+
+  describe('checkIfBookExistsInCart', () => {
+    beforeEach(() => {
+      component.selectedBook = { id: '123' };
+      component.cartBooks = [{ id: '123' }, { id: '234' }];
+    });
+
+    it('should set bookExistsInCart property to true if selected book exists in cart', () => {
+      component.checkIfBookExistsInCart();
+      expect(component.bookExistsInCart).toBe(true);
+    });
+  });
+
+  describe('checkIfBookExistsInCollection', () => {
+    beforeEach(() => {
+      component.selectedBook = { id: '123' };
+      component.collectionBooks = [
+        { bookInfo: { id: '123' } },
+        { bookInfo: { id: '234' } }
+      ];
+    });
+
+    it('should set bookExistsInCart property to true if selected book exists in cart', () => {
+      component.checkIfBookExistsInCollection();
+      expect(component.bookExistsInCollection).toBe(true);
     });
   });
 });
