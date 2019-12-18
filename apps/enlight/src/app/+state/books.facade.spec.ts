@@ -15,6 +15,7 @@ import { LoadBooks, BooksLoaded } from './books.actions';
 import { BooksState, Entity, initialState, reducer } from './books.reducer';
 import { HttpWrapperService, LoggerService } from '@workspace/libs/services';
 import { HttpClientModule } from '@angular/common/http';
+import { of } from 'rxjs';
 
 interface TestSchema {
   books: BooksState;
@@ -24,6 +25,7 @@ describe('BooksFacade', () => {
   let facade: BooksFacade;
   let store: Store<TestSchema>;
   let createBooks;
+  let httpWrapperService: HttpWrapperService;
 
   beforeEach(() => {
     createBooks = (id: string, name = ''): Entity => ({
@@ -58,6 +60,7 @@ describe('BooksFacade', () => {
 
       store = TestBed.get(Store);
       facade = TestBed.get(BooksFacade);
+      httpWrapperService = TestBed.get(HttpWrapperService);
     });
 
     /**
@@ -71,6 +74,9 @@ describe('BooksFacade', () => {
         expect(list.length).toBe(0);
         expect(isLoaded).toBe(false);
 
+        spyOn(httpWrapperService, 'get').and.returnValue(
+          of({ body: { items: [] } })
+        );
         facade.loadBooksToStore('angular');
 
         list = await readFirst(facade.allBooks$);
