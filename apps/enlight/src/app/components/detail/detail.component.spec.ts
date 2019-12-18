@@ -99,7 +99,7 @@ describe('DetailComponent', () => {
       ];
     });
 
-    it('should set bookExistsInCart property to true if selected book exists in cart', () => {
+    it('should set bookExistsInCollection property to true if selected book exists in collection', () => {
       component.checkIfBookExistsInCollection();
       expect(component.bookExistsInCollection).toBe(true);
     });
