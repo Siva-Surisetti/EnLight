@@ -57,7 +57,11 @@
       <span *ngIf="selectedBook.volumeInfo.authors">
         {{ selectedBook.volumeInfo.authors | addCommas }}
       </span>
-      <div class="book-action-btns">
+
+      <div
+        class="book-action-btns"
+        *ngIf="!bookExistsInCart && !bookExistsInCollection"
+      >
         <button mat-button class="addtocard-btn book-btn" (click)="addToCart()">
           ADD TO CART
         </button>
@@ -65,6 +69,17 @@
         <button mat-button class="buy-btn book-btn" (click)="purchaseBook()">
           BUY
         </button>
+      </div>
+      <div *ngIf="bookExistsInCart">
+        <h5>
+          *Book already added in cart. Please navigate to cart section to
+          proceed for purchase
+        </h5>
+      </div>
+      <div *ngIf="bookExistsInCollection">
+        <h5>
+          *Books already purchased. Please navigate to My Collection section
+        </h5>
       </div>
     </mat-card-footer>
   </mat-card>
