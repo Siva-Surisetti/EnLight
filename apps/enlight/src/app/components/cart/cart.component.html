@@ -20,9 +20,19 @@
       </mat-card-content>
       <mat-card-footer>
         <h5>Written By:</h5>
-        <span>
-          {{ book.volumeInfo.authors | addCommas }}
-        </span>
+        <div class="inline-block">
+          <span>
+            {{ book.volumeInfo.authors | addCommas }}
+          </span>
+        </div>
+        <div
+          class="inline-block float-right rm-cart-icon"
+          (click)="removeFromCart(book.id, $event)"
+        >
+          <mat-icon matBadgeColor="accent" color="accent"
+            >remove_shopping_cart</mat-icon
+          >
+        </div>
       </mat-card-footer>
     </mat-card>
   </div>

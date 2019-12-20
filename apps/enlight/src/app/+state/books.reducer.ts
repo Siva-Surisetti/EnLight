@@ -69,6 +69,17 @@ export function reducer(
       };
       break;
     }
+    case BooksActionTypes.RemoveFromCart: {
+      const cartItems = state.cartItems;
+      const filteredCart = cartItems.filter((item: any) => {
+        return item.id !== action.payload;
+      });
+      state = {
+        ...state,
+        cartItems: filteredCart
+      };
+      break;
+    }
     case BooksActionTypes.AddSearchKey: {
       state = {
         ...state,

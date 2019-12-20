@@ -9,6 +9,7 @@ export enum BooksActionTypes {
   AddToCart = '[Books] Add Books to Cart',
   AddToCollection = '[Books] Add Books to Collection',
   ClearCart = '[Books] Clear Cart',
+  RemoveFromCart = '[Books] Remove From Cart',
   AddSearchKey = '[Books] Add Search Key to Story'
 }
 
@@ -47,6 +48,11 @@ export class ClearCart implements Action {
   constructor() {}
 }
 
+export class RemoveFromCart implements Action {
+  readonly type = BooksActionTypes.RemoveFromCart;
+  constructor(public payload: string) {}
+}
+
 export class AddSearchKey implements Action {
   readonly type = BooksActionTypes.AddSearchKey;
   constructor(public payload: any) {}
@@ -60,6 +66,7 @@ export type BooksAction =
   | AddToCart
   | AddToCollection
   | ClearCart
+  | RemoveFromCart
   | AddSearchKey;
 
 export const fromBooksActions = {
@@ -70,5 +77,6 @@ export const fromBooksActions = {
   AddToCart,
   AddToCollection,
   ClearCart,
+  RemoveFromCart,
   AddSearchKey
 };

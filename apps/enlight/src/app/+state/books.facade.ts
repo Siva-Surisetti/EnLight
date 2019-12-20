@@ -10,7 +10,8 @@ import {
   AddToCart,
   AddToCollection,
   ClearCart,
-  AddSearchKey
+  AddSearchKey,
+  RemoveFromCart
 } from './books.actions';
 
 @Injectable()
@@ -39,6 +40,9 @@ export class BooksFacade {
   }
   clearShoppingCart() {
     this.store.dispatch(new ClearCart());
+  }
+  removeFromCart(bookId) {
+    this.store.dispatch(new RemoveFromCart(bookId));
   }
   dispatchSearchKeyToStore(searchKey) {
     this.store.dispatch(new AddSearchKey(searchKey));

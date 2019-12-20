@@ -27,4 +27,9 @@ export class CartComponent implements OnInit {
     this.booksFacade.dispatchSelectedIdToStore(bookId);
     this.router.navigate([BOOKS_CONSTANTS.DETAIL]);
   }
+
+  removeFromCart(bookId, event) {
+    this.booksFacade.removeFromCart(bookId);
+    event.stopPropagation();
+  }
 }
