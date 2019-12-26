@@ -162,9 +162,24 @@ describe('BooksFacade', () => {
           new BooksLoaded([createBooks('AAA'), createBooks('BBB')])
         );
         facade.dispatchBooksToCartStore(createBooks('AAA'));
+        const cartBooksBeforeRemoving = await readFirst(facade.cartBooks$);
+        expect(cartBooksBeforeRemoving).toMatchObject([createBooks('AAA')]);
+        facade.clearShoppingCart();
+        const cartBooksAfterRemoving = await readFirst(facade.cartBooks$);
+        expect(cartBooksAfterRemoving).toMatchObject([]);
+        done();
+      } catch (err) {
+        done.fail(err);
+      }
+    });
+
+    it('removeFromCart() should remove selected cart elements', async done => {
+      try {
+        store.dispatch(new BooksLoaded([createBooks('AAA')]));
+        facade.dispatchBooksToCartStore(createBooks('AAA'));
         const cartBooksBeforeClearing = await readFirst(facade.cartBooks$);
         expect(cartBooksBeforeClearing).toMatchObject([createBooks('AAA')]);
-        facade.clearShoppingCart();
+        facade.removeFromCart('AAA');
         const cartBooksAfterClearing = await readFirst(facade.cartBooks$);
         expect(cartBooksAfterClearing).toMatchObject([]);
         done();

@@ -18,7 +18,8 @@ describe('CartComponent', () => {
 
   const fakeBooksFacade = {
     cartBooks$: of({}),
-    dispatchSelectedIdToStore: function(arg) {}
+    dispatchSelectedIdToStore: function(arg) {},
+    removeFromCart: function(id) {}
   };
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -67,6 +68,13 @@ describe('CartComponent', () => {
     it('should dispatch selected id to store', () => {
       component.onBookSelect(id);
       expect(booksFacadeSpy).toHaveBeenCalledWith(id);
+    });
+
+    it('should remove selected item from cart', () => {
+      const removeFromCartSpy = spyOn<any>(booksFacade, 'removeFromCart');
+      const eventMock = { stopPropagation: function() {} };
+      component.removeFromCart(id, eventMock);
+      expect(removeFromCartSpy).toHaveBeenCalledWith(id);
     });
   });
 });
