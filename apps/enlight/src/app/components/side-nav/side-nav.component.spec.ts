@@ -5,7 +5,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
 import { BooksFacade } from '../../+state/books.facade';
 import { StoreModule } from '@ngrx/store';
 import { RouterTestingModule } from '@angular/router/testing';
-import { of, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { SidenavToggleService } from '@workspace/libs/services';
 import { MatSidenav, MatSidenavModule } from '@angular/material';
 import { By } from '@angular/platform-browser';

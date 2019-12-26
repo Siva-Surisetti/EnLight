@@ -10,8 +10,7 @@ import { NxModule } from '@nrwl/angular';
 import { BooksEffects } from './books.effects';
 import { BooksFacade } from './books.facade';
 
-import { booksQuery } from './books.selectors';
-import { LoadBooks, BooksLoaded } from './books.actions';
+import { BooksLoaded } from './books.actions';
 import { BooksState, Entity, initialState, reducer } from './books.reducer';
 import { HttpWrapperService, LoggerService } from '@workspace/libs/services';
 import { HttpClientModule } from '@angular/common/http';

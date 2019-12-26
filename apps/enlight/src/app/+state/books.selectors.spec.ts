@@ -1,4 +1,4 @@
-import { Entity, BooksState } from './books.reducer';
+import { Entity } from './books.reducer';
 import { booksQuery } from './books.selectors';
 
 describe('Books Selectors', () => {
