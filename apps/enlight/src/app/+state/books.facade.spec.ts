@@ -173,7 +173,7 @@ describe('BooksFacade', () => {
       }
     });
 
-    it('removeFromCart() should remove selected cart elements', async done => {
+    it('should remove selected cart element with removeFromCart() call', async done => {
       try {
         store.dispatch(new BooksLoaded([createBooks('AAA')]));
         facade.dispatchBooksToCartStore(createBooks('AAA'));
