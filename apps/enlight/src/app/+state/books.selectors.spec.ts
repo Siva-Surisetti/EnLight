@@ -27,7 +27,7 @@ describe('Books Selectors', () => {
   });
 
   describe('Books Selectors', () => {
-    it('getAllBooks() should return the list of Books', () => {
+    it('should return the list of Books with getAllBooks() call', () => {
       const results = booksQuery.getAllBooks(storeState);
       const selId = getBooksId(results[1]);
 
@@ -35,20 +35,20 @@ describe('Books Selectors', () => {
       expect(selId).toBe('PRODUCT-BBB');
     });
 
-    it('getSelectedBooks() should return the selected Entity', () => {
+    it('should return the selected Entity with getSelectedBooks() call', () => {
       const result = booksQuery.getSelectedBook(storeState);
       const selId = getBooksId(result);
 
       expect(selId).toBe('PRODUCT-BBB');
     });
 
-    it("getLoaded() should return the current 'loaded' status", () => {
+    it("should return the current 'loaded' status with getLoaded() call", () => {
       const result = booksQuery.getLoaded(storeState);
 
       expect(result).toBe(true);
     });
 
-    it("getError() should return the current 'error' storeState", () => {
+    it("should return the current 'error' storeState with getError() call", () => {
       const result = booksQuery.getError(storeState);
 
       expect(result).toBe(ERROR_MSG);

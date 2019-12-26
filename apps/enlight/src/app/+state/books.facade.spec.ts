@@ -66,7 +66,7 @@ describe('BooksFacade', () => {
     /**
      * The initially generated facade::loadAll() returns empty array
      */
-    it('loadBooksToStore() should return empty list with loaded == true', async done => {
+    it('should return empty list with loaded == true with loadBooksToStore() call', async done => {
       try {
         let list = await readFirst(facade.allBooks$);
         let isLoaded = await readFirst(facade.loaded$);
@@ -93,7 +93,7 @@ describe('BooksFacade', () => {
     /**
      * Use `BooksLoaded` to manually submit list for state management
      */
-    it('allBooks$ should return the loaded list; and loaded flag == true', async done => {
+    it('should return the loaded list; and loaded flag == true using allBooks$', async done => {
       try {
         let list = await readFirst(facade.allBooks$);
         let isLoaded = await readFirst(facade.loaded$);
@@ -117,7 +117,7 @@ describe('BooksFacade', () => {
       }
     });
 
-    it('dispatchSelectedIdToStore() should dispatch id to store', async done => {
+    it('should dispatch id to store with dispatchSelectedIdToStore() call', async done => {
       try {
         facade.dispatchSelectedIdToStore('123');
         const id = await readFirst(facade.selectedBookId$);
@@ -128,7 +128,7 @@ describe('BooksFacade', () => {
       }
     });
 
-    it('dispatchBooksToCartStore() should dispatch all cart books to store', async done => {
+    it('should dispatch all cart books to store with dispatchBooksToCartStore() call', async done => {
       try {
         store.dispatch(
           new BooksLoaded([createBooks('AAA'), createBooks('BBB')])
@@ -142,7 +142,7 @@ describe('BooksFacade', () => {
       }
     });
 
-    it('dispatchBooksToCollection() should dispatch all collection books to store', async done => {
+    it('should dispatch all collection books to store with dispatchBooksToCollection() call', async done => {
       try {
         store.dispatch(
           new BooksLoaded([createBooks('AAA'), createBooks('BBB')])
@@ -156,7 +156,7 @@ describe('BooksFacade', () => {
       }
     });
 
-    it('clearCart() should clear all cart elements', async done => {
+    it('should clear all cart elements with clearCart() call', async done => {
       try {
         store.dispatch(
           new BooksLoaded([createBooks('AAA'), createBooks('BBB')])
@@ -173,7 +173,7 @@ describe('BooksFacade', () => {
       }
     });
 
-    it('cartBooks$ should return empty if books are not loaded to store', async done => {
+    it('should return empty if books are not loaded to store with cartBooks$', async done => {
       try {
         facade.dispatchBooksToCartStore(createBooks('AAA'));
         const cartBooks = await readFirst(facade.cartBooks$);
@@ -184,7 +184,7 @@ describe('BooksFacade', () => {
       }
     });
 
-    it('collectionBooks$ should return empty if books are not loaded to store', async done => {
+    it('should return empty if books are not loaded to store with collectionBooks$ ', async done => {
       try {
         facade.dispatchBooksToCollection(createBooks('AAA'));
         const collectionBooks = await readFirst(facade.collectionBooks$);
@@ -195,7 +195,7 @@ describe('BooksFacade', () => {
       }
     });
 
-    it('getSelectedBook() should return undefined if no book selected is saved to store', async done => {
+    it('should return undefined if no book selected is saved to store with getSelectedBook() call', async done => {
       try {
         const book = await readFirst(facade.selectedBook$);
         expect(book).toBe(undefined);
