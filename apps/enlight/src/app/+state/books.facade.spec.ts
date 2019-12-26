@@ -210,7 +210,7 @@ describe('BooksFacade', () => {
       }
     });
 
-    it('should return undefined if no book selected is saved to store with getSelectedBook() call', async done => {
+    it('should return undefined if no book is selected with getSelectedBook() call', async done => {
       try {
         const book = await readFirst(facade.selectedBook$);
         expect(book).toBe(undefined);
