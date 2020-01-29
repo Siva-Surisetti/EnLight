@@ -1,6 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
 import { catchError } from 'rxjs/operators';
-import { throwError as observableThrowError, Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { throwError as observableThrowError } from 'rxjs';
+
 import {
   HttpClient,
   HttpHeaders,
@@ -15,8 +17,8 @@ import {
 import { LoggerService } from '../logger/logger.service';
 
 declare type Headers = HttpHeaders | { [header: string]: string | string[] };
-declare type Query = Object | string;
-declare type Body = Object | string;
+declare type Query = object | string;
+declare type Body = object | string;
 
 @Injectable({
   providedIn: 'root'

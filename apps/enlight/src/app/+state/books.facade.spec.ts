@@ -14,7 +14,7 @@ import { BooksLoaded } from './books.actions';
 import { BooksState, Entity, initialState, reducer } from './books.reducer';
 import { HttpWrapperService, LoggerService } from '@workspace/libs/services';
 import { HttpClientModule } from '@angular/common/http';
-import { of } from 'rxjs';
+import { of } from 'rxjs/observable/of';
 
 interface TestSchema {
   books: BooksState;

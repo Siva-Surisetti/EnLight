@@ -1,12 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { HomeComponent } from './home.component';
 import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
-import { BooksFacade } from '../../+state/books.facade';
-import { StoreModule } from '@ngrx/store';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
-import { of } from 'rxjs';
+import { StoreModule } from '@ngrx/store';
+import { of } from 'rxjs/observable/of';
+
+import { HomeComponent } from './home.component';
+import { BooksFacade } from '../../+state/books.facade';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -71,7 +71,7 @@ describe('HomeComponent', () => {
     });
 
     it('should dispatch searchKey to store', () => {
-      component.onSearchInput(searchKey);
+      component.onSearch(searchKey);
       expect(booksFacadeSpy).toHaveBeenCalledWith(searchKey);
     });
   });

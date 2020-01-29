@@ -26,7 +26,7 @@
           </span>
         </div>
         <div
-          class="inline-block float-right rm-cart-icon"
+          class="book-block-center float-right rm-cart-icon"
           (click)="removeFromCart(book.id, $event)"
         >
           <mat-icon matBadgeColor="accent" color="accent"
@@ -36,11 +36,7 @@
       </mat-card-footer>
     </mat-card>
   </div>
-  <button
-    mat-button
-    class="addtocard-btn book-btn"
-    (click)="proceedToPurchase()"
-  >
+  <button mat-button class="addtocard-btn book-btn" (click)="onPurchase()">
     Proceed to purchase
   </button>
 </div>

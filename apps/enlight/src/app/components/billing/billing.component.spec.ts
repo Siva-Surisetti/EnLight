@@ -1,16 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { BillingComponent } from './billing.component';
 import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
-import { BooksFacade } from '../../+state/books.facade';
-import { StoreModule } from '@ngrx/store';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatSnackBarModule, MatSnackBar } from '@angular/material';
-import { RouteTrackerService } from '@workspace/libs/services';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { BOOKS_CONSTANTS } from '../../constants/books_constants';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { StoreModule } from '@ngrx/store';
+
+import { RouteTrackerService } from '@workspace/libs/services';
+import { BillingComponent } from './billing.component';
+import { BooksFacade } from '../../+state/books.facade';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import { BOOKS_CONSTANTS } from '../../constants/books_constants';
 
 describe('BillingComponent', () => {
   let component: BillingComponent;
@@ -111,17 +113,17 @@ describe('BillingComponent', () => {
 
   describe('prepareConfigObjectForSnackBar', () => {
     it("should display snackbar at verticalPosition 'top'", () => {
-      const config = component.prepareConfigObjectForSnackBar();
+      const config = component.getSnackBarConfig();
       expect(config.verticalPosition).toEqual('top');
     });
 
     it("should display snackbar at horizontalPosition 'center'", () => {
-      const config = component.prepareConfigObjectForSnackBar();
+      const config = component.getSnackBarConfig();
       expect(config.horizontalPosition).toEqual('center');
     });
 
     it('should display snackbar for a duration of 2 seconds', () => {
-      const config = component.prepareConfigObjectForSnackBar();
+      const config = component.getSnackBarConfig();
       expect(config.duration).toEqual(2000);
     });
   });
@@ -133,7 +135,7 @@ describe('BillingComponent', () => {
       component.loginForm.value.phone = '12345';
       component.loginForm.value.address = 'TestAddress';
 
-      component.prepareBillingAddressObject();
+      component.setBillingAddress();
       expect(component.billing).toEqual({
         name: 'TestName',
         email: 'TestEmail',

@@ -45,7 +45,6 @@ export class AddToCollection implements Action {
 
 export class ClearCart implements Action {
   readonly type = BooksActionTypes.ClearCart;
-  constructor() {}
 }
 
 export class RemoveFromCart implements Action {

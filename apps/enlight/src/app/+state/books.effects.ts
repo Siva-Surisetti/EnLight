@@ -10,13 +10,23 @@ import {
   BooksActionTypes
 } from './books.actions';
 import { HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/internal/operators/map';
+import { map } from 'rxjs/operators';
 import { HttpWrapperService } from '@workspace/libs/services';
 import { BOOKS_CONSTANTS } from '../constants/books_constants';
 
 @Injectable()
 export class BooksEffects {
   public defaultHeaders: HttpHeaders = new HttpHeaders();
+
+  constructor(
+    private dataPersistence: DataPersistence<BooksPartialState>,
+    private httpWrapperService: HttpWrapperService
+  ) {
+    this.defaultHeaders.append(
+      'Content-Type',
+      'application/json; charset=utf-8'
+    );
+  }
 
   loadBooks$ = createEffect(() =>
     this.dataPersistence.fetch(BooksActionTypes.LoadBooks, {
@@ -39,14 +49,4 @@ export class BooksEffects {
     })
   );
   public booksData: any;
-
-  constructor(
-    private dataPersistence: DataPersistence<BooksPartialState>,
-    private httpWrapperService: HttpWrapperService
-  ) {
-    this.defaultHeaders.append(
-      'Content-Type',
-      'application/json; charset=utf-8'
-    );
-  }
 }

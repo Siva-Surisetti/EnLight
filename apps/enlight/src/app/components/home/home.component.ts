@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { BooksFacade } from '../../+state/books.facade';
 import { BOOKS_CONSTANTS } from '../../constants/books_constants';
 
@@ -23,7 +24,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate([BOOKS_CONSTANTS.DETAIL]);
   }
 
-  onSearchInput(searchKey) {
+  onSearch(searchKey) {
     this.booksFacade.loadBooksToStore(searchKey);
   }
 }

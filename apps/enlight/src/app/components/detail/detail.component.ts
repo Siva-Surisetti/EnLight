@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { BooksFacade } from '../../+state/books.facade';
 import { BOOKS_CONSTANTS } from '../../constants/books_constants';
 
@@ -14,6 +15,9 @@ export class DetailComponent implements OnInit {
   public collectionBooks: any;
   public bookExistsInCart = false;
   public bookExistsInCollection = false;
+  public bookAvailableInCartMessage = BOOKS_CONSTANTS.BOOK_AVAILABLE_IN_CART;
+  public bookAvailableInCollectionMessage =
+    BOOKS_CONSTANTS.BOOK_AVAILABLE_IN_COLLECTION;
 
   constructor(private booksFacade: BooksFacade, private router: Router) {}
 
@@ -35,20 +39,16 @@ export class DetailComponent implements OnInit {
 
   public checkIfBookExistsInCollection() {
     if (this.selectedBook && this.collectionBooks) {
-      this.collectionBooks.forEach(item => {
-        if (item.bookInfo.id === this.selectedBook.id) {
-          this.bookExistsInCollection = true;
-        }
+      this.bookExistsInCollection = this.collectionBooks.some(book => {
+        return book.bookInfo.id === this.selectedBook.id;
       });
     }
   }
 
   public checkIfBookExistsInCart() {
     if (this.selectedBook && this.cartBooks) {
-      this.cartBooks.forEach(book => {
-        if (book.id === this.selectedBook.id) {
-          this.bookExistsInCart = true;
-        }
+      this.bookExistsInCart = this.cartBooks.some(book => {
+        return book.id === this.selectedBook.id;
       });
     }
   }

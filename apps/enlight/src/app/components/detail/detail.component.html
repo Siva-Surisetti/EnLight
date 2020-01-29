@@ -3,13 +3,13 @@
     <mat-card-title-group>
       <img
         mat-card-sm-image
-        *ngIf="selectedBook.volumeInfo.imageLinks.smallThumbnail"
+        *ngIf="selectedBook?.volumeInfo?.imageLinks?.smallThumbnail"
         src="{{ selectedBook.volumeInfo.imageLinks.smallThumbnail }}"
       />
-      <mat-card-title *ngIf="selectedBook.volumeInfo.title">{{
+      <mat-card-title *ngIf="selectedBook?.volumeInfo?.title">{{
         selectedBook.volumeInfo.title | ellipsis: 35
       }}</mat-card-title>
-      <mat-card-subtitle *ngIf="selectedBook.volumeInfo.subtitle">{{
+      <mat-card-subtitle *ngIf="selectedBook?.volumeInfo?.subtitle">{{
         selectedBook.volumeInfo.subtitle | ellipsis: 40
       }}</mat-card-subtitle>
     </mat-card-title-group>
@@ -72,13 +72,12 @@
       </div>
       <div *ngIf="bookExistsInCart">
         <h5>
-          *Book already added in cart. Please navigate to cart section to
-          proceed for purchase
+          {{ bookAvailableInCartMessage }}
         </h5>
       </div>
       <div *ngIf="bookExistsInCollection">
         <h5>
-          *Books already purchased. Please navigate to My Collection section
+          {{ bookAvailableInCollectionMessage }}
         </h5>
       </div>
     </mat-card-footer>

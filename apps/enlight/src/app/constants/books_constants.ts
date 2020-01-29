@@ -1,4 +1,5 @@
 export const BOOKS_CONSTANTS = {
+  PAGE_TITLE: 'EnLight YourSelf!',
   URL: 'https://www.googleapis.com/books/v1/volumes?q=',
   DETAIL: 'detail',
   COLLECTION: 'collection',
@@ -8,11 +9,20 @@ export const BOOKS_CONSTANTS = {
   TOP: 'top',
   BILLING: 'billing',
   HOME: 'home',
-  SIDENAV_OPTION_SEARCH: 'Search',
-  SIDENAV_ICON_SEARCH: 'search',
-  SIDENAV_OPTION_CART: 'Cart',
   CART: 'cart',
-  SIDENAV_ICON_CART: 'shopping_cart',
-  SIDENAV_OPTION_COLLECTION: 'My Collection',
-  SIDENAV_ICON_COLLECTION: 'library_books'
+  BILLING_IMG_PATH: '../../../assets/images/receipt.jpg',
+  SNACK_BAR_DURATION: 2000,
+  BOOK_AVAILABLE_IN_CART:
+    '*Book already added in cart. Please navigate to cart section to proceed for purchase',
+  BOOK_AVAILABLE_IN_COLLECTION:
+    '*Books already purchased. Please navigate to My Collection section',
+  APP_NAME: 'Enlight',
+  SIDENAV: {
+    OPTION_SEARCH: 'Search',
+    ICON_SEARCH: 'search',
+    OPTION_CART: 'Cart',
+    ICON_CART: 'shopping_cart',
+    OPTION_COLLECTION: 'My Collection',
+    ICON_COLLECTION: 'library_books'
+  }
 };

@@ -7,7 +7,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
 import { BooksFacade } from '../../+state/books.facade';
 import { StoreModule } from '@ngrx/store';
 import { RouterTestingModule } from '@angular/router/testing';
-import { of } from 'rxjs';
+import { of } from 'rxjs/observable/of';
 import { Router } from '@angular/router';
 
 describe('CartComponent', () => {
@@ -45,7 +45,7 @@ describe('CartComponent', () => {
   describe('proceedToPurchase', () => {
     it('should navigate to billing page', () => {
       const routerNavigationSpy = spyOn<any>(router, 'navigate');
-      component.proceedToPurchase();
+      component.onPurchase();
       expect(routerNavigationSpy).toHaveBeenCalledWith(['billing']);
     });
   });

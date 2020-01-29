@@ -1,21 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { SideNavComponent } from './side-nav.component';
 import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
-import { BooksFacade } from '../../+state/books.facade';
-import { StoreModule } from '@ngrx/store';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Observable } from 'rxjs';
-import { SidenavToggleService } from '@workspace/libs/services';
-import { MatSidenav, MatSidenavModule } from '@angular/material';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenav, MatSidenavModule } from '@angular/material';
+import { StoreModule } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+
+import { SidenavToggleService } from '@workspace/libs/services';
+import { SideNavComponent } from './side-nav.component';
+import { BooksFacade } from '../../+state/books.facade';
 import { BOOKS_CONSTANTS } from '../../constants/books_constants';
 
 describe('SideNavComponent', () => {
   let component: SideNavComponent;
   let fixture: ComponentFixture<SideNavComponent>;
-  // let booksFacade: BooksFacade;
   let sideNav: MatSidenav;
 
   const fakeBooksFacade = {
@@ -64,7 +63,7 @@ describe('SideNavComponent', () => {
     });
     component['showBadgeWhenBooksAddedToCart']();
     component.navigationList.forEach(list => {
-      if (list['desc'] === BOOKS_CONSTANTS.SIDENAV_OPTION_CART)
+      if (list['desc'] === BOOKS_CONSTANTS.SIDENAV.OPTION_CART)
         expect(list['badgeValue']).toEqual(2);
     });
   });
@@ -75,7 +74,7 @@ describe('SideNavComponent', () => {
     });
     component['showBadgeWhenBooksAddedToCollection']();
     component.navigationList.forEach(list => {
-      if (list['desc'] === BOOKS_CONSTANTS.SIDENAV_OPTION_COLLECTION)
+      if (list['desc'] === BOOKS_CONSTANTS.SIDENAV.OPTION_COLLECTION)
         expect(list['badgeValue']).toEqual(2);
     });
   });

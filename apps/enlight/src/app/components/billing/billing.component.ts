@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { BooksFacade } from '../../+state/books.facade';
 import {
   MatSnackBar,
   MatSnackBarConfig,
@@ -8,14 +7,16 @@ import {
   MatSnackBarVerticalPosition
 } from '@angular/material';
 import { Router } from '@angular/router';
+
 import { RouteTrackerService } from '@workspace/libs/services';
+import { BooksFacade } from '../../+state/books.facade';
 import { BOOKS_CONSTANTS } from '../../constants/books_constants';
 
 interface BillingDetails {
-  name?: any;
-  email?: any;
-  phone?: any;
-  address?: any;
+  name?: string;
+  email?: string;
+  phone?: string;
+  address?: string;
 }
 
 interface CollectionItem {
@@ -33,13 +34,14 @@ export class BillingComponent implements OnInit {
   loginForm: FormGroup;
   selectedBook: any;
   previousUrl: string;
-  message = BOOKS_CONSTANTS.PURCHASE_SUCCESSFUL;
+  purchaseStatusMessage = BOOKS_CONSTANTS.PURCHASE_SUCCESSFUL;
   actionButtonLabel = BOOKS_CONSTANTS.OK;
-  autoHide = 2000;
+  autoHide = BOOKS_CONSTANTS.SNACK_BAR_DURATION;
   horizontalPosition = BOOKS_CONSTANTS.CENTER;
   verticalPosition = BOOKS_CONSTANTS.TOP;
   billing: BillingDetails = {};
   collection: CollectionItem = {};
+  billingImagePath = BOOKS_CONSTANTS.BILLING_IMG_PATH;
 
   constructor(
     private booksFacade: BooksFacade,
@@ -51,18 +53,15 @@ export class BillingComponent implements OnInit {
   ngOnInit() {
     this.addFormFieldValidations();
     this.subscribeToCartBooks();
-    this.subscribeToSelectedBook();
     this.getPreviousURL();
+
+    this.booksFacade.selectedBook$.subscribe(book => {
+      this.selectedBook = book;
+    });
   }
 
   private getPreviousURL() {
     this.previousUrl = this.routeService.getPreviousUrl();
-  }
-
-  private subscribeToSelectedBook() {
-    this.booksFacade.selectedBook$.subscribe(book => {
-      this.selectedBook = book;
-    });
   }
 
   private subscribeToCartBooks() {
@@ -83,8 +82,8 @@ export class BillingComponent implements OnInit {
   }
 
   onSubmit() {
-    this.displaySnackBar();
-    this.prepareBillingAddressObject();
+    this.showSnackBar();
+    this.setBillingAddress();
 
     this.addBooksToCollection();
     this.router.navigate([BOOKS_CONSTANTS.COLLECTION]);
@@ -101,10 +100,10 @@ export class BillingComponent implements OnInit {
 
   public addCartBooksToMyCollection() {
     this.cartBooks.forEach(book => {
-      this.collection = {};
-      this.collection.bookInfo = book;
-      this.collection.billingInfo = this.billing;
-      this.booksFacade.dispatchBooksToCollection(this.collection);
+      const collection: CollectionItem = {};
+      collection.bookInfo = book;
+      collection.billingInfo = this.billing;
+      this.booksFacade.dispatchBooksToCollection(collection);
     });
   }
 
@@ -114,23 +113,27 @@ export class BillingComponent implements OnInit {
     this.booksFacade.dispatchBooksToCollection(this.collection);
   }
 
-  public prepareBillingAddressObject() {
+  public setBillingAddress() {
     this.billing.name = this.loginForm.value.name;
     this.billing.email = this.loginForm.value.email;
     this.billing.phone = this.loginForm.value.phone;
     this.billing.address = this.loginForm.value.address;
   }
 
-  private displaySnackBar() {
-    const config = this.prepareConfigObjectForSnackBar();
+  private showSnackBar() {
+    const config = this.getSnackBarConfig();
     this.openSnackBar(config);
   }
 
   private openSnackBar(config: MatSnackBarConfig<any>) {
-    this.snackBar.open(this.message, this.actionButtonLabel, config);
+    this.snackBar.open(
+      this.purchaseStatusMessage,
+      this.actionButtonLabel,
+      config
+    );
   }
 
-  public prepareConfigObjectForSnackBar() {
+  public getSnackBarConfig() {
     const config = new MatSnackBarConfig();
     config.verticalPosition = <MatSnackBarVerticalPosition>(
       this.verticalPosition

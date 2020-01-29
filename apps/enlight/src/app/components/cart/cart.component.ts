@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BooksFacade } from '../../+state/books.facade';
 import { Router } from '@angular/router';
+
+import { BooksFacade } from '../../+state/books.facade';
 import { BOOKS_CONSTANTS } from '../../constants/books_constants';
 
 @Component({
@@ -19,7 +20,7 @@ export class CartComponent implements OnInit {
     });
   }
 
-  proceedToPurchase() {
+  onPurchase() {
     this.router.navigate([BOOKS_CONSTANTS.BILLING]);
   }
 
