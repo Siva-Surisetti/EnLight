@@ -36,7 +36,7 @@ export class BooksEffects {
         return this.httpWrapperService
           .get(URL, this.defaultHeaders, {}, {})
           .pipe(
-            map((response: any) => {
+            map(response => {
               this.booksData = response.body.items;
               return new BooksLoaded(this.booksData);
             })
