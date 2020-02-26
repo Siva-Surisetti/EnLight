@@ -19,7 +19,9 @@
       "@workspace/enlight/home": ["app/home/index.ts"],
       "@workspace/libs/services": ["libs/services/src/index.ts"],
       "@workspace/ui": ["libs/ui/src/index.ts"],
-      "@workspace/pipes": ["libs/pipes/src/index.ts"]
+      "@workspace/pipes": ["libs/pipes/src/index.ts"],
+      "@workspace/shared/config": ["libs/shared/config/src/index.ts"],
+      "@workspace/hapi/utils/config": ["libs/hapi/utils/config/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -22,6 +22,12 @@
     },
     "pipes": {
       "tags": []
+    },
+    "shared-config": {
+      "tags": []
+    },
+    "hapi-utils-config": {
+      "tags": []
     }
   }
 }
