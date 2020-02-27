@@ -1,5 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-import { throwError, Observable, of } from 'rxjs';
+
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import { throwError } from 'rxjs';
 
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';

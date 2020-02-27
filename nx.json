@@ -28,9 +28,6 @@
     },
     "hapi-utils-config": {
       "tags": []
-    },
-    "hapi-utils-server": {
-      "tags": []
     }
   }
 }
