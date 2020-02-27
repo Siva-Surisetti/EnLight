@@ -25,6 +25,9 @@
     },
     "enlight-api": {
       "tags": []
+    },
+    "hapi-utils-server": {
+      "tags": []
     }
   }
 }
