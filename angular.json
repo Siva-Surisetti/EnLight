@@ -66,7 +66,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "enlight:build"
+            "browserTarget": "enlight:build",
+            "proxyConfig": "apps/enlight/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -217,6 +218,61 @@
       "schematics": {
         "@nrwl/angular:component": {
           "styleext": "scss"
+        }
+      }
+    },
+    "enlight-api": {
+      "root": "apps/enlight-api",
+      "sourceRoot": "apps/enlight-api/src",
+      "projectType": "application",
+      "prefix": "enlight-api",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/builders:node-build",
+          "options": {
+            "outputPath": "dist/apps/enlight-api",
+            "main": "apps/enlight-api/src/main.ts",
+            "tsConfig": "apps/enlight-api/tsconfig.app.json",
+            "assets": ["apps/enlight-api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/enlight-api/src/environments/environment.ts",
+                  "with": "apps/enlight-api/src/environments/environment.prod.ts"
+                }
+              ],
+              "externalDependencies": "none"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/builders:node-execute",
+          "options": {
+            "buildTarget": "enlight-api:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/enlight-api/tsconfig.app.json",
+              "apps/enlight-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/enlight-api/jest.config.js",
+            "tsConfig": "apps/enlight-api/tsconfig.spec.json"
+          }
         }
       }
     }

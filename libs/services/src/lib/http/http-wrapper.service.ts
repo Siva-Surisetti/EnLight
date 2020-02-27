@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { catchError } from 'rxjs/operators';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { throwError as observableThrowError } from 'rxjs';
 
 import {
@@ -118,7 +118,9 @@ export class HttpWrapperService {
   ) {
     return (error: any) => {
       this.loggerService.logError(
-        `${method} failed for URL : ${processedUrl} with : ${options} - ${error.message}`
+        `${method} failed for URL : ${processedUrl} with : ${options} - ${
+          error.message
+        }`
       );
     };
   }

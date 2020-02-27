@@ -22,6 +22,9 @@
     },
     "pipes": {
       "tags": []
+    },
+    "enlight-api": {
+      "tags": []
     }
   }
 }
