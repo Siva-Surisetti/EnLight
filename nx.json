@@ -28,6 +28,9 @@
     },
     "hapi-utils-server": {
       "tags": []
+    },
+    "hapi-plugins-search": {
+      "tags": []
     }
   }
 }

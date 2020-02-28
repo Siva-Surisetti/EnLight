@@ -31,7 +31,7 @@ export class BooksEffects {
   loadBooks$ = createEffect(() =>
     this.dataPersistence.fetch(BooksActionTypes.LoadBooks, {
       run: (action: LoadBooks, state: BooksPartialState) => {
-        let URL = BOOKS_CONSTANTS.URL;
+        let URL = 'http://localhost:3333/api/search/';
         URL = URL + action.payload;
         return this.httpWrapperService
           .get(URL, this.defaultHeaders, {}, {})

@@ -1,18 +1,26 @@
 import { Server } from 'hapi';
 
 export class HapiUtilService {
-  constructor() {}
+  constructor(public config: any) {}
 
   async init() {
     try {
       const server = new Server({
         port: 3333,
-        host: 'localhost'
+        host: 'localhost',
+        routes: {
+          cors: {
+            origin: ['*'],
+            headers: ['Authorization'],
+            exposedHeaders: ['Accept'],
+            additionalExposedHeaders: ['Accept']
+          }
+        }
       });
 
       server.route({
         method: 'GET',
-        path: '/',
+        path: '/hello',
         handler: (request, h) => {
           return {
             hello: 'world. Its working !!!!!'
@@ -20,7 +28,16 @@ export class HapiUtilService {
         }
       });
 
-      await server.start();
+      const pluginPromises: Promise<void>[] = this.config.plugins.reduce(
+        (res: Promise<void>[], plugin: any) => {
+          const pluginOptions = { ...plugin.options };
+          res.push(plugin.hapiPlugin.register(server, pluginOptions));
+          return res;
+        },
+        []
+      );
+
+      await Promise.all([...pluginPromises, server.start()]);
       console.log('Server running on %s', server.info.uri);
     } catch (error) {
       process.exit(1);

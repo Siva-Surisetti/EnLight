@@ -300,6 +300,31 @@
           }
         }
       }
+    },
+    "hapi-plugins-search": {
+      "root": "libs/hapi/plugins/search",
+      "sourceRoot": "libs/hapi/plugins/search/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/hapi/plugins/search/tsconfig.lib.json",
+              "libs/hapi/plugins/search/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/hapi/plugins/search/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/hapi/plugins/search/jest.config.js",
+            "tsConfig": "libs/hapi/plugins/search/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "cli": {

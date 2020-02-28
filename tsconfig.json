@@ -20,7 +20,10 @@
       "@workspace/libs/services": ["libs/services/src/index.ts"],
       "@workspace/ui": ["libs/ui/src/index.ts"],
       "@workspace/pipes": ["libs/pipes/src/index.ts"],
-      "@workspace/hapi/utils/server": ["libs/hapi/utils/server/src/index.ts"]
+      "@workspace/hapi/utils/server": ["libs/hapi/utils/server/src/index.ts"],
+      "@workspace/hapi/plugins/search": [
+        "libs/hapi/plugins/search/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
