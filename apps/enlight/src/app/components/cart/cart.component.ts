@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { PATH_CONST } from '@workspace/constants';
 import { BooksFacade } from '../../+state/books.facade';
-import { BOOKS_CONSTANTS } from '../../constants/books_constants';
 
 @Component({
   selector: 'poc-app-cart',
@@ -21,12 +21,12 @@ export class CartComponent implements OnInit {
   }
 
   onPurchase() {
-    this.router.navigate([BOOKS_CONSTANTS.BILLING]);
+    this.router.navigate([PATH_CONST.BILLING]);
   }
 
   onBookSelect(bookId) {
     this.booksFacade.dispatchSelectedIdToStore(bookId);
-    this.router.navigate([BOOKS_CONSTANTS.DETAIL]);
+    this.router.navigate([PATH_CONST.DETAIL]);
   }
 
   removeFromCart(bookId, event) {

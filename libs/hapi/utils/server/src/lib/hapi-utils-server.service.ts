@@ -1,4 +1,10 @@
 import { Server } from 'hapi';
+import {
+  SERVER_CONST,
+  REQ_METHOD,
+  ROUTE_CONST,
+  MSG_CONST
+} from '@workspace/constants';
 
 export class HapiUtilService {
   constructor(public config: any) {}
@@ -6,32 +12,22 @@ export class HapiUtilService {
   async init() {
     try {
       const server = new Server({
-        port: 3333,
-        host: 'localhost',
-        routes: {
-          cors: {
-            origin: ['*'],
-            headers: ['Authorization'],
-            exposedHeaders: ['Accept'],
-            additionalExposedHeaders: ['Accept']
-          }
-        }
+        port: SERVER_CONST.PORT,
+        host: SERVER_CONST.HOST
       });
 
       await server.register({
         plugin: require('hapi-cors'),
         options: {
-          origins: ['http://localhost:4200']
+          origins: SERVER_CONST.ORIGINS
         }
       });
 
       server.route({
-        method: 'GET',
-        path: '/hello',
+        method: REQ_METHOD.GET,
+        path: ROUTE_CONST.TEST,
         handler: (request, h) => {
-          return {
-            hello: 'world. Its working !!!!!'
-          };
+          return MSG_CONST.TEST_ROUTE;
         }
       });
 
@@ -45,7 +41,6 @@ export class HapiUtilService {
       );
 
       await Promise.all([...pluginPromises, server.start()]);
-      console.log('Server running on %s', server.info.uri);
     } catch (error) {
       process.exit(1);
     }

@@ -1,14 +1,14 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { CartComponent } from './cart.component';
-import { EllipsisPipe, AddCommasPipe } from '@workspace/pipes';
-import { MatCardTitle } from '@angular/material';
-import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
-import { BooksFacade } from '../../+state/books.facade';
-import { StoreModule } from '@ngrx/store';
-import { RouterTestingModule } from '@angular/router/testing';
-import { of } from 'rxjs/observable/of';
 import { Router } from '@angular/router';
+import { MatCardTitle } from '@angular/material';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
+import { StoreModule } from '@ngrx/store';
+import { of } from 'rxjs';
+
+import { EllipsisPipe, AddCommasPipe } from '@workspace/pipes';
+import { BooksFacade } from '../../+state/books.facade';
+import { CartComponent } from './cart.component';
 
 describe('CartComponent', () => {
   let component: CartComponent;

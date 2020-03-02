@@ -4,15 +4,14 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MatSnackBarModule, MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { StoreModule } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { of } from 'rxjs';
 
+import { PATH_CONST } from '@workspace/constants';
 import { RouteTrackerService } from '@workspace/libs/services';
 import { BillingComponent } from './billing.component';
 import { BooksFacade } from '../../+state/books.facade';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { BOOKS_CONSTANTS } from '../../constants/books_constants';
 
 describe('BillingComponent', () => {
   let component: BillingComponent;
@@ -151,7 +150,7 @@ describe('BillingComponent', () => {
         component,
         'addSelectedBookToMyCollection'
       );
-      component.previousUrl = '/' + BOOKS_CONSTANTS.DETAIL;
+      component.previousUrl = '/' + PATH_CONST.DETAIL;
       component.addBooksToCollection();
       expect(addSelectedBookToMyCollectionspy).toHaveBeenCalled();
     });
@@ -161,7 +160,7 @@ describe('BillingComponent', () => {
         component,
         'addCartBooksToMyCollection'
       );
-      component.previousUrl = '/' + BOOKS_CONSTANTS.COLLECTION;
+      component.previousUrl = '/' + PATH_CONST.COLLECTION;
       component.addBooksToCollection();
       expect(addCartBooksToMyCollectionspy).toHaveBeenCalled();
     });

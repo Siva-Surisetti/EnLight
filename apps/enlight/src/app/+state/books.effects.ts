@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { createEffect } from '@ngrx/effects';
 import { DataPersistence } from '@nrwl/angular';
+import { HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 import { BooksPartialState } from './books.reducer';
 import {
@@ -9,10 +11,8 @@ import {
   BooksLoadError,
   BooksActionTypes
 } from './books.actions';
-import { HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { HttpWrapperService } from '@workspace/libs/services';
-import { BOOKS_CONSTANTS } from '../constants/books_constants';
+import { SERVER_CONST, ROUTE_CONST } from '@workspace/constants';
 
 @Injectable()
 export class BooksEffects {
@@ -31,7 +31,12 @@ export class BooksEffects {
   loadBooks$ = createEffect(() =>
     this.dataPersistence.fetch(BooksActionTypes.LoadBooks, {
       run: (action: LoadBooks, state: BooksPartialState) => {
-        const URL = 'http://localhost:3333/api/search';
+        const URL =
+          'http://' +
+          SERVER_CONST.HOST +
+          ':' +
+          SERVER_CONST.PORT +
+          ROUTE_CONST.SEARCH;
         return this.httpWrapperService
           .get(URL, this.defaultHeaders, action.payload, {})
           .pipe(

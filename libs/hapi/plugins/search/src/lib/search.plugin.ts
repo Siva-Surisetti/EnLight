@@ -1,4 +1,10 @@
 import { SearchApiPluginConfig } from '@workspace/models';
+import {
+  REQ_METHOD,
+  ROUTE_CONST,
+  SERVER_CONST,
+  MSG_CONST
+} from '@workspace/constants';
 
 export class SearchApiPlugin {
   readonly name = 'SearchApiPlugin';
@@ -12,8 +18,8 @@ export class SearchApiPlugin {
     }
 
     server.route({
-      path: '/api/search',
-      method: 'GET',
+      path: ROUTE_CONST.SEARCH,
+      method: REQ_METHOD.GET,
       handler: async (request, h) => {
         try {
           return await this.config.getSearchResults(
@@ -26,10 +32,10 @@ export class SearchApiPlugin {
               },
               headers: request.headers
             },
-            'https://www.googleapis.com/books/v1/volumes'
+            SERVER_CONST.BASE_URL
           );
         } catch (error) {
-          // return serverUnavailable(error);
+          console.log(MSG_CONST.SEARCH_ERROR, Error);
         }
       }
     });

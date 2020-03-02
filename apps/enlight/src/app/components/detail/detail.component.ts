@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { MSG_CONST, PATH_CONST } from '@workspace/constants';
 import { BooksFacade } from '../../+state/books.facade';
-import { BOOKS_CONSTANTS } from '../../constants/books_constants';
 
 @Component({
   selector: 'poc-detail',
@@ -15,9 +15,9 @@ export class DetailComponent implements OnInit {
   public collectionBooks: any;
   public bookExistsInCart = false;
   public bookExistsInCollection = false;
-  public bookAvailableInCartMessage = BOOKS_CONSTANTS.BOOK_AVAILABLE_IN_CART;
+  public bookAvailableInCartMessage = MSG_CONST.BOOK_AVAILABLE_IN_CART;
   public bookAvailableInCollectionMessage =
-    BOOKS_CONSTANTS.BOOK_AVAILABLE_IN_COLLECTION;
+    MSG_CONST.BOOK_AVAILABLE_IN_COLLECTION;
 
   constructor(private booksFacade: BooksFacade, private router: Router) {}
 
@@ -37,7 +37,7 @@ export class DetailComponent implements OnInit {
     this.checkIfBookExistsInCollection();
   }
 
-  public checkIfBookExistsInCollection() {
+  checkIfBookExistsInCollection() {
     if (this.selectedBook && this.collectionBooks) {
       this.bookExistsInCollection = this.collectionBooks.some(book => {
         return book.bookInfo.id === this.selectedBook.id;
@@ -45,7 +45,7 @@ export class DetailComponent implements OnInit {
     }
   }
 
-  public checkIfBookExistsInCart() {
+  checkIfBookExistsInCart() {
     if (this.selectedBook && this.cartBooks) {
       this.bookExistsInCart = this.cartBooks.some(book => {
         return book.id === this.selectedBook.id;
@@ -55,10 +55,10 @@ export class DetailComponent implements OnInit {
 
   addToCart() {
     this.booksFacade.dispatchBooksToCartStore(this.selectedBook);
-    this.router.navigate([BOOKS_CONSTANTS.HOME]);
+    this.router.navigate([PATH_CONST.HOME]);
   }
 
   purchaseBook() {
-    this.router.navigate([BOOKS_CONSTANTS.BILLING]);
+    this.router.navigate([PATH_CONST.BILLING]);
   }
 }

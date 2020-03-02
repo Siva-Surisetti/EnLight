@@ -5,12 +5,12 @@ import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenav, MatSidenavModule } from '@angular/material';
 import { StoreModule } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
+import { SIDENAV_CONST } from '@workspace/constants';
 import { SidenavToggleService } from '@workspace/libs/services';
 import { SideNavComponent } from './side-nav.component';
 import { BooksFacade } from '../../+state/books.facade';
-import { BOOKS_CONSTANTS } from '../../constants/books_constants';
 
 describe('SideNavComponent', () => {
   let component: SideNavComponent;
@@ -63,7 +63,7 @@ describe('SideNavComponent', () => {
     });
     component['showBadgeWhenBooksAddedToCart']();
     component.navigationList.forEach(list => {
-      if (list['desc'] === BOOKS_CONSTANTS.SIDENAV.OPTION_CART)
+      if (list['desc'] === SIDENAV_CONST.OPTION_CART)
         expect(list['badgeValue']).toEqual(2);
     });
   });
@@ -74,7 +74,7 @@ describe('SideNavComponent', () => {
     });
     component['showBadgeWhenBooksAddedToCollection']();
     component.navigationList.forEach(list => {
-      if (list['desc'] === BOOKS_CONSTANTS.SIDENAV.OPTION_COLLECTION)
+      if (list['desc'] === SIDENAV_CONST.OPTION_COLLECTION)
         expect(list['badgeValue']).toEqual(2);
     });
   });

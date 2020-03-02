@@ -21,7 +21,7 @@ export class HapiHttpClient {
 export interface HttpRequest<T> {
   baseURL: string;
   url: string;
-  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
+  method: 'GET' | 'POST' | 'PUT' | 'DELETE';
   headers?: { [headerName: string]: string };
   timeout?: number;
   data?: T;

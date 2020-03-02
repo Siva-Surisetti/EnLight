@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouteTrackerService } from '@workspace/libs/services';
-import { BOOKS_CONSTANTS } from './constants/books_constants';
+import { APP_CONSTANTS } from '@workspace/constants';
 
 @Component({
   selector: 'poc-root',
@@ -9,5 +9,5 @@ import { BOOKS_CONSTANTS } from './constants/books_constants';
 })
 export class AppComponent {
   constructor(private routerService: RouteTrackerService) {}
-  title = BOOKS_CONSTANTS.PAGE_TITLE;
+  title = APP_CONSTANTS.PAGE_TITLE;
 }

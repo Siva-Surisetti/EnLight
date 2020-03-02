@@ -8,9 +8,9 @@ import {
 } from '@angular/material';
 import { Router } from '@angular/router';
 
+import { BOOKS_CONSTANTS, PATH_CONST, MSG_CONST } from '@workspace/constants';
 import { RouteTrackerService } from '@workspace/libs/services';
 import { BooksFacade } from '../../+state/books.facade';
-import { BOOKS_CONSTANTS } from '../../constants/books_constants';
 
 interface BillingDetails {
   name?: string;
@@ -34,14 +34,14 @@ export class BillingComponent implements OnInit {
   loginForm: FormGroup;
   selectedBook: any;
   previousUrl: string;
-  purchaseStatusMessage = BOOKS_CONSTANTS.PURCHASE_SUCCESSFUL;
+  purchaseStatusMessage = MSG_CONST.PURCHASE_SUCCESSFUL;
   actionButtonLabel = BOOKS_CONSTANTS.OK;
   autoHide = BOOKS_CONSTANTS.SNACK_BAR_DURATION;
   horizontalPosition = BOOKS_CONSTANTS.CENTER;
   verticalPosition = BOOKS_CONSTANTS.TOP;
   billing: BillingDetails = {};
   collection: CollectionItem = {};
-  billingImagePath = BOOKS_CONSTANTS.BILLING_IMG_PATH;
+  billingImagePath = PATH_CONST.BILLING_IMG;
 
   constructor(
     private booksFacade: BooksFacade,
@@ -86,11 +86,11 @@ export class BillingComponent implements OnInit {
     this.setBillingAddress();
 
     this.addBooksToCollection();
-    this.router.navigate([BOOKS_CONSTANTS.COLLECTION]);
+    this.router.navigate([PATH_CONST.COLLECTION]);
   }
 
   public addBooksToCollection() {
-    if (this.previousUrl === '/' + BOOKS_CONSTANTS.DETAIL) {
+    if (this.previousUrl === '/' + PATH_CONST.DETAIL) {
       this.addSelectedBookToMyCollection();
     } else {
       this.addCartBooksToMyCollection();

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { BooksFacade } from '../../+state/books.facade';
 import { Router } from '@angular/router';
-import { BOOKS_CONSTANTS } from '../../constants/books_constants';
+
+import { PATH_CONST } from '@workspace/constants';
+import { BooksFacade } from '../../+state/books.facade';
 
 @Component({
   selector: 'poc-app-collection',
@@ -20,6 +21,6 @@ export class CollectionComponent implements OnInit {
 
   onBookSelect(bookId) {
     this.booksFacade.dispatchSelectedIdToStore(bookId);
-    this.router.navigate([BOOKS_CONSTANTS.DETAIL]);
+    this.router.navigate([PATH_CONST.DETAIL]);
   }
 }

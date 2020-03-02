@@ -3,7 +3,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
-import { of } from 'rxjs/observable/of';
+import { of } from 'rxjs';
 
 import { HomeComponent } from './home.component';
 import { BooksFacade } from '../../+state/books.facade';

@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 
+import { SIDENAV_CONST, APP_CONSTANTS, PATH_CONST } from '@workspace/constants';
 import { SidenavToggleService } from '@workspace/libs/services';
 import { BooksFacade } from '../../+state/books.facade';
-import { BOOKS_CONSTANTS } from '../../constants/books_constants';
 
 interface NavItem {
   desc: string;
@@ -19,25 +19,25 @@ interface NavItem {
 })
 export class SideNavComponent implements OnInit {
   @ViewChild('sideNav', { static: true }) public sidenav: MatSidenav;
-  public appName = BOOKS_CONSTANTS.APP_NAME;
+  public appName = APP_CONSTANTS.APP_NAME;
 
   public navigationList: NavItem[] = [
     {
-      desc: BOOKS_CONSTANTS.SIDENAV.OPTION_SEARCH,
-      path: '/' + BOOKS_CONSTANTS.HOME,
-      icon: BOOKS_CONSTANTS.SIDENAV.ICON_SEARCH,
+      desc: SIDENAV_CONST.OPTION_SEARCH,
+      path: '/' + PATH_CONST.HOME,
+      icon: SIDENAV_CONST.ICON_SEARCH,
       badgeValue: null
     },
     {
-      desc: BOOKS_CONSTANTS.SIDENAV.OPTION_CART,
-      path: '/' + BOOKS_CONSTANTS.CART,
-      icon: BOOKS_CONSTANTS.SIDENAV.ICON_CART,
+      desc: SIDENAV_CONST.OPTION_CART,
+      path: '/' + PATH_CONST.CART,
+      icon: SIDENAV_CONST.ICON_CART,
       badgeValue: null
     },
     {
-      desc: BOOKS_CONSTANTS.SIDENAV.OPTION_COLLECTION,
-      path: '/' + BOOKS_CONSTANTS.COLLECTION,
-      icon: BOOKS_CONSTANTS.SIDENAV.ICON_COLLECTION,
+      desc: SIDENAV_CONST.OPTION_COLLECTION,
+      path: '/' + PATH_CONST.COLLECTION,
+      icon: SIDENAV_CONST.ICON_COLLECTION,
       badgeValue: null
     }
   ];
@@ -54,7 +54,7 @@ export class SideNavComponent implements OnInit {
 
     this.booksFacade.cartBooks$.subscribe(books => {
       this.navigationList.forEach(list => {
-        if (list['desc'] === BOOKS_CONSTANTS.SIDENAV.OPTION_CART)
+        if (list['desc'] === SIDENAV_CONST.OPTION_CART)
           list['badgeValue'] = books.length === 0 ? null : books.length;
       });
       this.sideNavToggleService.toggle();
@@ -62,7 +62,7 @@ export class SideNavComponent implements OnInit {
 
     this.booksFacade.collectionBooks$.subscribe(books => {
       this.navigationList.forEach(list => {
-        if (list['desc'] === BOOKS_CONSTANTS.SIDENAV.OPTION_COLLECTION)
+        if (list['desc'] === SIDENAV_CONST.OPTION_COLLECTION)
           list['badgeValue'] = books.length === 0 ? null : books.length;
       });
       this.sideNavToggleService.toggle();
