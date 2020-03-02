@@ -10,7 +10,7 @@ export interface HapiServerPlugin {
 export const searchPluginFactory: () => HapiServerPlugin = () =>
   new SearchApiPlugin({
     getSearchResults: async ({ request }, baseURL) => {
-      const url = `?q=${request.query.searchQuery}`;
+      const url = `?q=${Object.keys(request.query)}`;
       const resp: any = await HapiHttpClient.invokeApi({
         method: 'GET',
         baseURL: baseURL,
@@ -19,7 +19,6 @@ export const searchPluginFactory: () => HapiServerPlugin = () =>
           'Content-Type': 'application/json'
         }
       });
-      console.log('breaking news :::: ' + resp);
       return resp;
     }
   });
@@ -32,9 +31,10 @@ export interface SearchApiPluginConfig {
       options: any;
       request: {
         params: {};
-        query: {
-          searchQuery?: string;
-        };
+        query: any;
+        // query: {
+        //   searchQuery?: string;
+        // };
       };
       headers: any;
     },

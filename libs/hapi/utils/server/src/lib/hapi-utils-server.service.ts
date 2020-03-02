@@ -18,6 +18,13 @@ export class HapiUtilService {
         }
       });
 
+      await server.register({
+        plugin: require('hapi-cors'),
+        options: {
+          origins: ['http://localhost:4200']
+        }
+      });
+
       server.route({
         method: 'GET',
         path: '/hello',

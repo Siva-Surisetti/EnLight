@@ -31,10 +31,10 @@ export class BooksEffects {
   loadBooks$ = createEffect(() =>
     this.dataPersistence.fetch(BooksActionTypes.LoadBooks, {
       run: (action: LoadBooks, state: BooksPartialState) => {
-        let URL = 'http://localhost:3333/api/search/';
-        URL = URL + action.payload;
+        let URL = 'http://localhost:3333/api/search';
+        // URL = URL + action.payload;
         return this.httpWrapperService
-          .get(URL, this.defaultHeaders, {}, {})
+          .get(URL, this.defaultHeaders, action.payload, {})
           .pipe(
             map(response => {
               this.booksData = response.body.items;
