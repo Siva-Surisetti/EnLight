@@ -23,7 +23,8 @@
       "@workspace/hapi/utils/server": ["libs/hapi/utils/server/src/index.ts"],
       "@workspace/hapi/plugins/search": [
         "libs/hapi/plugins/search/src/index.ts"
-      ]
+      ],
+      "@workspace/models": ["libs/models/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

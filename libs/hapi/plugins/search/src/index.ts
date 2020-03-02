@@ -1,1 +1,2 @@
-export * from './lib/hapi-plugins-search';
+export * from './lib/search.plugin';
+export * from './lib/search.plugin.factory';
