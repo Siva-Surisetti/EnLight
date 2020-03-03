@@ -1,16 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 
+import { NavItem } from '@workspace/models';
 import { SIDENAV_CONST, APP_CONSTANTS, PATH_CONST } from '@workspace/constants';
 import { SidenavToggleService } from '@workspace/libs/services';
 import { BooksFacade } from '../../+state/books.facade';
-
-interface NavItem {
-  desc: string;
-  path: string;
-  icon: string;
-  badgeValue?: number;
-}
 
 @Component({
   selector: 'poc-ui-side-nav',
