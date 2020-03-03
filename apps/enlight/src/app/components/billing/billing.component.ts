@@ -8,21 +8,10 @@ import {
 } from '@angular/material';
 import { Router } from '@angular/router';
 
+import { BillingDetails, CollectionItem } from '@workspace/models';
 import { BOOKS_CONSTANTS, PATH_CONST, MSG_CONST } from '@workspace/constants';
 import { RouteTrackerService } from '@workspace/libs/services';
 import { BooksFacade } from '../../+state/books.facade';
-
-interface BillingDetails {
-  name?: string;
-  email?: string;
-  phone?: string;
-  address?: string;
-}
-
-interface CollectionItem {
-  bookInfo?: any;
-  billingInfo?: any;
-}
 
 @Component({
   selector: 'poc-billing',
