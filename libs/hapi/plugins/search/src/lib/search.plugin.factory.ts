@@ -6,7 +6,7 @@ export const searchPluginFactory: () => HapiServerPlugin = () =>
   new SearchApiPlugin({
     onRegister: () => {},
     getSearchResults: async ({ request }, baseURL) => {
-      const url = `?q=${Object.keys(request.query)}`;
+      const url = `?q=${request.query.keyword || request.query}`;
       const resp: any = await HapiHttpClient.invokeApi({
         method: 'GET',
         baseURL: baseURL,

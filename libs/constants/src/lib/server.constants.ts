@@ -1,5 +1,5 @@
 export const SERVER_CONST = {
-  BASE_URL: 'https://www.googleapis.com/books/v1/volumes?q=',
+  BASE_URL: 'https://www.googleapis.com/books/v1/volumes',
   HOST: 'localhost',
   ORIGINS: ['http://localhost:4200'],
   PORT: 3333

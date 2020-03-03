@@ -38,7 +38,7 @@ export class BooksEffects {
           SERVER_CONST.PORT +
           ROUTE_CONST.SEARCH;
         return this.httpWrapperService
-          .get(URL, this.defaultHeaders, action.payload, {})
+          .get(URL, this.defaultHeaders, { keyword: action.payload }, {})
           .pipe(
             map(response => {
               this.booksData = response.body.items;
